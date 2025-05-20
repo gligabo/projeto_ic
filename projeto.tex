@@ -56,8 +56,7 @@ Sem a presença de um termo regularizador, a solução desses problemas pode se 
 Uma das técnicas mais utilizadas é a regularização por variação total (TV), que busca preservar as bordas das imagens enquanto reduz o ruído presente. 
 Dessa forma, o problema de minimização resultante da aplicação dessa técnica pode ser abordado por métodos de otimização baseados em operadores proximais, que, no caso da regularização por TV, não possuem solução analítica fechada, exigindo métodos iterativos internos para sua resolução, caracterizando-os assim como métodos inexatos.
 Isso ocorre porque o termo de regularização é convexo, embora não suave, resultando em uma função objetivo composta por um termo suave e convexo e outro termo não suave, porém convexo. 
-Um método amplamente conhecido para resolver esses problemas é o Iterative Shrinkage-Thresholding Algorithm (ISTA), que é de primeira ordem. 
-Entretanto, o ISTA apresenta convergência lenta, tornando-se inadequado para problemas de grande escala. 
+Um método amplamente conhecido para resolver esses problemas é o Iterative Shrinkage-Thresholding Algorithm (ISTA), que é de primeira ordem, entretanto, apresenta convergência lenta, tornando-se inadequado para problemas de grande escala. 
 Por essa razão, métodos acelerados de primeira ordem, como o Fast Iterative Shrinkage-Thresholding Algorithm (FISTA), são adotados para melhorar a velocidade de convergência. 
 O objetivo deste projeto é estudar e implementar métodos acelerados de primeira ordem inexatos aplicados à regularização por variação total para a reconstrução de imagens em tomografia computadorizada.
 
@@ -70,8 +69,7 @@ Without the presence of a regularization term, the solution of these problems ca
 One of the most commonly used techniques is total variation (TV) regularization, which aims to preserve image edges while reducing noise.
 Thus, the minimization problem resulting from the application of this technique can be approached by optimization methods based on proximal operators, which, in the case of TV regularization, do not have a closed analytical solution, requiring internal iterative methods for their resolution, thus characterizing them as inexact methods.
 This occurs because the regularization term is convex, although not smooth, resulting in an objective function composed of a smooth and convex term and another non-smooth but convex term.
-A widely known method for solving these problems is the Iterative Shrinkage-Thresholding Algorithm (ISTA), which is first-order.
-However, ISTA exhibits slow convergence, making it unsuitable for large-scale problems.
+A widely known method for solving these problems is the Iterative Shrinkage-Thresholding Algorithm (ISTA), which is first-order, however, exhibits slow convergence, making it unsuitable for large-scale problems.
 For this reason, first-order accelerated methods, such as the Fast Iterative Shrinkage-Thresholding Algorithm (FISTA), are adopted to improve convergence speed.
 The objective of this project is to study and implement accelerated first-order inexact methods applied to total variation regularization for image reconstruction in computed tomography.
 
