@@ -1,0 +1,112 @@
+\documentclass[12pt]{article}
+\usepackage[left=3cm, right=2cm, top=3cm, bottom=2cm]{geometry}
+\usepackage{setspace}
+\usepackage{mathptmx}
+\usepackage{indentfirst}
+\usepackage{biblatex}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+
+\addbibresource{referencias.bib}
+
+
+\begin{document}
+\doublespacing
+\begin{center}
+    \textbf{Universidade de São Paulo}\\
+    Instituto de Ciências Matemáticas e de Computação
+
+    \vspace{\fill}
+
+    \Large\textbf{Regularização por Variação Total para Reconstrução de Imagens\\
+    em Tomografia Computadorizada Utilizando Métodos Acelerados\\
+    Inexatos de Primeira Ordem}
+\end{center}
+
+\vspace{4mm}
+\hrule
+\vspace{4mm}
+
+\begin{center}
+Projeto de Pesquisa na modalidade Iniciação Científica, submetido à
+Fundação de Amparo à Pesquisa do Estado de São Paulo (FAPESP).    
+\end{center}
+
+\vspace{4mm}
+\hrule
+\vspace{4mm}
+
+\vspace*{\fill}
+\begin{flushright}
+
+\textbf{Aluno:} Gabriel Ligabô Baba
+
+\textbf{Orientador:} Elias Salomão Helou Neto
+\end{flushright}
+
+
+\newpage
+
+\section*{Resumo}
+
+Os métodos de regularização são amplamente empregados em problemas inversos, sendo especialmente importantes na reconstrução de imagens em tomografia computadorizada (TC). 
+Sem a presença de um termo regularizador, a solução desses problemas pode se tornar instável ou apresentar múltiplas soluções, caracterizando-os como problemas mal-postos.
+Uma das técnicas mais utilizadas é a regularização por variação total (TV), que busca preservar as bordas das imagens enquanto reduz o ruído presente. 
+Dessa forma, o problema de minimização resultante da aplicação dessa técnica pode ser abordado por métodos de otimização baseados em operadores proximais, que, no caso da regularização por TV, não possuem solução analítica fechada, exigindo métodos iterativos internos para sua resolução, caracterizando-os assim como métodos inexatos.
+Isso ocorre porque o termo de regularização é convexo, embora não suave, resultando em uma função objetivo composta por um termo suave e convexo e outro termo não suave, porém convexo. 
+Um método amplamente conhecido para resolver esses problemas é o Iterative Shrinkage-Thresholding Algorithm (ISTA), que é de primeira ordem. 
+Entretanto, o ISTA apresenta convergência lenta, tornando-se inadequado para problemas de grande escala. 
+Por essa razão, métodos acelerados de primeira ordem, como o Fast Iterative Shrinkage-Thresholding Algorithm (FISTA), são adotados para melhorar a velocidade de convergência. 
+O objetivo deste projeto é estudar e implementar métodos acelerados de primeira ordem inexatos aplicados à regularização por variação total para a reconstrução de imagens em tomografia computadorizada.
+
+\newpage
+
+\section*{Abstract}
+
+Regularization methods are widely used in inverse problems, being especially important in image reconstruction in computed tomography (CT).
+Without the presence of a regularization term, the solution of these problems can become unstable or exhibit multiple solutions, characterizing them as ill-posed problems.
+One of the most commonly used techniques is total variation (TV) regularization, which aims to preserve image edges while reducing noise.
+Thus, the minimization problem resulting from the application of this technique can be approached by optimization methods based on proximal operators, which, in the case of TV regularization, do not have a closed analytical solution, requiring internal iterative methods for their resolution, thus characterizing them as inexact methods.
+This occurs because the regularization term is convex, although not smooth, resulting in an objective function composed of a smooth and convex term and another non-smooth but convex term.
+A widely known method for solving these problems is the Iterative Shrinkage-Thresholding Algorithm (ISTA), which is first-order.
+However, ISTA exhibits slow convergence, making it unsuitable for large-scale problems.
+For this reason, first-order accelerated methods, such as the Fast Iterative Shrinkage-Thresholding Algorithm (FISTA), are adopted to improve convergence speed.
+The objective of this project is to study and implement accelerated first-order inexact methods applied to total variation regularization for image reconstruction in computed tomography.
+
+\newpage
+
+\section{Introdução e Justificativa}
+
+\subsection{Introdução}
+A tomografia computadorizada (TC), embora tenha muitas aplicações - veja G. van Kaick e S. Delorme \cite{van2005computed}-, é amplamente utilizada na área de imagens médicas, onde a qualidade da imagem é crucial para diagnósticos precisos.
+Esse método de obtenção de imagens é baseado na reconstrução de imagens a partir de dados tomográficos, que são obtidos por meio de projeções da intensidade de raios-x em diferentes ângulos.
+
+Em tomografia, é importante distinguir claramente entre o problema direto e o problema inverso. 
+O problema direto corresponde ao cálculo das projeções dos raios-X ao atravessarem um corpo cuja estrutura interna é conhecida. 
+Já o problema inverso, foco desse projeto, consiste em reconstruir a estrutura interna desconhecida a partir das projeções obtidas, configurando-se como um problema tipicamente mal-posto no sentido de Hadamard \cite{hadamard1902problemes}.
+Problemas mal-postos apresentam soluções instáveis ou não únicas devido, principalmente, à presença inevitável de ruído nos dados medidos.
+
+Uma abordagem comum para lidar com esse tipo de problema dito mal-posto é utilizar os métodos de regularização \cite{tikhonov1963solution}, uma vez que tendem a estabilizar as soluções, ou seja, torna a solução mais robusta e estável a variações nos dados.
+Na literatura atual, existem diversas técnicas diferentes de regularização como a regularização de Tikhonov \cite{tikhonov1977solutions}, regularização por variação total (TV) \cite{rudin1992nonlinear}, entre outras.
+
+Apesar das vantagens da regularização por variação total, seu termo de regularização é convexo, porém não suave, inviabilizando a aplicação direta de métodos tradicionais de otimização, como o método da descida de gradiente clássico. 
+No entanto, a estrutura especial da função objetivo – composta por uma parte suave (função de ajuste aos dados) e outra não suave (termo TV) – permite o uso eficiente de métodos de otimização baseados em operadores proximais. 
+Como a regularização TV não admite uma solução analítica fechada, os métodos iterativos inexatos surgem como alternativas.
+
+Nesse contexto, o presente projeto tem por objetivo estudar e implementar métodos acelerados inexatos de primeira ordem, fundamentados em operadores proximais, visando resolver o problema de reconstrução tomográfica regularizada por variação total. 
+Espera-se que esses métodos promovam uma reconstrução mais eficiente e robusta, mantendo a fidelidade das bordas e acelerando significativamente a convergência numérica.
+
+\subsection{Justificativa}
+
+\section*{Objetivos}
+
+\section*{Plano de Trabalho e Cronograma}
+
+\section*{Material e Metodologia}
+
+\section*{Referências}
+\printbibliography
+
+\end{document}
