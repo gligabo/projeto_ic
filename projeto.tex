@@ -3,9 +3,9 @@
 \usepackage{setspace}
 \usepackage{mathptmx}
 \usepackage{indentfirst}
+\usepackage[utf8]{inputenc}
 \usepackage{biblatex}
 \usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
-\usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{textcomp}
 
@@ -104,7 +104,28 @@ Espera-se que esses métodos promovam uma reconstrução mais eficiente e robust
 
 \section*{Material e Metodologia}
 
+Esta seção descreve os dados utilizados na aplicação do método de reconstrução de imagem em tomografia computadorizada com regularização por variação total, 
+além de apresentar os métodos empregados no desenvolvimento do projeto.
+\subsection{Material}
+
+
+\subsection{Metodologia}
+
+\noindent{\textbf{Transformada de Radon}}
+
+A tomografia computadorizada é um exemplo clássico de problema inverso, cujo objetivo é de
+determinar a estrutura interna de um objeto de maneira não invasiva. A ideia principal desse
+tipo de método baseia-se no fato de que enviar raios-x, gama, neutrinos, entre outros sobre objetos distintos gera coeficientes de atenuação
+diferentes \cite{quinto2006introduction}. Nesse processo, sensores medem a intensidade residual dos raios após atravessarem o objeto, 
+e os dados coletados são utilizados para a reconstrução matemática precisa da anatomia interna original.
+
+No entanto, apenas uma radiografia não é suficiente para se obter uma boa aproximação da estrutura interna de um objeto.
+Por isso, é necessário que o objeto seja radiografado em diversas direções, gerando múltiplas projeções.
+Essas múltiplas projeções, obtidas em diferentes ângulos, são matematicamente descritas pela Transformada de Radon \cite{RADON} de uma função $f(x,y)$, 
+sendo definida como uma integral de linha ao longo de uma reta inclinada em um ângulo $\theta$.
+
 \section*{Referências}
+
 \printbibliography
 
 \end{document}
