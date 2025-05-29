@@ -1,81 +1,48 @@
 \documentclass[12pt]{article}
-\usepackage[left=3cm, right=2cm, top=3cm, bottom=2cm]{geometry}
-\usepackage{setspace}
-\usepackage{mathptmx}
-\usepackage{indentfirst}
+
 \usepackage[utf8]{inputenc}
-\usepackage{biblatex}
-\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
 \usepackage[T1]{fontenc}
-\usepackage{textcomp}
+\usepackage{microtype}
+\usepackage[brazil]{babel}
+\usepackage{csquotes}
+\usepackage{biblatex}
+\usepackage{bm}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+
+\DeclareMathOperator{\prox}{prox}
+\DeclareMathOperator*{\argmin}{arg\ min}
 
 \addbibresource{referencias.bib}
 
+\title{Influência do Uso de Busca Linear Exata na Convergência de Métodos Acelerados de Gradiente Proximal}
+\author{Orientador: Elias Salomão Helou Neto\\Aluno: Gabriel Ligabô Baba}
+
 
 \begin{document}
-\doublespacing
-\begin{center}
-    \textbf{Universidade de São Paulo}\\
-    Instituto de Ciências Matemáticas e de Computação
 
-    \vspace{\fill}
-
-    \Large\textbf{Regularização por Variação Total para Reconstrução de Imagens\\
-    em Tomografia Computadorizada Utilizando Métodos Acelerados\\
-    Inexatos de Primeira Ordem}
-\end{center}
-
-\vspace{4mm}
-\hrule
-\vspace{4mm}
-
-\begin{center}
-Projeto de Pesquisa na modalidade Iniciação Científica, submetido à
-Fundação de Amparo à Pesquisa do Estado de São Paulo (FAPESP).    
-\end{center}
-
-\vspace{4mm}
-\hrule
-\vspace{4mm}
-
-\vspace*{\fill}
-\begin{flushright}
-
-\textbf{Aluno:} Gabriel Ligabô Baba
-
-\textbf{Orientador:} Elias Salomão Helou Neto
-\end{flushright}
-
-
-\newpage
+\maketitle
 
 \section*{Resumo}
-
-Os métodos de regularização são amplamente empregados em problemas inversos, sendo especialmente importantes na reconstrução de imagens em tomografia computadorizada (TC). 
-Sem a presença de um termo regularizador, a solução desses problemas pode se tornar instável ou apresentar múltiplas soluções, caracterizando-os como problemas mal-postos.
-Uma das técnicas mais utilizadas é a regularização por variação total (TV), que busca preservar as bordas das imagens enquanto reduz o ruído presente. 
-Dessa forma, o problema de minimização resultante da aplicação dessa técnica pode ser abordado por métodos de otimização baseados em operadores proximais, que, no caso da regularização por TV, não possuem solução analítica fechada, exigindo métodos iterativos internos para sua resolução, caracterizando-os assim como métodos inexatos.
-Isso ocorre porque o termo de regularização é convexo, embora não suave, resultando em uma função objetivo composta por um termo suave e convexo e outro termo não suave, porém convexo. 
-Um método amplamente conhecido para resolver esses problemas é o Iterative Shrinkage-Thresholding Algorithm (ISTA), que é de primeira ordem, entretanto, apresenta convergência lenta, tornando-se inadequado para problemas de grande escala. 
-Por essa razão, métodos acelerados de primeira ordem, como o Fast Iterative Shrinkage-Thresholding Algorithm (FISTA), são adotados para melhorar a velocidade de convergência. 
-O objetivo deste projeto é estudar e implementar métodos acelerados de primeira ordem inexatos aplicados à regularização por variação total para a reconstrução de imagens em tomografia computadorizada.
-
-\newpage
-
-\section*{Abstract}
-
-Regularization methods are widely used in inverse problems, being especially important in image reconstruction in computed tomography (CT).
-Without the presence of a regularization term, the solution of these problems can become unstable or exhibit multiple solutions, characterizing them as ill-posed problems.
-One of the most commonly used techniques is total variation (TV) regularization, which aims to preserve image edges while reducing noise.
-Thus, the minimization problem resulting from the application of this technique can be approached by optimization methods based on proximal operators, which, in the case of TV regularization, do not have a closed analytical solution, requiring internal iterative methods for their resolution, thus characterizing them as inexact methods.
-This occurs because the regularization term is convex, although not smooth, resulting in an objective function composed of a smooth and convex term and another non-smooth but convex term.
-A widely known method for solving these problems is the Iterative Shrinkage-Thresholding Algorithm (ISTA), which is first-order, however, exhibits slow convergence, making it unsuitable for large-scale problems.
-For this reason, first-order accelerated methods, such as the Fast Iterative Shrinkage-Thresholding Algorithm (FISTA), are adopted to improve convergence speed.
-The objective of this project is to study and implement accelerated first-order inexact methods applied to total variation regularization for image reconstruction in computed tomography.
 
 \newpage
 
 \section{Introdução e Justificativa}
+
+\subsection{Introdução}
+
+Ao resolver numericamente um problema de otimização matemática, o algoritmo a ser utilizado deve ser escolhido baseado em considerações acerca do problema em mãos. Durante o processo de escolha de tal algoritmo numérico, devemos levar em conta a categoria de problema sendo resolvido (linear, cônico de segunda ordem, convexo, suave, inteiro, contínuo, etc.) e da informação disponível, também conhecida como oráculo, a cada passo do método (valor funcional, gradientes, hessianas, funções substitutas, minimizadores de relaxações, etc.). Outros fatores importantes também influenciam a escolha do método, tais como ambiente e plataforma computacional, tempo de computação disponível, precisão numérica necessária ou desejada, dimensões do problema (número de variáveis e tamanho do conjunto de dados), dentre outros.
+
+Um caso de amplo interesse é quando temos problemas de reconstrução de imagens através da minimização de funções com a seguinte forma
+$$
+    \min_{\bm x\in\mathbb R^n}\ \frac12\|A\bm x - \bm b\|_2^2 + g( \bm x ),
+$$
+onde $A \in \mathbb R^{m\times n}$, $\bm b \in \mathbb R^m$ e $g : \mathbb R^n \to \mathbb R$ é convexa e prox-amigável. Por prox-amigável, queremos dizer que o operador proximal de $\lambda g$, para $\lambda \in \mathbb R_+$, é calculável em um tempo de computação razoável. A definição do operador proximal $\prox_{\lambda g}( \bm x )$ de $\lambda g$ em $\bm x$ é dado por
+$$
+    \prox_{\lambda g}( \bm x ) := \argmin_{\bm y \in \mathbb R^n}\ \frac 12\| \bm y - \bm x \|_2^2 + \lambda g( \bm y ).
+$$
+
+Em reconstrução de imagens, o número $n$ de varáveis é igual ao número de \emph{pixels} da imagem e, portanto, muito grande, da ordem de centenas de milhares ou até na casa dos milhões. Este tipo de problema é útil em problemas de tomografia computadorizada~\cite{}
 
 \subsection{Introdução}
 A tomografia computadorizada (TC), embora tenha muitas aplicações - veja G. van Kaick e S. Delorme \cite{van2005computed}-, é amplamente utilizada na área de imagens médicas, onde a qualidade da imagem é crucial para diagnósticos precisos.
