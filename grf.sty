@@ -1,0 +1,1202 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{grf}
+
+\RequirePackage{tikz}
+\RequirePackage[nomessages]{fp}
+
+\DeclareOption*{%
+   \PassOptionsToClass{\CurrentOption}{tikz}%
+}%
+
+\ProcessOptions\relax
+
+\usepgflibrary{plotmarks}
+
+%Definições extras:
+\def\grfendlist{+!-)8(<>}
+\def\grf@empty{}
+\newcommand{\grfPI}{3.1415926535897932}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Dimensões:
+\newlength{\grftotalwidth}%
+\newlength{\grftopskip}%
+\newlength{\grfbottomskip}%
+\newlength{\grfleftskip}%
+\newlength{\grfrightskip}%
+\newlength{\grfxunit}%
+\newlength{\grfyunit}%
+\newlength{\grfleft}%
+\newlength{\grfright}%
+\newlength{\grftop}%
+\newlength{\grfbottom}%
+\newlength{\grflabelsep}%
+\newlength{\grflegsep}%
+\newlength{\grfticksize}%
+\newlength{\grfsubticksize}%
+\newlength{\grf@templengthA}%
+\newlength{\grf@templengthB}%
+\newlength{\grf@templengthC}%
+\newcommand{\grfleglower}{0.25em}
+\newcommand{\grflegsymbolwidth}{2.5em}
+\newcommand{\grflegsymbolheight}{1em}
+\newcommand{\grfmarksize}{0.25em}
+\newcommand{\grfndivs}{4}
+\newcommand{\grfntrun}{4}
+\newcommand{\grfformat}[1]{\scriptsize$#1$}
+\setlength{\grftotalwidth}{\columnwidth}%
+\setlength{\grflabelsep}{6pt}%
+\setlength{\grflegsep}{0.5\grflabelsep}%
+\setlength{\grfticksize}{0.4\grflabelsep}%
+\setlength{\grfsubticksize}{0.5\grfticksize}%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Estilos
+\def\grfframecolor{black}
+\def\grfdefstyles{%
+   \tikzstyle{grfaxisstyle}=[\grfframecolor,line width=0.25pt]
+   \tikzstyle{grftickstyle}=[\grfframecolor,line width=0.25pt]
+   \tikzstyle{grfsubtickstyle}=[\grfframecolor,line width=0.25pt]
+   \tikzstyle{grflegstyle}=[fill=white,inner sep=0.25\grflegsep]
+}
+\grfdefstyles
+% \tikzstyle{grfxlabelstyle}=[inner sep=\grflabelsep,minimum size=0pt]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Booleanos:
+\newcommand{\grftrue}{true}
+\newcommand{\grffalse}{false}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Ações default:
+\newcommand{\grfatopenspecs}{\relax}
+\newcommand{\grfatclosespecs}{\let\grf@doaxis=\grftrue\let\grf@dopos=\grffalse\let\grf@dosize=\grffalse}
+\newcommand{\grfatopenframe}{\relax}
+\newcommand{\grfatcloseframe}{\grfatdoaxis}
+\newcommand{\grfatdoaxis}{\let\grf@dopos=\grftrue\grfaxisspecs}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newenvironment{grfgraphic}[2][1]{%
+   % Dimensões default:
+   \def\grfxmin{-1}\def\grfxmax{1}%
+   \def\grfymin{-1}\def\grfymax{1}%
+   \setlength{\grftopskip}{0.0pt}%
+   \setlength{\grfbottomskip}{0.0pt}%
+   \setlength{\grfleftskip}{0.0pt}%
+   \setlength{\grfrightskip}{0.0pt}%
+   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+   % Calcula eixos:
+   \def\grfaxisspecs{#2}%
+   \let\grf@doaxis=\grffalse%
+   \let\grf@dosize=\grftrue%
+   \let\grf@firstxaxis=\grftrue%
+   \let\grf@firstyaxis=\grftrue%
+   \grfatopenspecs%
+   \grfaxisspecs%
+   \grfatclosespecs%
+   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+   % Cálculo da largura útil do gráfico:
+   \setlength{\grf@templengthA}{\grftotalwidth}%
+   \addtolength{\grf@templengthA}{-\grfleftskip}%
+   \addtolength{\grf@templengthA}{-\grfrightskip}%
+   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+   %Cálculo dos fatores de escala:
+   \FPupn{\grf@temp}{\grfxmin{} \grfxmax{} - 1 /}%
+   \setlength{\grfxunit}{\grf@temp\grf@templengthA}%
+   \setlength{\grfyunit}{#1\grfxunit}%
+   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+   % Extremos do quadro:
+   \setlength{\grfleft}{\grfxmin\grfxunit}%
+   \addtolength{\grfleft}{-\grfleftskip}%
+   \setlength{\grfright}{\grfxmax\grfxunit}%
+   \addtolength{\grfright}{\grfrightskip}%
+   \setlength{\grfbottom}{\grfymin\grfyunit}%
+   \addtolength{\grfbottom}{-\grfbottomskip}%
+   \setlength{\grftop}{\grfymax\grfyunit}%
+   \addtolength{\grftop}{\grftopskip}%
+   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+   % Centro:
+   \FPupn{\grfxcenter}{2 \grfxmax{} \grfxmin{} + /}%
+   \FPupn{\grfycenter}{2 \grfymax{} \grfymin{} + /}%
+   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+   \begin{tikzpicture}[x=\grfxunit,y=\grfyunit]%
+      \useasboundingbox (\grfleft,\grfbottom) rectangle (\grfright,\grftop);%
+      \grfatopenframe%
+}
+{%
+      \grfatcloseframe%
+   \end{tikzpicture}%
+}
+
+\newenvironment{grfgraphic*}[2][1]{%
+   \begin{grfgraphic}[#1]{#2}%
+   \begin{scope}% Para não ``clipar'' os eixos.
+      \clip (\grfxmin,\grfymin) rectangle (\grfxmax,\grfymax);%
+}
+{%
+   \end{scope}%
+   \end{grfgraphic}%
+}
+
+
+%Comandos para salvar/restaurar skips
+\newcommand{\grfsaveskip}[1]{%
+   \expandafter\edef\csname grf@rec#1skip\endcsname{\expandafter\the\csname grf#1skip\endcsname}%
+}
+\newcommand{\grfrestoreskip}[1]{%
+   \expandafter\setlength\expandafter{\csname grf#1skip\endcsname}{\csname grf@rec#1skip\endcsname}%
+   \expandafter\edef\csname grf@rec#1skip\endcsname{\expandafter\the\csname grf#1skip\endcsname}%
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Comandos para listas:
+\def\grf@runlist[]#1;#2[]#3{% Percorre a lista.
+   \def\grf@test@runlist{#1}%
+   \ifx\grf@test@runlist\grfendlist%
+      \let\grf@next@runlist=\relax%
+   \else%
+      #3{#1}%
+      \def\grf@next@runlist{\grf@runlist[]#2[]{#3}}%
+   \fi%
+   \grf@next@runlist%
+}
+\def\grf@listprepareA#1[]#2[]{%
+   \def\grf@preparedlist{[]#2;#1;[]}%
+}
+\def\grf@listprepareB[]#1[]{%
+   \expandafter\grf@listprepareA\grfendlist[]#1[]%
+}
+\newcommand{\grf@listprepare}[1]{%
+   \expandafter\grf@listprepareB#1%
+}
+\newcommand{\grfrunlist}[2]{% Interface para \grf@runlist.
+   \grf@listprepare{#1}%
+   \expandafter\grf@runlist\grf@preparedlist{#2}%
+}
+
+\def\grf@listlast[]#1;#2;[]{%
+   \def\grf@test@listlast{#2}%
+   \ifx\grf@test@listlast\grfendlist%
+      \def\grflast{#1}%
+      \def\grf@next@listlast{\relax}%
+   \else%
+      \def\grf@next@listlast{\grf@listlast[]#2;[]}%
+   \fi%
+   \grf@next@listlast%
+}
+\newcommand{\grflistlast}[1]{%
+   \grf@listprepare{#1}%
+   \expandafter\grf@listlast\grf@preparedlist%
+}
+
+\newcommand{\settomaxwidth}[2]{%
+   {%Tudo local para não bagunçar o coreto.
+      \def\grfloopcmd##1{%
+         \settowidth{\grf@templengthA}{##1}%
+         \ifdim\grf@templengthB<\grf@templengthA%
+            \setlength{\grf@templengthB}{\grf@templengthA}%
+         \fi%
+      }%
+      \setlength{\grf@templengthB}{0.0pt}%
+      \grfrunlist{#2}{\grfloopcmd}%
+      \global\edef\grf@tmp{\the\grf@templengthB}% Torna global a informação
+   }%
+   \setlength{#1}{\grf@tmp}% Atualiza a dimensão para o usuário.
+}%
+
+\newcommand{\settomaxdepth}[2]{%
+   {%Tudo local para não bagunçar o coreto.
+      \def\grfloopcmd##1{%
+         \settodepth{\grf@templengthA}{##1}%
+         \ifdim\grf@templengthB<\grf@templengthA%
+            \setlength{\grf@templengthB}{\grf@templengthA}%
+         \fi%
+      }%
+      \setlength{\grf@templengthB}{0.0pt}%
+      \grfrunlist{#2}{\grfloopcmd}%
+      \global\edef\grf@tmp{\the\grf@templengthB}% Torna global a informação
+   }%
+   \setlength{#1}{\grf@tmp}% Atualiza a dimensão para o usuário.
+}%
+
+\newcommand{\settomaxheight}[2]{%
+   {%Tudo local para não bagunçar o coreto.
+      \def\grfloopcmd##1{%
+         \settoheight{\grf@templengthA}{##1}%
+         \ifdim\grf@templengthB<\grf@templengthA%
+            \setlength{\grf@templengthB}{\grf@templengthA}%
+         \fi%
+      }%
+      \setlength{\grf@templengthB}{0.0pt}%
+      \grfrunlist{#2}{\grfloopcmd}%
+      \global\edef\grf@tmp{\the\grf@templengthB}% Torna global a informação
+   }%
+   \setlength{#1}{\grf@tmp}% Atualiza a dimensão para o usuário.
+}%
+
+\newcommand{\settomaxheightplusdepth}[2]{%
+   {%Tudo local para não bagunçar o coreto.
+      \def\grfloopcmd##1{%
+         \settoheight{\grf@templengthA}{##1}%
+         \settodepth{\grf@templengthB}{##1}%
+         \addtolength{\grf@templengthA}{\grf@templengthB}%
+         \ifdim\grf@templengthC<\grf@templengthA%
+            \setlength{\grf@templengthC}{\grf@templengthA}%
+         \fi%
+      }%
+      \setlength{\grf@templengthC}{0.0pt}%
+      \grfrunlist{#2}{\grfloopcmd}%
+      \global\edef\grf@tmp{\the\grf@templengthC}% Torna global a informação
+   }%
+   \setlength{#1}{\grf@tmp}% Atualiza a dimensão para o usuário.
+}%
+
+\def\grf@listseparate[]#1;#2[]{%
+   \def\grffirst{#1}%
+   \def\grfrest{[]#2[]}%
+}
+
+\def\grf@listget[]#1;#2[]{%
+   #1%
+}
+
+\newcommand{\grflistseparate}[1]{%
+   \expandafter\grf@listseparate#1%
+}
+
+\newcommand{\grflistmin}[1]{%
+   {%Tudo local para não bagunçar o coreto.
+      \grflistseparate{#1}%
+      \def\grf@temp{\grffirst}%
+      \def\grfloopcmd##1{%
+         \FPmin{\grf@temp}{\grf@temp}{##1}%
+      }%
+     \grfrunlist{#1}{\grfloopcmd}%
+     \global\edef\grfmin{\grf@temp}%
+   }%
+}
+\newcommand{\grflistmax}[1]{%
+   {%Tudo local para não bagunçar o coreto.
+      \grflistseparate{#1}%
+      \def\grf@temp{\grffirst}%
+      \def\grfloopcmd##1{%
+         \FPmax{\grf@temp}{\grf@temp}{##1}%
+      }%
+     \grfrunlist{#1}{\grfloopcmd}%
+     \global\edef\grfmax{\grf@temp}%
+   }%
+}
+
+\newcommand{\grfdbllistmin}[2]{%
+   {%Tudo local para não bagunçar o coreto.
+      \grflistseparate{#1}%
+      \edef\grf@temp{\grffirst}%
+      \def\grf@tempB{invalid number}%
+      \def\grfloopcmd##1##2{%
+         \FPmin{\grf@temp}{\grf@temp}{##1}%
+         \ifx\grf@tempB\grf@temp%
+         \else%
+            \global\let\grfminlabel=##2%
+            \let\grf@tempB=\grf@temp%
+         \fi
+      }%
+     \grfrundbllist{#1}{#2}{\grfloopcmd}%
+     \global\let\grfmin=\grf@temp%
+   }%
+}
+\newcommand{\grfdbllistmax}[2]{%
+   {%Tudo local para não bagunçar o coreto.
+      \grflistseparate{#1}%
+      \edef\grf@temp{\grffirst}%
+      \def\grf@tempB{invalid number}%
+      \def\grfloopcmd##1##2{%
+         \FPmax{\grf@temp}{\grf@temp}{##1}%
+         \ifx\grf@tempB\grf@temp%
+         \else%
+            \global\let\grfmaxlabel=##2%
+            \let\grf@tempB=\grf@temp%
+         \fi
+      }%
+     \grfrundbllist{#1}{#2}{\grfloopcmd}%
+     \global\let\grfmax=\grf@temp%
+   }%
+}
+
+\def\grf@listcopy[]#1[]#2{%
+   \def#2{[]#1[]}%
+}
+\newcommand{\grflistcopy}[2]{%
+   \expandafter\grf@listcopy#2{#1}%
+}
+
+\def\grfrundbllist#1#2#3{%
+   \grf@listprepare{#2}%
+   \grflistcopy{\grf@currseclist@rundbllist}{\grf@preparedlist}%
+   \def\grf@temp@rundbllist##1{%
+      \grflistseparate{\grf@currseclist@rundbllist}%
+      #3{##1}{\grffirst}%
+      \grflistcopy{\grf@currseclist@rundbllist}{\grfrest}%
+   }%
+   \grfrunlist{#1}{\grf@temp@rundbllist}%
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Eixos x:
+\def\grf@xprepareparams[#1#2#3#4]{%
+   \def\grf@paramA{b}%
+   \def\grf@paramB{c}%
+   \def\grf@paramC{c}%
+   \grf@xaxistestparam{#1}%
+   \grf@xaxistestparam{#2}%
+   \grf@xaxistestparam{#3}%
+}
+
+\def\grf@xaxistestparam#1{%
+   \ifx#1U%
+      \def\grf@paramA{t}%
+   \else%
+   \ifx#1D%
+      \def\grf@paramA{b}%
+   \else%
+   \ifx#1t%
+      \def\grf@paramB{t}%
+   \else%
+   \ifx#1b%
+      \def\grf@paramB{b}%
+   \else%
+   \ifx#1B%
+      \def\grf@paramB{B}%
+   \else%
+   \ifx#1l%
+      \def\grf@paramC{l}%
+   \else%
+   \ifx#1r%
+      \def\grf@paramC{r}%
+   \fi\fi\fi\fi\fi\fi\fi%
+}
+
+\newcommand{\grfsmashedxaxis}[3][c]{%
+   \ifx#1l%
+      \def\grf@lprorp{1.0}%
+      \def\grf@rprorp{0.0}%
+   \else%
+      \ifx#1r%
+         \def\grf@lprorp{0.0}%
+         \def\grf@rprorp{1.0}%
+      \else%
+         \ifx#1c%
+            \def\grf@lprorp{0.5}%
+            \def\grf@rprorp{0.5}%
+         \fi%
+      \fi%
+   \fi%
+   \grfdbllistmin{#2}{#3}\grfdbllistmax{#2}{#3}%
+   \ifx\grf@firstxaxis\grftrue%
+      \let\grfxmin=\grfmin%
+      \let\grfxmax=\grfmax%
+      \let\grf@firstxaxis=\grffalse%
+   \else%
+      \FPmin{\grfxmin}{\grfxmin}{\grfmin}%
+      \FPmax{\grfxmax}{\grfxmax}{\grfmax}%
+   \fi%
+   % Tamanhos laterais:
+   %     Esquerda:
+   \settowidth{\grf@templengthA}{\grfminlabel}%
+   \setlength{\grf@templengthA}{\grf@rprorp\grf@templengthA}%
+   \ifdim\grf@templengthA>\grfleftskip\setlength{\grfleftskip}{\grf@templengthA}\fi%
+   %     Direita:
+   \settowidth{\grf@templengthA}{\grfmaxlabel}%
+   \setlength{\grf@templengthA}{\grf@lprorp\grf@templengthA}%
+   \ifdim\grf@templengthA>\grfrightskip\setlength{\grfrightskip}{\grf@templengthA}\fi%
+}
+
+\newcommand{\grfxaxis}[3][]{%
+   % Prepara argumentos de posicionamento.
+   \grf@xprepareparams[#1{ }{ }{ }{ }]%
+   \edef\grf@preparedargs{[\grf@paramA\grf@paramB\grf@paramC]}%
+   % Define as macros adequadas para cada conjunto de parâmetros.
+   \expandafter\grf@xaxisparseargs\grf@preparedargs%
+   \ifx\grf@dosize\grftrue% Apenas quando calculando tamanhos.
+      % Avalia ``salto'':
+      \grf@evalaxisskip{#3}%
+      \ifdim\grf@affecteddimen<\grf@templengthA\setlength{\grf@affecteddimen}{\grf@templengthA}\fi%
+      % Máximo, mínimo e ``saltos'' laterais:
+      \edef\grf@temp{[\grf@paramC]}%
+      \expandafter\grfsmashedxaxis\grf@temp{#2}{#3}%
+   \fi%
+   \ifx\grf@doaxis\grftrue% Desenhando os eixos.
+      \grf@evallabelspos{\grf@templengthA}{#3}%
+      %Desenha efetivamente o eixo:
+      \grflistmin{#2}\grflistmax{#2}%
+      \draw[style=grfaxisstyle] (\grfmin,\grfxaxisypos) -- (\grfmax,\grfxaxisypos);
+      \grfrundbllist{#2}{#3}{\grf@xaxislabelput}%
+      \grfrundbllist{#2}{#3}{\grf@xaxistickput}%
+   \fi%
+}
+
+\def\grf@xaxisparseargs[#1#2#3]{% Define as macros corretas para cada caso de posicionamento.
+   \ifx#1t%
+      \def\grf@affecteddimen{\grftopskip}%
+      \ifx\grf@dopos\grftrue\def\grfxaxisypos{\grfymax}\fi%
+      \ifx#2b%
+         \def\grf@evalaxisskip##1{%
+            \settomaxheightplusdepth{\grf@templengthA}{##1}%
+            \ifdim\grf@templengthA>0.0pt%
+               \addtolength{\grf@templengthA}{\grflabelsep}%
+            \fi%
+         }%
+         \def\grf@evallabelspos##1##2{%
+            \setlength{##1}{\grfxaxisypos\grfyunit}%
+            \addtolength{##1}{\grflabelsep}%
+         }%
+         \def\grf@xaxisrefpoint{south}%
+      \else%
+         \ifx#2t%
+            \def\grf@evalaxisskip##1{%
+               \settomaxheightplusdepth{\grf@templengthA}{##1}%
+               \ifdim\grf@templengthA>0.0pt%
+                  \addtolength{\grf@templengthA}{\grflabelsep}%
+               \fi%
+            }%
+            \def\grf@evallabelspos##1##2{%
+               \setlength{##1}{\grfxaxisypos\grfyunit}%
+               \settomaxheightplusdepth{\grf@templengthB}{##2}%
+               \addtolength{##1}{\grf@templengthB}%
+               \addtolength{##1}{\grflabelsep}%
+            }%
+            \def\grf@xaxisrefpoint{north}%
+         \else%
+            \ifx#2c%
+               \def\grf@evalaxisskip##1{%
+                  \settomaxheightplusdepth{\grf@templengthA}{##1}%
+                  \ifdim\grf@templengthA>0.0pt%
+                     \addtolength{\grf@templengthA}{\grflabelsep}%
+                  \fi%
+               }%
+               \def\grf@evallabelspos##1##2{%
+                  \settomaxheightplusdepth{\grf@templengthB}{##2}%
+                  \setlength{##1}{\grfxaxisypos\grfyunit}%
+                  \addtolength{##1}{0.5\grf@templengthB}%
+                  \addtolength{##1}{\grflabelsep}%
+               }%
+               \def\grf@xaxisrefpoint{}%
+            \else% Default = B!
+               \def\grf@evalaxisskip##1{%
+                  \settomaxheight{\grf@templengthA}{##1}%
+                  \settomaxdepth{\grf@templengthB}{##1}%
+                  \addtolength{\grf@templengthA}{\grf@templengthB}%
+                  \ifdim\grf@templengthA>0.0pt%
+                     \addtolength{\grf@templengthA}{\grflabelsep}%
+                  \fi%
+               }%
+               \def\grf@evallabelspos##1##2{%
+                  \settomaxdepth{##1}{##2}%
+                  \addtolength{##1}{\grfxaxisypos\grfyunit}%
+                  \addtolength{##1}{\grflabelsep}%
+               }%
+               \def\grf@xaxisrefpoint{base}%
+            \fi%
+         \fi%
+      \fi%
+   \fi%
+   \ifx#1b%
+      \def\grf@affecteddimen{\grfbottomskip}%
+      \ifx\grf@dopos\grftrue\def\grfxaxisypos{\grfymin}\fi%
+      \ifx#2t%
+         \def\grf@evalaxisskip##1{%
+            \settomaxheightplusdepth{\grf@templengthA}{##1}%
+            \ifdim\grf@templengthA>0.0pt%
+               \addtolength{\grf@templengthA}{\grflabelsep}%
+            \fi%
+         }%
+         \def\grf@evallabelspos##1##2{%
+            \setlength{##1}{\grfxaxisypos\grfyunit}%
+            \addtolength{##1}{-\grflabelsep}%
+         }%
+         \def\grf@xaxisrefpoint{north}%
+      \else%
+         \ifx#2b%
+            \def\grf@evalaxisskip##1{%
+               \settomaxheightplusdepth{\grf@templengthA}{##1}%
+               \ifdim\grf@templengthA>0.0pt%
+                  \addtolength{\grf@templengthA}{\grflabelsep}%
+               \fi%
+            }%
+            \def\grf@evallabelspos##1##2{%
+               \setlength{##1}{\grfxaxisypos\grfyunit}%
+               \settomaxheightplusdepth{\grf@templengthB}{##2}%
+               \addtolength{##1}{-\grf@templengthB}%
+               \addtolength{##1}{-\grflabelsep}%
+            }%
+            \def\grf@xaxisrefpoint{south}%
+         \else%
+            \ifx#2c%
+               \def\grf@evalaxisskip##1{%
+                  \settomaxheightplusdepth{\grf@templengthA}{##1}%
+                  \ifdim\grf@templengthA>0.0pt%
+                     \addtolength{\grf@templengthA}{\grflabelsep}%
+                  \fi%
+               }%
+               \def\grf@evallabelspos##1##2{%
+                  \settomaxheightplusdepth{\grf@templengthB}{##2}%
+                  \setlength{##1}{\grfxaxisypos\grfyunit}%
+                  \addtolength{##1}{-0.5\grf@templengthB}%
+                  \addtolength{##1}{-\grflabelsep}%
+               }%
+               \def\grf@xaxisrefpoint{}%
+            \else% Default = B!
+               \def\grf@evalaxisskip##1{%
+                  \settomaxheight{\grf@templengthA}{##1}%
+                  \settomaxdepth{\grf@templengthB}{##1}%
+                  \addtolength{\grf@templengthA}{\grf@templengthB}%
+                  \ifdim\grf@templengthA>0.0pt%
+                     \addtolength{\grf@templengthA}{\grflabelsep}%
+                  \fi%
+               }%
+               \def\grf@evallabelspos##1##2{%
+                  \settomaxheight{##1}{##2}%
+                  \addtolength{##1}{-\grfxaxisypos\grfyunit}%
+                  \addtolength{##1}{\grflabelsep}%
+                  \setlength{##1}{-##1}%
+               }%
+               \def\grf@xaxisrefpoint{base}%
+            \fi%
+         \fi%
+      \fi%
+   \fi%
+   \ifx#3l%
+      \def\grf@xaxissecrefpoint{ west}%
+   \else\ifx#3r%
+         \def\grf@xaxissecrefpoint{ east}%
+      \else%
+         \def\grf@xaxissecrefpoint{}%
+      \fi%
+   \fi%
+   \edef\grf@refpoints{[anchor=\grf@xaxisrefpoint\grf@xaxissecrefpoint]}%
+   \def\grf@temp{[anchor=]}%
+   \ifx\grf@refpoints\grf@temp\def\grf@refpoints{}\fi%
+}
+
+\newcommand{\grf@xaxistickput}[2]{%
+   \ifx#2\grf@empty%
+   \else%
+      \draw[style=grftickstyle,xshift=#1\grfxunit,yshift=\grfxaxisypos\grfyunit] (0pt,-\grfticksize) -- (0pt,\grfticksize);
+   \fi%
+}
+
+\newcommand{\grf@xaxislabelput}[2]{% Posiciona rótulos.
+   \begin{scope}[inner sep=0pt,minimum size=0pt]
+      \expandafter\node\grf@refpoints at (#1\grfxunit,\grf@templengthA) {\vphantom{#2}\smash{#2}};
+   \end{scope}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Eixos y:
+\def\grf@yprepareparams[#1#2#3#4]{%
+   \def\grf@paramA{L}%
+   \def\grf@paramB{c}%
+   \def\grf@paramC{c}%
+   \grf@yaxistestparam{#1}%
+   \grf@yaxistestparam{#2}%
+   \grf@yaxistestparam{#3}%
+}
+
+\def\grf@yaxistestparam#1{%
+   \ifx#1L%
+      \def\grf@paramA{L}%
+   \else%
+   \ifx#1R%
+      \def\grf@paramA{R}%
+   \else%
+   \ifx#1t%
+      \def\grf@paramC{t}%
+   \else%
+   \ifx#1b%
+      \def\grf@paramC{b}%
+   \else%
+   \ifx#1B%
+      \def\grf@paramC{B}%
+   \else%
+   \ifx#1l%
+      \def\grf@paramB{l}%
+   \else%
+   \ifx#1r%
+      \def\grf@paramB{r}%
+   \fi\fi\fi\fi\fi\fi\fi%
+}
+
+\newcommand{\grfsmashedyaxis}[3][c]{%
+   \ifx#1t%
+      \def\grf@evaltopskip##1##2{%
+         \setlength{##1}{0.0pt}%
+      }%
+      \def\grf@evalbottomskip##1##2{%
+         \settoheight{##1}{##2}%
+         \settodepth{\grf@templengthB}{##2}%
+         \addtolength{##1}{\grf@templengthB}%
+      }%
+   \else%
+      \ifx#1c%
+         \def\grf@evaltopskip##1##2{%
+            \settoheight{##1}{##2}%
+            \settodepth{\grf@templengthB}{##2}%
+            \addtolength{##1}{\grf@templengthB}%
+            \setlength{##1}{0.5##1}%
+         }%
+         \def\grf@evalbottomskip##1##2{%
+            \settoheight{##1}{##2}%
+            \settodepth{\grf@templengthB}{##2}%
+            \addtolength{##1}{\grf@templengthB}%
+            \setlength{##1}{0.5##1}%
+         }%
+      \else%
+         \ifx#1b%
+            \def\grf@evaltopskip##1##2{%
+               \settoheight{##1}{##2}%
+               \settodepth{\grf@templengthB}{##2}%
+               \addtolength{##1}{\grf@templengthB}%
+            }%
+            \def\grf@evalbottomskip##1##2{%
+               \setlength{##1}{0.0pt}%
+            }%
+         \else%
+            \ifx#1B%
+               \def\grf@evaltopskip##1##2{%
+                  \settoheight{##1}{##2}%
+               }%
+               \def\grf@evalbottomskip##1##2{%
+                  \settodepth{##1}{##2}%
+               }%
+            \fi%
+         \fi%
+      \fi%
+   \fi%
+   % Máximos e mínimos:
+   \grfdbllistmin{#2}{#3}\grfdbllistmax{#2}{#3}%
+   \ifx\grf@firstyaxis\grftrue%
+      \let\grfymin=\grfmin%
+      \let\grfymax=\grfmax%
+      \let\grf@firstyaxis=\grffalse%
+   \else%
+      \FPmin{\grfymin}{\grfymin}{\grfmin}%
+      \FPmax{\grfymax}{\grfymax}{\grfmax}%
+   \fi%
+   \grfdbllistmax{#2}{#3}%
+   \grfdbllistmin{#2}{#3}%
+   \grf@evalbottomskip{\grf@templengthA}{\grfminlabel}%
+   \ifdim\grf@templengthA>\grfbottomskip\setlength{\grfbottomskip}{\grf@templengthA}\fi%
+   \grf@evaltopskip{\grf@templengthA}{\grfmaxlabel}%
+   \ifdim\grf@templengthA>\grftopskip\setlength{\grftopskip}{\grf@templengthA}\fi%
+}
+
+\newcommand{\grfyaxis}[3][]{%
+   % Prepara argumentos de posicionamento.
+   \grf@yprepareparams[#1{ }{ }{ }{ }]%
+   \edef\grf@preparedargs{[\grf@paramA\grf@paramB\grf@paramC]}%
+   % Define as macros adequadas para cada conjunto de parâmetros.
+   \expandafter\grf@yaxisparseargs\grf@preparedargs%
+   % Apenas quando calculando tamanhos:
+   \ifx\grf@dosize\grftrue%
+      % Avalia ``salto'':
+      \settomaxwidth{\grf@templengthC}{#3}%
+      \ifdim\grf@templengthC>0.0pt%
+         \addtolength{\grf@templengthC}{\grflabelsep}%
+      \fi%
+      \ifdim\grf@affecteddimen<\grf@templengthC\setlength{\grf@affecteddimen}{\grf@templengthC}\fi%
+      % Máximo, mínimo  e saltos:
+      \edef\grf@temp{[\grf@paramC]}%
+      \expandafter\grfsmashedyaxis\grf@temp{#2}{#3}%
+   \fi%
+   \ifx\grf@doaxis\grftrue% Desenhando os eixos.
+      \settomaxwidth{\grf@templengthC}{#3}%
+      \grf@evallabelspos{\grf@templengthA}{\grf@templengthC}%
+      %Desenha efetivamente o eixo:
+      \grflistmin{#2}\grflistmax{#2}%
+      \draw[style=grfaxisstyle] (\grfyaxisxpos,\grfmin) -- (\grfyaxisxpos,\grfmax);
+      \grfrundbllist{#2}{#3}{\grf@yaxislabelput}%
+      \grfrundbllist{#2}{#3}{\grf@yaxistickput}%
+   \fi%
+}
+
+\def\grf@yaxisparseargs[#1#2#3]{%
+   \ifx#1L%
+      \def\grf@affecteddimen{\grfleftskip}%
+      \ifx\grf@dopos\grftrue\def\grfyaxisxpos{\grfxmin}\fi%
+      \ifx#2r%
+         \def\grf@evallabelspos##1##2{%
+            \setlength{##1}{\grfyaxisxpos\grfxunit}%
+            \addtolength{##1}{-\grflabelsep}%
+         }%
+         \def\grf@refpoint{ east}%
+      \else%
+         \ifx#2l%
+            \def\grf@evallabelspos##1##2{%
+               \setlength{##1}{\grfyaxisxpos\grfxunit}%
+               \addtolength{##1}{-\grflabelsep}%
+               \addtolength{##1}{-##2}%
+            }%
+            \def\grf@refpoint{ west}%
+         \else%
+            \def\grf@evallabelspos##1##2{%
+               \setlength{##1}{\grfyaxisxpos\grfxunit}%
+               \addtolength{##1}{-\grflabelsep}%
+               \addtolength{##1}{-0.5##2}%
+            }%
+            \def\grf@refpoint{}%
+         \fi%
+      \fi%
+   \else
+      \def\grf@affecteddimen{\grfrightskip}%
+      \ifx\grf@dopos\grftrue\def\grfyaxisxpos{\grfxmax}\fi%
+      \ifx#2r%
+         \def\grf@evallabelspos##1##2{%
+            \setlength{##1}{\grfyaxisxpos\grfxunit}%
+            \addtolength{##1}{\grflabelsep}%
+            \addtolength{##1}{##2}%
+         }%
+         \def\grf@refpoint{ east}%
+      \else%
+         \ifx#2l%
+            \def\grf@evallabelspos##1##2{%
+               \setlength{##1}{\grfyaxisxpos\grfxunit}%
+               \addtolength{##1}{\grflabelsep}%
+            }%
+            \def\grf@refpoint{ west}%
+         \else%
+            \def\grf@evallabelspos##1##2{%
+               \setlength{##1}{\grfyaxisxpos\grfxunit}%
+               \addtolength{##1}{\grflabelsep}%
+
+               \addtolength{##1}{0.5##2}%
+            }%
+            \def\grf@refpoint{}%
+         \fi%
+      \fi%
+   \fi%
+   \ifx#3t%
+      \def\grf@secrefpoint{north}%
+   \else%
+      \ifx#3c%
+         \def\grf@secrefpoint{}%
+      \else%
+         \ifx#3b%
+            \def\grf@secrefpoint{south}%
+         \else%
+            \def\grf@secrefpoint{base}%
+         \fi%
+      \fi%
+   \fi%
+   \edef\grf@yaxisrefpoints{[anchor=\grf@secrefpoint\grf@refpoint]}%
+   \def\grf@temp{[anchor=]}%
+   \ifx\grf@yaxisrefpoints\grf@temp\def\grf@yaxisrefpoints{}\fi%
+}
+
+\newcommand{\grf@yaxistickput}[2]{%
+   \ifx#2\grf@empty%
+   \else%
+      \draw[style=grftickstyle,yshift=#1\grfyunit,xshift=\grfyaxisxpos\grfxunit] (-\grfticksize,0pt) -- (\grfticksize,0pt);
+   \fi%
+}
+
+\newcommand{\grf@yaxislabelput}[2]{% Posiciona rótulos.
+   \begin{scope}[inner sep=0pt,minimum size=0pt]
+      \expandafter\node\grf@yaxisrefpoints at (\grf@templengthA,#1\grfyunit) {#2};
+   \end{scope}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\grfwindow}{%
+   \grfwithaxisonly{%
+      \draw[grfaxisstyle] (\grfxmin,\grfymin) rectangle (\grfxmax,\grfymax);
+   }%
+}
+\newcommand{\grfframe}{\grfwithaxisonly{\draw[style=grfaxisstyle] (\grfleft,\grfbottom) rectangle (\grfright,\grftop);}}
+
+\newcommand{\grfwithaxisonly}[1]{%
+   \ifx\grf@doaxis\grftrue%
+#1%
+   \fi%
+}
+\newcommand{\grfwithsizeonly}[1]{%
+   \ifx\grf@dosize\grftrue%
+#1%
+   \fi%
+}
+
+% \newcommand{\grfdblfigure}[7]{%
+%    \begin{grfgraphic}{%
+%          \grfyaxis[r]{[]0;1[]}{[]#1;#2[]}%
+%          \grfyaxis[Rr]{[]0;1[]}{[]#4;#5[]}%
+%          \def\grfxmin{-1.1}%
+%          \def\grfxmax{1.1}%
+%          \grfwindow%
+%       }%
+%       \begin{scope}[grfaxisstyle]
+%          \path (-0.5,0.5)  node {\includegraphics[width=1\grfxunit,height=1\grfyunit]{#3}};%
+%          \path (0.5,0.5)   node {\includegraphics[width=1\grfxunit,height=1\grfyunit]{#6}};%
+%          \path (0.5,0.5)   node {\includegraphics[width=1\grfxunit,height=1\grfyunit]{#6}};%
+%          \path (-1.05,0.5) node {\includegraphics[width=0.1\grfxunit,height=1\grfyunit]{#7}};%
+%          \path (1.05,0.5)  node {\includegraphics[width=0.1\grfxunit,height=1\grfyunit]{#7}};%
+%          \draw (1,0)  --  (1,1);
+%          \draw (0,0)  -- (0,1);
+%          \draw (-1,0) -- (-1,1);
+%       \end{scope}
+%    \end{grfgraphic}%
+% }
+\newcommand{\grfdblfigure}[7]{%
+   \begin{grfgraphic}{%
+         \grfmakeaxis{0}{1}{\grfndivs}{4}%
+         \let\grf@axispos=\grfaxis%
+         \grfmakeaxis[\grfformat]{#1}{#2}{\grfndivs}{\grfntrun}%
+         \let\grf@axislabels=\grfaxis%
+         \grfyaxis[r]{\grf@axispos}{\grf@axislabels}%
+         \grfmakeaxis[\grfformat]{#4}{#5}{\grfndivs}{\grfntrun}%
+         \let\grf@axislabels=\grfaxis%
+         \grfyaxis[Rr]{\grf@axispos}{\grf@axislabels}%
+         \def\grfxmin{-1.1}%
+         \def\grfxmax{1.1}%
+         \grfwindow%
+      }%
+      \begin{scope}[grfaxisstyle]
+         \path (-0.5,0.5)  node {\includegraphics[width=1\grfxunit,height=1\grfyunit]{#3}};%
+         \path (0.5,0.5)   node {\includegraphics[width=1\grfxunit,height=1\grfyunit]{#6}};%
+         \path (0.5,0.5)   node {\includegraphics[width=1\grfxunit,height=1\grfyunit]{#6}};%
+         \path (-1.05,0.5) node {\includegraphics[width=0.1\grfxunit,height=1\grfyunit]{#7}};%
+         \path (1.05,0.5)  node {\includegraphics[width=0.1\grfxunit,height=1\grfyunit]{#7}};%
+         \draw (1,0)  --  (1,1);
+         \draw (0,0)  -- (0,1);
+         \draw (-1,0) -- (-1,1);
+      \end{scope}
+   \end{grfgraphic}%
+}
+
+%Ticks
+
+\newcommand{\grfxticks}[3][U]{%
+   \setlength{\grf@templengthA}{\grfticksize}%
+   \def\grf@flags{[grftickstyle]}%
+   \grf@xticks{#1}{#2}{#3}%
+}
+\newcommand{\grfxsubticks}[3][U]{%
+   \setlength{\grf@templengthA}{\grfsubticksize}%
+   \def\grf@flags{[style=grfsubtickstyle]}%
+   \grf@xticks{#1}{#2}{#3}%
+}
+\newcommand{\grf@xticks}[3]{%
+   \ifx#1C%
+      \def\grf@temp{\grfycenter}%
+      \def\grf@affecteddimen{\grf@templengthC}%
+   \else%
+      \ifx#1D%
+         \def\grf@temp{\grfymin}%
+         \def\grf@affecteddimen{\grfbottomskip}%
+      \else%
+         \ifx#1U%
+            \def\grf@temp{\grfymax}%
+            \def\grf@affecteddimen{\grftopskip}%
+         \fi%
+      \fi%
+   \fi%
+   \ifx\grf@dosize\grftrue%
+      \grflistmin{#2}\grflistmax{#2}%
+      \ifx\grf@firstxaxis\grftrue%
+         \let\grfxmin=\grfmin%
+         \let\grfxmax=\grfmax%
+         \let\grf@firstxaxis=\grffalse%
+      \else%
+         \FPmin{\grfxmin}{\grfxmin}{\grfmin}%
+         \FPmax{\grfxmax}{\grfxmax}{\grfmax}%
+      \fi%
+      \ifdim\grf@templengthA>\grf@affecteddimen\setlength{\grf@affecteddimen}{\grf@templengthA}\fi%
+   \fi%
+   \ifx\grf@doaxis\grftrue%
+      \ifx\grf@dopos\grftrue\edef\grfxaxisypos{\grf@temp}\fi%
+      {%
+         \grflistmin{#2}\grflistmax{#2}%
+         \grfrundbllist{#2}{#3}{\grf@xtickput}%
+         \draw[grfaxisstyle] (\grfmin,\grfxaxisypos) -- (\grfmax,\grfxaxisypos);%
+      }%
+   \fi%
+}
+\newcommand{\grf@xtickput}[2]{%
+   \ifx#2\grf@empty%
+   \else%
+      \expandafter\draw\grf@flags (#1\grfxunit,\grfxaxisypos\grfyunit-\grf@templengthA) -- (#1\grfxunit,\grfxaxisypos\grfyunit+\grf@templengthA);%
+   \fi%
+}
+
+\newcommand{\grfyticks}[3][R]{%
+   \setlength{\grf@templengthA}{\grfticksize}%
+   \def\grf@flags{[style=grftickstyle]}%
+   \grf@yticks{#1}{#2}{#3}%
+}
+\newcommand{\grfysubticks}[3][R]{%
+   \setlength{\grf@templengthA}{\grfsubticksize}%
+   \def\grf@flags{[style=grfsubtickstyle]}%
+   \grf@yticks{#1}{#2}{#3}%
+}
+\newcommand{\grf@yticks}[3]{%
+   \ifx#1C%
+      \def\grf@temp{\grfxcenter}%
+      \def\grf@affecteddimen{\grf@templengthC}%
+   \else%
+      \ifx#1L%
+         \def\grf@temp{\grfxmin}%
+         \def\grf@affecteddimen{\grfleftskip}%
+      \else%
+         \ifx#1R%
+            \def\grf@temp{\grfxmax}%
+            \def\grf@affecteddimen{\grfrightskip}%
+         \fi%
+      \fi%
+   \fi%
+   \ifx\grf@dosize\grftrue%
+      \grflistmin{#2}\grflistmax{#2}%
+      \ifx\grf@firstyaxis\grftrue%
+         \let\grfymin=\grfmin%
+         \let\grfymax=\grfmax%
+         \let\grf@firstyaxis=\grffalse%
+      \else%
+         \FPmin{\grfymin}{\grfymin}{\grfmin}%
+         \FPmax{\grfymax}{\grfymax}{\grfmax}%
+      \fi%
+      \ifdim\grf@templengthA>\grf@affecteddimen\setlength{\grf@affecteddimen}{\grf@templengthA}\fi%
+   \fi%
+   \ifx\grf@doaxis\grftrue%
+      \ifx\grf@dopos\grftrue\edef\grfyaxisxpos{\grf@temp}\fi%
+      {%
+         \grflistmin{#2}\grflistmax{#2}%
+         \grfrundbllist{#2}{#3}{\grf@ytickput}%
+         \expandafter\draw\grf@flags (\grfyaxisxpos,\grfmin) -- (\grfyaxisxpos,\grfmax);%
+      }%
+   \fi%
+}
+\newcommand{\grf@ytickput}[2]{%
+   \ifx#2\grf@empty%
+   \else%
+      \expandafter\draw\grf@flags (\grfyaxisxpos\grfxunit-\grf@templengthA,#1\grfyunit) -- (\grfyaxisxpos\grfxunit+\grf@templengthA,#1\grfyunit);%
+   \fi%
+}
+
+%Legenda:
+
+\newcommand{\grftablegend}[3][]{%
+   \grflegend[#1]{%
+      \begin{tabular}{#2}%
+         #3%
+      \end{tabular}%
+   }%
+}
+\newcommand{\grflegend}[2][]{%
+   \ifx\grf@doaxis\grftrue%
+      \def\grf@paramA{r}%
+      \def\grf@paramB{b}%
+      \def\grf@temp{[#1{ }{ }{ }]}%
+      \expandafter\grf@preparelegargs\grf@temp%
+      \expandafter\ifx\grf@paramA r%
+         \setlength{\grf@templengthA}{\grfxmax\grfxunit}%
+         \def\grf@refpoint{ east}%
+         \def\grf@signalA{-}%
+      \else%
+         \expandafter\ifx\grf@paramA l%
+            \setlength{\grf@templengthA}{\grfxmin\grfxunit}%
+            \def\grf@refpoint{ west}%
+            \def\grf@signalA{+}%
+         \fi%
+      \fi%
+      \expandafter\ifx\grf@paramB t%
+         \setlength{\grf@templengthB}{\grfymax\grfyunit}%
+         \def\grf@secrefpoint{north}%
+         \def\grf@signalB{-}%
+      \else%
+         \expandafter\ifx\grf@paramB b%
+            \setlength{\grf@templengthB}{\grfymin\grfyunit}%
+            \def\grf@secrefpoint{south}%
+            \def\grf@signalB{+}%
+         \fi%
+      \fi%
+      \addtolength{\grf@templengthA}{\grf@signalA\grflegsep}%
+      \addtolength{\grf@templengthB}{\grf@signalB\grflegsep}%
+      \edef\grf@legrefpoints{[anchor=\grf@secrefpoint\grf@refpoint,}%
+      \def\grf@temp{[anchor=,}%
+      \ifx\grf@legrefpoints\grf@temp\def\grf@legrefpoints{[}\fi%
+
+      \begin{scope}[grflegstyle]
+         \expandafter\node\grf@legrefpoints grflegstyle] at (\grf@templengthA,\grf@templengthB) {#2};
+      \end{scope}
+   \fi%
+}
+\def\grf@preparelegargs[#1#2#3]{%
+   \grf@legdefargs{#1}%
+   \grf@legdefargs{#2}%
+}
+\def\grf@legdefargs#1{%
+   \ifx#1r%
+      \def\grf@paramA{r}%
+   \else\ifx#1l%
+      \def\grf@paramA{l}%
+   \else\ifx#1b%
+      \def\grf@paramB{b}%
+   \else\ifx#1t%
+      \def\grf@paramB{t}%
+   \fi\fi\fi\fi%
+}
+
+\newcommand{\grflegdot}[1][mark=square*,fill=white]{%
+   \def\grf@dotstyle{[#1]}%
+   \let\grf@dodot=\grftrue%
+}
+\newcommand{\grflegline}[1][thin]{%
+   \def\grf@linestyle{[#1]}%
+   \let\grf@doline=\grftrue%
+}
+\newcommand{\grflegframe}[1][fill=white,draw=black]{%
+   \def\grf@framestyle{[#1]}%
+   \let\grf@doframe=\grftrue%
+}
+\newcommand{\grflegsymbol}[2][\grflegsymbolwidth]{%
+   \setlength{\grf@templengthA}{#1}%
+   \setlength{\grf@templengthB}{\grflegsymbolheight}%
+   #2%
+   \lower \grfleglower\hbox to \grf@templengthA{%
+      \begin{tikzpicture}%
+         \useasboundingbox (0,0) rectangle (\grf@templengthA,\grf@templengthB);%
+         \ifx\grf@doframe\grftrue%
+            \expandafter\path\grf@framestyle (0,0) rectangle (\grf@templengthA,\grf@templengthB);%
+            \let\grf@doframe=\grffalse%
+         \fi%
+         \ifx\grf@doline\grftrue%
+            \expandafter\draw\grf@linestyle (0pt,0.5\grf@templengthB) -- (\grf@templengthA,0.5\grf@templengthB);%
+            \let\grf@doline=\grffalse%
+         \fi%
+         \ifx\grf@dodot\grftrue%
+            \expandafter\path\grf@dotstyle plot coordinates {(0.5\grf@templengthA,0.5\grf@templengthB)};%
+            \let\grf@dodot=\grffalse%
+         \fi%
+        \end{tikzpicture}%
+   }%
+}
+
+%Grades:
+
+\newcommand{\grfxgrid}[3][grfaxisstyle]{%
+   \grfwithaxisonly{%
+      \def\grf@temp##1##2{%
+         \ifx##2\grf@empty%
+         \else%
+            \draw[#1] (##1,\grfymin) -- (##1,\grfymax);%
+         \fi%
+      }%
+      \grfrundbllist{#2}{#3}{\grf@temp}%
+   }%
+}
+\newcommand{\grfygrid}[3][grfaxisstyle]{%
+   \grfwithaxisonly{%
+      \def\grf@temp##1##2{%
+         \ifx##2\grf@empty%
+         \else%
+            \draw[#1] (\grfxmin,##1) -- (\grfxmax,##1);%
+         \fi%
+      }%
+      \grfrundbllist{#2}{#3}{\grf@temp}%
+   }%
+}
+
+\newcommand{\grfxlabel}[2][D]{%
+   \ifx#1U%
+      \def\grf@affecteddimen{\grftopskip}%
+      \def\grf@refpoint{north}%
+      \def\grf@temp{\grftop}%
+   \else%
+      \ifx#1D%
+         \def\grf@affecteddimen{\grfbottomskip}%
+         \def\grf@refpoint{south}%
+         \def\grf@temp{\grfbottom}%
+      \fi%
+   \fi%
+   \ifx\grf@dosize\grftrue%
+      \settoheight{\grf@templengthA}{#2}%
+      \addtolength{\grf@affecteddimen}{\grf@templengthA}%
+      \settodepth{\grf@templengthA}{#2}%
+      \addtolength{\grf@affecteddimen}{\grf@templengthA}%
+      \addtolength{\grf@affecteddimen}{\grflabelsep}%
+   \fi%
+   \ifx\grf@doaxis\grftrue%
+      \node[anchor=\grf@refpoint,inner sep=0pt] at (\grfxcenter\grfxunit,\grf@temp) {#2};
+   \fi%
+}
+\newcommand{\grfylabel}[2][R]{%
+   \ifx#1L%
+      \def\grf@affecteddimen{\grfleftskip}%
+      \def\grf@refpoint{north}%
+      \def\grf@rotation{90}%
+      \def\grf@temp{\grfleft}%
+   \else%
+      \ifx#1R%
+         \def\grf@affecteddimen{\grfrightskip}%
+         \def\grf@refpoint{north}%
+         \def\grf@rotation{270}%
+         \def\grf@temp{\grfright}%
+      \else%
+         \ifx#1l%
+            \def\grf@affecteddimen{\grfleftskip}%
+            \def\grf@refpoint{south}%
+            \def\grf@rotation{270}%
+            \def\grf@temp{\grfleft}%
+         \else%
+            \ifx#1r%
+               \def\grf@affecteddimen{\grfrightskip}%
+               \def\grf@refpoint{south}%
+               \def\grf@rotation{90}%
+               \def\grf@temp{\grfright}%
+            \fi%
+         \fi%
+      \fi%
+   \fi%
+   \ifx\grf@dosize\grftrue%
+      \settoheight{\grf@templengthA}{#2}%
+      \addtolength{\grf@affecteddimen}{\grf@templengthA}%
+      \settodepth{\grf@templengthA}{#2}%
+      \addtolength{\grf@affecteddimen}{\grf@templengthA}%
+      \addtolength{\grf@affecteddimen}{\grflabelsep}%
+   \fi%
+   \ifx\grf@doaxis\grftrue%
+      \node[anchor=\grf@refpoint,rotate=\grf@rotation,inner sep=0pt] at (\grf@temp,\grfycenter\grfyunit) {#2};
+   \fi%
+}
+
+\def\grf@add#1#2#3{%
+   \expandafter\grf@@add\expandafter{#2}{#1}{#3}%
+}
+\def\grf@@add#1#2#3{%
+   \ifx#3 %
+      \global\grf@toks={#2#1}%
+   \else%
+      \global\grf@toks={#2#3{#1}}%
+   \fi%
+}
+\def\grfadd#1#2#3{%
+   \expandafter\grf@add\expandafter{#1}{#2}{#3}%
+}
+\newtoks{\grf@toks}
+\newcommand{\grfmakeaxis}[5][ ]{%
+   \FPupn{\x}{#2{} #5{} round}%
+   \ifx#1 %
+      \expandafter\grf@toks\expandafter=\expandafter{\expandafter[\expandafter]\x}%
+   \else%
+      \expandafter\grf@toks\expandafter=\expandafter{\expandafter[\expandafter]\expandafter#1\expandafter{\x}}%
+   \fi%
+   \foreach \i in {1,2,...,#4}%
+   {%
+      \FPupn{\x}{#4{} \i{} #4{} - #2{} * \i{} #3{} * + / #5{} round}%
+      \grfadd{\the\grf@toks;}{\x}{#1}%
+   }%
+   \expandafter\grf@toks\expandafter=\expandafter{\the\grf@toks[]}%
+   \expandafter\def\expandafter\grfaxis\expandafter{\the\grf@toks}%
+}
+
+%<pos> [barra] [min] [max] [fmtcmd]
+% \newcommand{\icbar}[][L]{%
+%    \FPupn{\del}{}%
+% }
+\endinput

@@ -1,0 +1,34 @@
+\newcommand{\shepplogan}
+{%
+   \begin{scope}[line width=0pt]
+      %Elipse preta externa:
+      \path[color=black!100,draw,fill] (0,0)       ellipse (0.69 and 0.92);
+      %Elipse interna maior:
+      \path[color=black!20,draw,fill]  (0,-0.0184) ellipse (0.6624 and 0.874);
+
+      %Orgãos internos:
+      \path[color=black!30,draw,fill] (0,0.35)       ellipse (0.21 and 0.25);
+      \path[color=black!30,draw,fill] (0,-0.1)       ellipse (0.046 and 0.046);
+      \path[color=black!30,draw,fill] (-0.08,-0.605) ellipse (0.046 and 0.023);
+      \path[color=black!30,draw,fill] (0,-0.606)     ellipse (0.023 and 0.023);
+      \path[color=black!30,draw,fill] (0.06,-0.605)  ellipse (0.023 and 0.046);
+      \path[color=black!30,draw,fill] (0.06,-0.605)  ellipse (0.023 and 0.046);
+
+      %Pulmão direito:
+      \path[color=black!0,draw,fill,xshift=0.22\grfxunit,rotate=-18] (0,0) ellipse (0.11 and 0.31);
+      %Pulmão Esquerdo:
+      \path[color=black!0,draw,fill,xshift=-0.22\grfxunit,rotate=18] (0,0) ellipse (0.16 and 0.41);
+      \begin{scope}
+         \path[clip,xshift=-0.22\grfxunit,rotate=18] (0,0)    ellipse (0.16 and 0.41);
+         \path[color=black!10,draw,fill]             (0,0.35) ellipse (0.21 and 0.25);
+         \path[color=black!10,draw,fill]             (0,-0.1) ellipse (0.046 and 0.046);
+      \end{scope}
+   \end{scope}
+
+   %Orgão central:
+   \path[color=black!30,draw,fill]    (0,0.1)  ellipse (0.046 and 0.046);
+   \begin{scope}
+      \path[clip]                     (0,0.1)  ellipse (0.046 and 0.046);
+      \path[color=black!40,draw,fill] (0,0.35) ellipse (0.21 and 0.25);
+   \end{scope}
+}
