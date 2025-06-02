@@ -120,34 +120,46 @@ Em reconstrução de imagens, o número $n$ de varáveis é igual ao número de 
   
   A incógnita é a função $f$ ao passo que os dados obtidos são os valores da transformada de Radon $\mathcal R[ f ]$. Uma vez que o tempo de coleta de dados é limitado e que na prática a função solução é buscada em um espaço de dimensão finita, o problema pode ser reduzido à solução (aproximada) de um sistema de equações lineares $R \bm x \approx \bm r$, onde $R \in \mathbb R^{m \times n}$ é uma matriz obtida a partir da discretização da transformada de Radon, que depende da base utilizada para descrever o espaço de funções e das condições geométricas de aquisição, $\bm x \in \mathbb R^n$ é o vetor desconhecido de coeficientes da combinação linear de elementos da base que resulta na solução do problema (i.e., a solução é $f = x_1f_1 + x_2f_2 + \cdots + x_nf_n$ onde $\{ f_1, f_2, \dots, f_n \}$ é a base para o espaço de funções onde a solução é buscada) e $\bm r$ é o vetor de dados coletados (sempre aproximado pois há erros sistemáticos de modelagem e ruído na aquisição dos dados).
   
-  Uma vez que, graças à natureza da transformada de Radon, a matriz $R$ sempre é mal condicionada e o lado direito $\bm r$ inevitavelmente contém ruído, a solução aproximada deve ser estabilizada através do uso de um termo de suavização, de forma que o modelo a ser resolvido possui a forma
-  \begin{equation*}
-    \min_{\bm x}\quad f( R\bm x, \bm r ) + \gamma g( \bm x ),
-  \end{equation*}
-  onde $f : \mathbb R^m \times \mathbb R^m \to \mathbb R$ é uma função que força a proximidade entre $R\bm x$ e $\bm r$, $g : \mathbb R^n \to \mathbb R$ é uma função que força a suavidade da imagem resultante e $\gamma \in \mathbb R_+$ é um parâmetro que controla a suavidade imposta na solução do problema. Algoritmos de $\epsilon$-subgradientes foram utilizados com sucesso para resolver modelos úteis da forma acima em~\cite{hed09}, portanto, esperamos que as técnicas a serem desenvolvidas no presente projeto sejam ainda mais bem sucedidas nesta aplicação.
+% \subsection{Introdução}
+% A tomografia computadorizada (TC), embora tenha muitas aplicações - veja G. van Kaick e S. Delorme \cite{van2005computed}-, é amplamente utilizada na área de imagens médicas, onde a qualidade da imagem é crucial para diagnósticos precisos.
+% Esse método de obtenção de imagens é baseado na reconstrução de imagens a partir de dados tomográficos, que são obtidos por meio de projeções da intensidade de raios-x em diferentes ângulos.
 
-\subsection{Introdução}
-A tomografia computadorizada (TC), embora tenha muitas aplicações - veja G. van Kaick e S. Delorme \cite{van2005computed}-, é amplamente utilizada na área de imagens médicas, onde a qualidade da imagem é crucial para diagnósticos precisos.
-Esse método de obtenção de imagens é baseado na reconstrução de imagens a partir de dados tomográficos, que são obtidos por meio de projeções da intensidade de raios-x em diferentes ângulos.
+% Em tomografia, é importante distinguir claramente entre o problema direto e o problema inverso. 
+% O problema direto corresponde ao cálculo das projeções dos raios-X ao atravessarem um corpo cuja estrutura interna é conhecida. 
+% Já o problema inverso, foco desse projeto, consiste em reconstruir a estrutura interna desconhecida a partir das projeções obtidas, configurando-se como um problema tipicamente mal-posto no sentido de Hadamard \cite{hadamard1902problemes}.
+% Problemas mal-postos apresentam soluções instáveis ou não únicas devido, principalmente, à presença inevitável de ruído nos dados medidos.
 
-Em tomografia, é importante distinguir claramente entre o problema direto e o problema inverso. 
-O problema direto corresponde ao cálculo das projeções dos raios-X ao atravessarem um corpo cuja estrutura interna é conhecida. 
-Já o problema inverso, foco desse projeto, consiste em reconstruir a estrutura interna desconhecida a partir das projeções obtidas, configurando-se como um problema tipicamente mal-posto no sentido de Hadamard \cite{hadamard1902problemes}.
-Problemas mal-postos apresentam soluções instáveis ou não únicas devido, principalmente, à presença inevitável de ruído nos dados medidos.
+% Uma abordagem comum para lidar com esse tipo de problema dito mal-posto é utilizar os métodos de regularização \cite{tikhonov1963solution}, uma vez que tendem a estabilizar as soluções, ou seja, torna a solução mais robusta e estável a variações nos dados.
+% Na literatura atual, existem diversas técnicas diferentes de regularização como a regularização de Tikhonov \cite{tikhonov1977solutions}, regularização por variação total (TV) \cite{rudin1992nonlinear}, entre outras.
 
-Uma abordagem comum para lidar com esse tipo de problema dito mal-posto é utilizar os métodos de regularização \cite{tikhonov1963solution}, uma vez que tendem a estabilizar as soluções, ou seja, torna a solução mais robusta e estável a variações nos dados.
-Na literatura atual, existem diversas técnicas diferentes de regularização como a regularização de Tikhonov \cite{tikhonov1977solutions}, regularização por variação total (TV) \cite{rudin1992nonlinear}, entre outras.
+% Apesar das vantagens da regularização por variação total, seu termo de regularização é convexo, porém não suave, inviabilizando a aplicação direta de métodos tradicionais de otimização, como o método da descida de gradiente clássico. 
+% No entanto, a estrutura especial da função objetivo – composta por uma parte suave (função de ajuste aos dados) e outra não suave (termo TV) – permite o uso eficiente de métodos de otimização baseados em operadores proximais. 
+% Como a regularização TV não admite uma solução analítica fechada, os métodos iterativos inexatos surgem como alternativas.
 
-Apesar das vantagens da regularização por variação total, seu termo de regularização é convexo, porém não suave, inviabilizando a aplicação direta de métodos tradicionais de otimização, como o método da descida de gradiente clássico. 
-No entanto, a estrutura especial da função objetivo – composta por uma parte suave (função de ajuste aos dados) e outra não suave (termo TV) – permite o uso eficiente de métodos de otimização baseados em operadores proximais. 
-Como a regularização TV não admite uma solução analítica fechada, os métodos iterativos inexatos surgem como alternativas.
-
-Nesse contexto, o presente projeto tem por objetivo estudar e implementar métodos acelerados inexatos de primeira ordem, fundamentados em operadores proximais, visando resolver o problema de reconstrução tomográfica regularizada por variação total. 
-Espera-se que esses métodos promovam uma reconstrução mais eficiente e robusta, mantendo a fidelidade das bordas e acelerando significativamente a convergência numérica.
+% Nesse contexto, o presente projeto tem por objetivo estudar e implementar métodos acelerados inexatos de primeira ordem, fundamentados em operadores proximais, visando resolver o problema de reconstrução tomográfica regularizada por variação total. 
+% Espera-se que esses métodos promovam uma reconstrução mais eficiente e robusta, mantendo a fidelidade das bordas e acelerando significativamente a convergência numérica.
 
 \subsection{Justificativa}
 
+Uma vez que, graças à natureza da transformada de Radon, a matriz $R$ sempre é mal condicionada e o lado direito $\bm r$ inevitavelmente contém ruído, a solução aproximada deve ser estabilizada através do uso de um termo de suavização, de forma que o modelo a ser resolvido possui a forma
+\begin{equation*}
+  \min_{\bm x}\quad f( R\bm x, \bm r ) + \gamma g( \bm x ),
+\end{equation*}
+onde $f : \mathbb R^m \times \mathbb R^m \to \mathbb R$ é uma função que força a proximidade entre $R\bm x$ e $\bm r$, $g : \mathbb R^n \to \mathbb R$ é uma função que força a suavidade da imagem resultante e $\gamma \in \mathbb R_+$ é um parâmetro que controla a suavidade imposta na solução do problema. Algoritmos de $\epsilon$-subgradientes foram utilizados com sucesso para resolver modelos úteis da forma acima em~\cite{hed09}, portanto, esperamos que as técnicas a serem desenvolvidas no presente projeto sejam ainda mais bem sucedidas nesta aplicação.
+
 \section*{Objetivos}
+
+O objetivo do seguinte projeto de iniciação científica é estudar o uso de busca direcional exata no passo de máxima descida do método de gradiente-proximal acelerado conhecido como FISTA~\cite{bet09,bet09b} aplicado ao problema~\eqref{eq:reg_LS}. Se considerarmos o problema
+$$
+    \min_{\bm x \in \mathbb R^n} \quad F( \bm x ) = f( \bm x ) + g( \bm x ),
+$$
+onde $f : \mathbb R^n \to \mathbb R$ é convexa e diferenciável e $g : \mathbb R^n \to \mathbb R$ é convexa.
+
+Ademais, supomos que o gradiente de $f$ é Lipschitz. Isto é, existe $L_f \ge 0$ tal que
+$$
+    \| \nabla f( \bm x ) - \nabla f( \bm y ) \|_2 \le L_f\| \bm x - \bm y \|_2
+$$
+e que o operador proximal de $\lambda g$ pode ser calculado com relativa facilidade.
 
 \section*{Plano de Trabalho e Cronograma}
 
