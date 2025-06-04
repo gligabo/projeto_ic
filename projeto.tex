@@ -143,16 +143,16 @@ Em reconstrução de imagens, o número $n$ de varáveis é igual ao número de 
 
 Uma vez que, graças à natureza da transformada de Radon, a matriz $R$ sempre é mal condicionada e o lado direito $\bm r$ inevitavelmente contém ruído, a solução aproximada deve ser estabilizada através do uso de um termo de suavização, de forma que o modelo a ser resolvido possui a forma
 \begin{equation*}
-  \min_{\bm x}\quad f( R\bm x, \bm r ) + \gamma g( \bm x ),
+  \min_{\bm x}\ f( R\bm x, \bm r ) + \gamma g( \bm x ),
 \end{equation*}
-onde $f : \mathbb R^m \times \mathbb R^m \to \mathbb R$ é uma função que força a proximidade entre $R\bm x$ e $\bm r$, $g : \mathbb R^n \to \mathbb R$ é uma função que força a suavidade da imagem resultante e $\gamma \in \mathbb R_+$ é um parâmetro que controla a suavidade imposta na solução do problema. Algoritmos de $\epsilon$-subgradientes foram utilizados com sucesso para resolver modelos úteis da forma acima em~\cite{hed09}, portanto, esperamos que as técnicas a serem desenvolvidas no presente projeto sejam ainda mais bem sucedidas nesta aplicação.
+onde $f : \mathbb R^m \times \mathbb R^m \to \mathbb R$ é uma função que força a proximidade entre $R\bm x$ e $\bm r$, $g : \mathbb R^n \to \mathbb R$ é uma função que força a suavidade da imagem resultante e $\gamma \in \mathbb R_+$ é um parâmetro que controla a suavidade imposta na solução do problema. Algoritmos de $\epsilon$-subgradientes foram utilizados com sucesso em~\cite{hed09} e algoritmos acelerados de primeira ordem em~\cite{hzh20,hes17} para resolver modelos úteis da forma acima, portanto, esperamos que as técnicas a serem estudadas no presente projeto sejam ainda mais bem sucedidas nesta aplicação.
 
 \section*{Objetivos}
 
-O objetivo do seguinte projeto de iniciação científica é estudar o uso de busca direcional exata no passo de máxima descida do método de gradiente-proximal acelerado conhecido como FISTA~\cite{bet09,bet09b} aplicado ao problema~\eqref{eq:reg_LS}. Se considerarmos o problema
-$$
-    \min_{\bm x \in \mathbb R^n} \quad F( \bm x ) = f( \bm x ) + g( \bm x ),
-$$
+O objetivo do seguinte projeto de iniciação científica é estudar o uso de busca direcional exata no passo de máxima descida do método de gradiente-proximal acelerado conhecido como FISTA~\cite{bet09,bet09b} aplicado ao problema~\eqref{eq:reg_LS}. Considere o problema
+\begin{equation}\label{eq:par_smooth}
+    \min_{\bm x \in \mathbb R^n} \ f( \bm x ) + g( \bm x ),
+\end{equation}
 onde $f : \mathbb R^n \to \mathbb R$ é convexa e diferenciável e $g : \mathbb R^n \to \mathbb R$ é convexa.
 
 Ademais, supomos que o gradiente de $f$ é Lipschitz. Isto é, existe $L_f \ge 0$ tal que
@@ -160,6 +160,31 @@ $$
     \| \nabla f( \bm x ) - \nabla f( \bm y ) \|_2 \le L_f\| \bm x - \bm y \|_2
 $$
 e que o operador proximal de $\lambda g$ pode ser calculado com relativa facilidade.
+
+Para esta categoria de problemas, quando o número $n$ de variáveis é muito grande, um algoritmo candidato para a aplicação é o FISTA~\cite{bet09,bet09b}:
+\begin{align*}
+    \bm y^{( k )} &{}= \prox_{\lambda_k g}\bigl( \bm x^{( k )} - \lambda_k \nabla f( \bm x^{( k )} ) \bigr)\\
+    t_{k + 1} &{}= \frac{1 + \sqrt{1 + 4t_k^2}}2\\
+    \bm x^{( k + 1 )} &{}= \bm y^{( k )} + \frac{t_k - 1}{t_{k + 1}}( \bm y^{( k )} - \bm y^{( k - 1 )} ).
+\end{align*}
+Na formulação acima, $\lambda_k$ pode ser mantido fixo, desde que suficientemente pequeno, ou determinado através de uma busca direcional acoplada a um critério de descida suficiente.
+
+O principal objetivo do presente projeto é estudar o que ocorre quando, para o caso especial~\eqref{eq:reg_LS}, o tamanho de passo é escolhido através de busca direcional exata. Observe que FISTA foi desenvolvido para o caso mais geral~\eqref{eq:par_smooth}, onde a busca direcional exata é impossível. Para o caso em que $f$ é uma função quadrática da forma
+$$
+    f( \bm x ) = \frac12\bm x^TQ\bm x - \bm c^T\bm x,
+$$
+entretanto, o tamanho de passo que minimiza a função a partir de $\bm x^{( k )}$ ao longo de uma direção de busca $\bm d^{( k )}$ pode ser calculado com esforço computacional relativamnte baixo através da fórmula
+$$
+    \lambda_k = -\frac{\nabla f( \bm x^{( k )} )^T\bm d^{( k )}}{( \bm d^{( k )} )^TQ\bm d^{( k )}}.
+$$
+
+Em métodos para minimizar apenas a função quadrática $f$, o cálculo de $Q\bm d^{( k )}$ pode ser reaproveitado ou vir de quantidades calculadas previamente. Este não parece ser o caso para algoritmos como FISTA, portanto, nossos objetivos são:
+\begin{itemize}
+    \item Analisar experimentalmente o ganho de velocidade de convergência em número de iterações com o uso do passo exato com regularização baseada em variação total
+    \item Avaliar o ganho de custo/benefício em tempo de computação entre o passo fixo e passo exato com regularização baseada em variação total
+    \item Aplicar o método para o caso de reconstrução de imagens em tomografia com regularização baseada em variação total
+    \item Repetir os estudos acima para o caso sem regularização (onde o cálculo de $Q\bm d^{( k )}$ não impõe dificuldade extra), mas desta vez levando em consideração a aplicabilidade do método de gradientes conjugados
+\end{itemize}
 
 \section*{Plano de Trabalho e Cronograma}
 
