@@ -10,6 +10,7 @@
 \usepackage{amsfonts}
 \usepackage{amsmath}
 \usepackage{grf}
+\usepackage{indentfirst}
 
 \DeclareMathOperator{\prox}{prox}
 \DeclareMathOperator*{\argmin}{arg\ min}
@@ -26,6 +27,7 @@
 
 \section*{Resumo}
 
+Métodos de otimização são peça-chave em reconstrução de imagens médicas, principalmente na tomografia computadorizada. Os dados adquiridos por essa técnica consistem em uma representação ruidosa da transformada de Radon, o que leva a necessidade da adição de termos de regularização ao modelo de otimização, para que assim, o ruído não seja amplificado. Uma possível escolha para o termo regularizador é a regularização por variação total, que tem como principal vantagem o fato de preservar bordas, mas sua natureza não suave leva à necessidade de uma etapa proximal no algoritmo de otimização. Este projeto ataca um ponto específico e pouco explorado: no algoritmo FISTA (Fast-Iterative-Shrinkage-Thresholding) – frequentemente empregado para problemas de minimização com regularização como a TV – propõe-se substituir as estratégias de tamanho de passo usuais (e.g., passo fixo ou determinado por busca inexata). Em seu lugar, investiga-se o uso de uma busca linear exata para determinar o tamanho de passo. Especificamente, calcula-se analiticamente o passo que minimiza a parcela quadrática da função objetivo ao longo da direção de descida, o que é viável devido à natureza desta parcela. A meta é medir, de forma objetiva, como essa escolha afeta a convergência em iterações e o tempo de computação, além da qualidade de reconstrução em dados de tomografia computadorizada.
 \newpage
 
 \section{Introdução e Justificativa}
@@ -43,7 +45,7 @@ $$
     \prox_{\lambda g}( \bm x ) := \argmin_{\bm y \in \mathbb R^n}\ \frac 12\| \bm y - \bm x \|_2^2 + \lambda g( \bm y ).
 $$
 
-Em reconstrução de imagens, o número $n$ de varáveis é igual ao número de \emph{pixels} da imagem e, portanto, muito grande, da ordem de centenas de milhares ou até na casa dos milhões. Problemas da forma~\eqref{eq:reg_LS} são úteis em problemas de tomografia computadorizada~\cite{her80,kas88,nat86,naw01}, em remoção de ruído em imagens~\cite{rof92,obg05,tnv04} e refoque de imagens desfocadas e com ruído~\cite{obg05,bet09,bet09b}. De fato, este tipo de problema aparece com frequência em regularização variacional de problemas inversos lineares mal condicionados~\cite{ehn00}.
+Em reconstrução de imagens, o número $n$ de variáveis é igual ao número de \emph{pixels} da imagem e, portanto, muito grande, da ordem de centenas de milhares ou até na casa dos milhões. Problemas da forma~\eqref{eq:reg_LS} são úteis em problemas de tomografia computadorizada~\cite{her80,kas88,nat86,naw01}, em remoção de ruído em imagens~\cite{rof92,obg05,tnv04} e refoque de imagens desfocadas e com ruído~\cite{obg05,bet09,bet09b}. De fato, este tipo de problema aparece com frequência em regularização variacional de problemas inversos lineares mal condicionados~\cite{ehn00}.
 
 \subsection{Tomografia Computadorizada}
 
