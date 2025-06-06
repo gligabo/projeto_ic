@@ -27,7 +27,7 @@
 
 \section*{Resumo}
 
-Métodos de otimização são peça-chave em reconstrução de imagens médicas, principalmente na tomografia computadorizada. Os dados adquiridos por essa técnica consistem em uma representação ruidosa da transformada de Radon, o que leva à necessidade da adição de termos de regularização ao modelo de otimização, para que assim, o ruído não seja amplificado. Uma possível escolha para o termo regularizador é a regularização por variação total, que tem como principal vantagem o fato de preservar bordas, mas sua natureza não suave leva à necessidade de uma etapa proximal no algoritmo de otimização. Este projeto ataca um ponto específico e pouco explorado: no algoritmo FISTA (Fast-Iterative-Shrinkage-Thresholding) – frequentemente empregado para problemas de minimização com regularização como a TV – propõe-se substituir as estratégias de tamanho de passo usuais (e.g., passo fixo ou determinado por busca inexata). Em seu lugar, investiga-se o uso de uma busca linear exata para determinar o tamanho de passo. Especificamente, calcula-se analiticamente o passo que minimiza a parcela quadrática da função objetivo ao longo da direção de descida, o que é viável devido à natureza desta parcela. A meta é medir, de forma objetiva, como essa escolha afeta a convergência em iterações e o tempo de computação, além da qualidade de reconstrução em dados de tomografia computadorizada.
+Métodos de otimização são peça-chave em reconstrução de imagens médicas, principalmente na tomografia computadorizada. Os dados adquiridos por essa técnica consistem em uma representação ruidosa da transformada de Radon, o que leva à necessidade da adição de termos de regularização ao modelo de otimização, para que assim o ruído não seja amplificado. Uma possível escolha para o termo regularizador é a regularização por variação total (TV), que tem como principal vantagem o fato de preservar bordas, mas sua natureza não suave leva à necessidade de uma etapa proximal no algoritmo de otimização. Este projeto aborda um ponto específico e pouco explorado: no algoritmo FISTA (Fast-Iterative-Shrinkage-Thresholding) – frequentemente empregado para problemas de minimização com regularização como a TV – propõe-se substituir as estratégias de tamanho de passo usuais (e.g., passo fixo ou determinado por busca inexata). Em seu lugar, investiga-se o uso de uma busca linear exata para determinar o tamanho de passo. Especificamente, calcula-se analiticamente o passo que minimiza a parcela quadrática da função objetivo ao longo da direção de descida, o que é viável devido à natureza desta parcela. A meta é medir, de forma objetiva, como essa escolha afeta a convergência em iterações e o tempo de computação, além da qualidade de reconstrução em dados de tomografia computadorizada.
 \newpage
 
 \section{Introdução e Justificativa}
@@ -190,10 +190,59 @@ Em métodos para minimizar apenas a função quadrática $f$, o cálculo de $Q\b
 
 \section*{Plano de Trabalho e Cronograma}
 
-\section*{Material e Metodologia}
+\subsection*{Cronograma}
 
-Esta seção descreve os dados utilizados na aplicação do método de reconstrução de imagem em tomografia computadorizada com regularização por variação total, 
-além de apresentar os métodos empregados no desenvolvimento do projeto.
+Considerando o período de 12 meses, foram definidas as seguintes atividades e seus respectivos períodos de execução:
+
+\begin{itemize}
+
+    \item[A1] \textbf{Revisão e Acompanhamento da Literatura (Meses 1-12):} 
+    Atividade contínua para contextualizar o projeto e acompanhar pesquisas relevantes.
+
+    \item[A2] \textbf{Revisão Teórica e Fundamentos (Meses 1-2):} 
+    Estudo dos conceitos de otimização, regularização por Variação Total e Tomografia Computadorizada.
+
+    \item[A3] \textbf{Implementação (Meses 3-5):} 
+    Implementação do algoritmo FISTA com as estratégias de passo fixo e passo exato.
+
+    \item[A4] \textbf{Análise Experimental com Regularização (Meses 6-8):} 
+    Análise comparativa da convergência e do custo computacional na reconstrução de imagens com Variação Total.
+
+    \item[A5] \textbf{Análise Experimental sem Regularização (Mês 9):} 
+    Comparação do método com o de Gradientes Conjugados no problema de mínimos quadrados.
+
+    \item[A6] \textbf{Aplicação e Análise de Qualidade (Mês 10):} 
+    Aplicação do método em dados de tomografia e análise da qualidade da reconstrução final.
+
+    \item[A7] \textbf{Conclusão e Relatório Final (Meses 11-12):} 
+    Consolidação dos resultados, elaboração das conclusões e redação do documento final.
+\end{itemize}
+
+\newcommand{\X}{\textbullet}
+
+\begin{table}[!ht]
+\centering
+% \small % Pode ser útil usar uma fonte menor se a tabela ficar muito larga
+\begin{tabular}{l|cccccccccccc}
+\hline
+\hline
+& \multicolumn{12}{c}{Mês} \\
+\cline{2-13}
+Atividade & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 \\
+\hline
+A1: Revisão Contínua    & \X & \X & \X & \X & \X & \X & \X & \X & \X & \X & \X & \X \\
+A2: Revisão Teórica     & \X & \X &    &    &    &    &    &    &    &    &    &    \\
+A3: Implementação       &    &    & \X & \X & \X &    &    &    &    &    &    &    \\
+A4: Análise (c/ Reg.)   &    &    &    &    &    & \X & \X & \X &    &    &    &    \\
+A5: Análise (s/ Reg.)   &    &    &    &    &    &    &    &    & \X &    &    &    \\
+A6: Aplicação e Análise &    &    &    &    &    &    &    &    &    & \X &    &    \\
+A7: Relatório Final     &    &    &    &    &    &    &    &    &    &    & \X & \X \\
+\hline \hline
+\end{tabular}
+\caption{Cronograma de execução do projeto detalhado por mês.}
+\label{tab:cronograma_mensal}
+\end{table}
+
 \subsection{Material}
 
 
