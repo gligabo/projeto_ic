@@ -44,7 +44,7 @@ $$
     \prox_{\lambda g}( \bm x ) := \argmin_{\bm y \in \mathbb R^n}\ \frac 12\| \bm y - \bm x \|_2^2 + \lambda g( \bm y ).
 $$
 
-Em reconstrução de imagens, o número $n$ de variáveis é igual ao número de \emph{pixels} da imagem e, portanto, muito grande, da ordem de centenas de milhares ou até na casa dos milhões. Problemas da forma~\eqref{eq:reg_LS} são úteis em problemas de tomografia computadorizada~\cite{her80,kas88,nat86,naw01}, em remoção de ruído em imagens~\cite{rof92,obg05,tnv04} e refoque de imagens desfocadas e com ruído~\cite{obg05,bet09,bet09b}. De fato, este tipo de problema aparece com frequência em regularização variacional de problemas inversos lineares mal condicionados~\cite{ehn00}.
+Em reconstrução de imagens, o número $n$ de variáveis é igual ao número de \emph{pixels} da imagem e, portanto, muito grande, da ordem de centenas de milhares ou até na casa dos milhões. Problemas da forma~\eqref{eq:reg_LS} são úteis para aplicações em tomografia computadorizada~\cite{her80,kas88,nat86,naw01}, em remoção de ruído em imagens~\cite{rof92,obg05,tnv04} e refoque de imagens desfocadas e com ruído~\cite{obg05,bet09,bet09b}. De fato, este tipo de modelo aparece com frequência em regularização variacional de problemas inversos lineares mal condicionados~\cite{ehn00}.
 
 \subsection{Tomografia Computadorizada}
 
@@ -119,26 +119,7 @@ Em reconstrução de imagens, o número $n$ de variáveis é igual ao número de
   \end{equation*}
   Veja a Figura~\ref{fig:rad} para uma ilustração.
   
-  A incógnita é a função $f$ ao passo que os dados obtidos são os valores da transformada de Radon $\mathcal R[ f ]$. Uma vez que o tempo de coleta de dados é limitado e que na prática a função solução é buscada em um espaço de dimensão finita, o problema pode ser reduzido à solução (aproximada) de um sistema de equações lineares $R \bm x \approx \bm r$, onde $R \in \mathbb R^{m \times n}$ é uma matriz obtida a partir da discretização da transformada de Radon, que depende da base utilizada para descrever o espaço de funções e das condições geométricas de aquisição, $\bm x \in \mathbb R^n$ é o vetor desconhecido de coeficientes da combinação linear de elementos da base que resulta na solução do problema (i.e., a solução é $f = x_1f_1 + x_2f_2 + \cdots + x_nf_n$ onde $\{ f_1, f_2, \dots, f_n \}$ é a base para o espaço de funções onde a solução é buscada) e $\bm r$ é o vetor de dados coletados (sempre aproximado pois há erros sistemáticos de modelagem e ruído na aquisição dos dados).
-  
-% \subsection{Introdução}
-% A tomografia computadorizada (TC), embora tenha muitas aplicações - veja G. van Kaick e S. Delorme \cite{van2005computed}-, é amplamente utilizada na área de imagens médicas, onde a qualidade da imagem é crucial para diagnósticos precisos.
-% Esse método de obtenção de imagens é baseado na reconstrução de imagens a partir de dados tomográficos, que são obtidos por meio de projeções da intensidade de raios-x em diferentes ângulos.
-
-% Em tomografia, é importante distinguir claramente entre o problema direto e o problema inverso. 
-% O problema direto corresponde ao cálculo das projeções dos raios-X ao atravessarem um corpo cuja estrutura interna é conhecida. 
-% Já o problema inverso, foco desse projeto, consiste em reconstruir a estrutura interna desconhecida a partir das projeções obtidas, configurando-se como um problema tipicamente mal-posto no sentido de Hadamard \cite{hadamard1902problemes}.
-% Problemas mal-postos apresentam soluções instáveis ou não únicas devido, principalmente, à presença inevitável de ruído nos dados medidos.
-
-% Uma abordagem comum para lidar com esse tipo de problema dito mal-posto é utilizar os métodos de regularização \cite{tikhonov1963solution}, uma vez que tendem a estabilizar as soluções, ou seja, torna a solução mais robusta e estável a variações nos dados.
-% Na literatura atual, existem diversas técnicas diferentes de regularização como a regularização de Tikhonov \cite{tikhonov1977solutions}, regularização por variação total (TV) \cite{rudin1992nonlinear}, entre outras.
-
-% Apesar das vantagens da regularização por variação total, seu termo de regularização é convexo, porém não suave, inviabilizando a aplicação direta de métodos tradicionais de otimização, como o método da descida de gradiente clássico. 
-% No entanto, a estrutura especial da função objetivo – composta por uma parte suave (função de ajuste aos dados) e outra não suave (termo TV) – permite o uso eficiente de métodos de otimização baseados em operadores proximais. 
-% Como a regularização TV não admite uma solução analítica fechada, os métodos iterativos inexatos surgem como alternativas.
-
-% Nesse contexto, o presente projeto tem por objetivo estudar e implementar métodos acelerados inexatos de primeira ordem, fundamentados em operadores proximais, visando resolver o problema de reconstrução tomográfica regularizada por variação total. 
-% Espera-se que esses métodos promovam uma reconstrução mais eficiente e robusta, mantendo a fidelidade das bordas e acelerando significativamente a convergência numérica.
+  A incógnita é a função $f$, ao passo que os dados obtidos são os valores da transformada de Radon $\mathcal R[ f ]$. Uma vez que o tempo de coleta de dados é limitado e que na prática a função solução é buscada em um espaço de dimensão finita, o problema pode ser reduzido à solução (aproximada) de um sistema de equações lineares $R \bm x \approx \bm r$, onde $R \in \mathbb R^{m \times n}$ é uma matriz obtida a partir da discretização da transformada de Radon, que depende da base utilizada para descrever o espaço de funções e das condições geométricas de aquisição, $\bm x \in \mathbb R^n$ é o vetor desconhecido de coeficientes da combinação linear de elementos da base que resulta na solução do problema (i.e., a solução é $f = x_1f_1 + x_2f_2 + \cdots + x_nf_n$ onde $\{ f_1, f_2, \dots, f_n \}$ é a base para o espaço de funções onde a solução é buscada) e $\bm r$ é o vetor de dados coletados (sempre aproximado pois há erros sistemáticos de modelagem e ruído na aquisição dos dados).
 
 \subsection{Justificativa}
 
@@ -146,9 +127,42 @@ Uma vez que, graças à natureza da transformada de Radon, a matriz $R$ sempre �
 \begin{equation*}
   \min_{\bm x}\ f( R\bm x, \bm r ) + \gamma g( \bm x ),
 \end{equation*}
-onde $f : \mathbb R^m \times \mathbb R^m \to \mathbb R$ é uma função que força a proximidade entre $R\bm x$ e $\bm r$, $g : \mathbb R^n \to \mathbb R$ é uma função que força a suavidade da imagem resultante e $\gamma \in \mathbb R_+$ é um parâmetro que controla a suavidade imposta na solução do problema. Algoritmos de $\epsilon$-subgradientes foram utilizados com sucesso em~\cite{hed09} e algoritmos acelerados de primeira ordem em~\cite{hzh20,hes17} para resolver modelos úteis da forma acima, portanto, esperamos que as técnicas a serem estudadas no presente projeto sejam ainda mais bem sucedidas nesta aplicação.
+onde $f : \mathbb R^m \times \mathbb R^m \to \mathbb R$ é uma função que força a proximidade entre $R\bm x$ e $\bm r$, $g : \mathbb R^n \to \mathbb R$ é uma função que força a suavidade da imagem resultante e $\gamma \in \mathbb R_+$ é um parâmetro que controla a suavidade imposta na solução do problema. Algoritmos de $\epsilon$-subgradientes foram utilizados com sucesso em~\cite{hed09} e algoritmos acelerados de primeira ordem em~\cite{hzh20,hes17} para resolver modelos úteis da forma acima. Nenhum dos trabalhos mencionados levava em consideração a forma específica de quadrados mínimos regularizados que possui~\eqref{eq:reg_LS}, portanto, esperamos que as técnicas a serem estudadas no presente projeto sejam ainda mais bem sucedidas nesta aplicação.
 
-\section*{Objetivos}
+\subsection{Materiais e métodos}
+
+A execução do presente projeto utilizará computadores comuns e \emph{software} de código livre cuja disponibilidade é ampla e que são facilmente acessíveis. Nos dias de hoje, rotinas numéricas eficientes são facilmente utilizadas através de suas interfaces de programação para linguagens de alto nível, mesmo quando tais rotinas são implementadas em linguagens mais eficientes. Em particular, a linguagem Python reúne numerosas bibliotecas úteis no nosso contexto e, por este motivo, escolhemos esta linguagem para a execução da parte computacional do nosso projeto.
+
+Por exemplo, para a computação de produtos matriz-vetor da forma $A\bm x$ ou $A^T\bm y$, onde $A$ é a discretização da Transformada de Radon, temos a biblioteca ASTRA ou a desenvolvida pelo supervisor\footnote{\url{https://github.com/elias-helou/ray_tracing}}, ambas com suporte a GPU e com interfaces para Python. Para outras modalidades de reconstrução que podem vir a ser abordadas, sem a mesma prioridade de reconstrução tomográfica, no projeto, temos recuperação de imagens desfocadas, que costuma ser modelada através da convolução, cuja adjunta é a correlação, ambas implementadas eficientemente no pacote \texttt{scipy.signal}. Outra modalidade de reconstrução vem de técnicas de ressonância magnética, modelada através da transformada discreta de Fourier, que possui implementações em praticamente todas as linguagens de programação modernas.
+
+Para a parcela de regularização, iremos utilizar duas opções, que são apropriadas para o problema de reconstrução de imagens. A primeira será $g( \bm x ) = \gamma\| H\bm x\|_1$, onde $\gamma \ge 0$ é o parâmetro de regularização e $H$ é uma transformada \emph{wavelet} (que é ortonormal, auto-adjunta e computável eficientemente). Para esta regularização, o operador proximal de $\lambda g$ tem a forma fechada
+\begin{equation}\label{eq:prox_H1}    
+    \prox_{\lambda g}( \bm x ) = H^T\mathcal S_{\lambda\gamma}( H \bm x ),
+\end{equation}
+onde $S_{\lambda\gamma}$ é o operador de \emph{soft-thresholding}, dado por
+$$
+    \bigl( \mathcal S_\alpha( \bm y ) \bigr)_i = \begin{cases}
+        y_i + \alpha & \text{se } y_i \le -\alpha\\
+        0 & \text{se } y_i \in ( -\alpha, \alpha )\\
+        y_i - \alpha & \text{se } y_i \ge \alpha.
+    \end{cases}
+$$
+A segunda opção a ser testada é $g( \bm x ) = \gamma TV( \bm x )$, onde, novamente, $\gamma \ge 0$ é o parâmetro de regularização e, agora, $TV$ é a variação total, dada por
+$$
+    TV( \bm x ) = \sum_{i = 1}^{\sqrt n}\sum_{j = 1}^{\sqrt n}\sqrt{( x_{i, j} - x_{i - 1, j} )^2 + ( x_{i, j} - x_{i, j - 1} )^2}.
+$$
+No caso da variação total, não há uma forma fechada para o operador proximal, mas o algoritmo rápido fornecido em~\cite{bet09b} pode ser implementado com facilidade e este algoritmo fornece uma aproximação suficientemente precisa de $\prox_{\lambda\gamma TV}( \bm x )$ com um número relativamente pequeno de iterações computacionalmente baratas.
+
+A reconstrução de imagens requer dados. Para o caso de tomografia possuo aquisições de dados de microtomografia que podem ser utilizados neste projeto, além de dados sintéticos que podemos gerar com facilidade utilizando as mesmas ferramentas computacionais mencionadas acima. Os dados reais que temos parecem-se com os mostrados na Figura~\ref{fig:dados_maca}.
+
+\begin{figure}
+    \includegraphics[height=0.4\textwidth,width=0.399\textwidth]{maca_low.jpg}\hfill{}%
+    \includegraphics[height=0.4\textwidth,width=0.599\textwidth]{sino_low.jpg}
+
+    \caption{Dados de microtomografia obtidos no LNLS. À esquerda: uma radiografia de semente de maçã. À direita, sinograma (representação da Transformada de Radon no plano $\theta\times t$) de uma fatia, montado através de dados de $512$ radiografias tomadas em ângulos distintos.}\label{fig:dados_maca}
+\end{figure}
+
+\section{Objetivos}
 
 O objetivo do seguinte projeto de iniciação científica é estudar o uso de busca direcional exata no passo de máxima descida do método de gradiente-proximal acelerado conhecido como FISTA~\cite{bet09,bet09b} aplicado ao problema~\eqref{eq:reg_LS}. Considere o problema
 \begin{equation}\label{eq:par_smooth}
@@ -174,12 +188,12 @@ O principal objetivo do presente projeto é estudar o que ocorre quando, para o 
 $$
     f( \bm x ) = \frac12\bm x^TQ\bm x - \bm c^T\bm x,
 $$
-entretanto, o tamanho de passo que minimiza a função a partir de $\bm x^{( k )}$ ao longo de uma direção de busca $\bm d^{( k )}$ pode ser calculado com esforço computacional relativamnte baixo através da fórmula
+entretanto, o tamanho de passo que minimiza a função a partir de $\bm x^{( k )}$ ao longo de uma direção de busca $\bm d^{( k )}$ pode ser calculado com esforço computacional relativamente baixo através da fórmula
 $$
     \lambda_k = -\frac{\nabla f( \bm x^{( k )} )^T\bm d^{( k )}}{( \bm d^{( k )} )^TQ\bm d^{( k )}}.
 $$
 
-Em métodos para minimizar apenas a função quadrática $f$, o cálculo de $Q\bm d^{( k )}$ pode ser reaproveitado ou vir de quantidades calculadas previamente. Este não parece ser o caso para algoritmos como FISTA, portanto, nossos objetivos são:
+Em métodos para minimizar apenas a função quadrática $f$, o cálculo de $Q\bm d^{( k )}$ pode ser reaproveitado posteriormente ou vir de quantidades calculadas previamente. Este não parece ser o caso para algoritmos como FISTA, portanto, nossos objetivos são:
 \begin{itemize}
     \item Analisar experimentalmente o ganho de velocidade de convergência em número de iterações com o uso do passo exato com regularização baseada em variação total
     \item Avaliar o ganho de custo/benefício em tempo de computação entre o passo fixo e passo exato com regularização baseada em variação total
@@ -187,9 +201,7 @@ Em métodos para minimizar apenas a função quadrática $f$, o cálculo de $Q\b
     \item Repetir os estudos acima para o caso sem regularização (onde o cálculo de $Q\bm d^{( k )}$ não impõe custo computacional significativo), mas desta vez levando em consideração a aplicabilidade do método de gradientes conjugados
 \end{itemize}
 
-\section*{Plano de Trabalho e Cronograma}
-
-\subsection*{Cronograma}
+\section{Plano de Trabalho e Cronograma}
 
 Considerando o período de 12 meses, foram definidas as seguintes atividades e seus respectivos períodos de execução:
 
@@ -241,26 +253,6 @@ A7: Relatório Final     &    &    &    &    &    &    &    &    &    &    & \X 
 \caption{Cronograma de execução do projeto detalhado por mês.}
 \label{tab:cronograma_mensal}
 \end{table}
-
-\subsection{Material}
-
-
-\subsection{Metodologia}
-
-\noindent{\textbf{Transformada de Radon}}
-
-A tomografia computadorizada é um exemplo clássico de problema inverso, cujo objetivo é de
-determinar a estrutura interna de um objeto de maneira não invasiva. A ideia principal desse
-tipo de método baseia-se no fato de que enviar raios-x, gama, neutrinos, entre outros sobre objetos distintos gera coeficientes de atenuação
-diferentes \cite{quinto2006introduction}. Nesse processo, sensores medem a intensidade residual dos raios após atravessarem o objeto, 
-e os dados coletados são utilizados para a reconstrução matemática precisa da anatomia interna original.
-
-No entanto, apenas uma radiografia não é suficiente para se obter uma boa aproximação da estrutura interna de um objeto.
-Por isso, é necessário que o objeto seja radiografado em diversas direções, gerando múltiplas projeções.
-Essas múltiplas projeções, obtidas em diferentes ângulos, são matematicamente descritas pela Transformada de Radon \cite{RADON} de uma função $f(x,y)$, 
-sendo definida como uma integral de linha ao longo de uma reta inclinada em um ângulo $\theta$.
-
-\section*{Referências}
 
 \printbibliography
 
