@@ -1,12 +1,31 @@
 import numpy as np
-import scipy.optimize as spo
+
 class Algorithms:
 
 #Como nossa clase de problemas têm que f(x) é uma forma quadrática
-# Busca exata se torna: lambda_k = - \frac{grad(f(xk)) dk}{dk^TQdk}
+# Busca exata se torna: lambda_k = - \frac{grad(f(xk))^Tdk}{dk^TQdk}
+    
+    @staticmethod
+    def mdpf( f, grad_f, x0, step, tol = 1.0e-4, max_iter = 1000 ):
+        x = x0
+        iterations = 0
+        iters = [ x ]
+        g_x = grad_f( x )
+
+        while f( x ) > tol and iterations < max_iter:
+
+            x = x - step * g_x
+            g_x = grad_f( x )
+            iterations += 1
+            iters.append( x )
+
+        return iters
+    
+        
+
 
     @staticmethod
-    def mdbe( f, grad_f, Q, x0, tol = 1.0e-4, max_iter = 10000 ):
+    def mdbe( f, grad_f, Q, x0, tol = 1.0e-4, max_iter = 1000 ):
         
         x = x0
         iterations = 0
@@ -29,7 +48,7 @@ class Algorithms:
     @staticmethod
     
     ##Supondo que a nossa f é Lipschitzs e Convexa:
-    def nesterov_fixo( f, grad_f, x, step, tol = 1.0e-4, max_iter = 10000 ):
+    def nesterov_fixo( f, grad_f, x, step, tol = 1.0e-4, max_iter = 1000 ):
         
         y0 = x.copy()
         t0 = 1.0
@@ -53,7 +72,7 @@ class Algorithms:
 
         return iters
 
-    def nesterov_exato( f, grad_f, Q, x, tol = 1.0e-4, max_iter = 10000 ):
+    def nesterov_exato( f, grad_f, Q, x, tol = 1.0e-4, max_iter = 1000 ):
         
         y0 = x.copy()
         t0 = 1.0
@@ -84,7 +103,7 @@ class Algorithms:
         return iters        
 
     @staticmethod
-    def conjugate( Q, b, x0, f, tol=1.0e-4, max_iter=10000 ):
+    def conjugate( Q, b, x0, f, tol=1.0e-4, max_iter = 1000 ):
         x = x0.copy()
         g = Q( x ) - b
         d = -g
