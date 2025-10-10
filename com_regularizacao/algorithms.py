@@ -1,51 +1,70 @@
 import numpy as np
-class Algorithms():
+import pywt
+class Algorithms:
     
     @staticmethod    
     def soft_thresholding( c, step, gamma ):
         return np.sign( c ) * np.maximum( np.abs( c ) - step * gamma, 0 ) # numpy faz vetorização
     
+
     @staticmethod
-    def prox_wavelet( H, HT, x, step, gamma ):
-        c = H( x )
-        S = Algorithms.soft_thresholding( c, step, gamma )
-        return HT( S )
+    def prox_wavelet( x, step, gamma, wavelet = 'haar' ):
+        coeffs = pywt.wavedec2( x, wavelet = wavelet, mode = 'periodization' )
+        coeffs_t = []
+        coeffs_t.append( coeffs[0] )#salva a representação LL
+        for i in coeffs[ 1: ]:
+            cH_t = Algorithms.soft_thresholding( i[0], step = step, gamma = gamma )
+            cH_v = Algorithms.soft_thresholding( i[1], step = step, gamma = gamma )            
+            cH_d = Algorithms.soft_thresholding( i[2], step = step, gamma = gamma )            
+            
+            coeffs_t.append( ( cH_t, cH_v, cH_d ) )
+
+        return pywt.waverec2( coeffs = coeffs_t, wavelet = wavelet, mode = 'periodization' )
 
     def prox_tv(  ):
         pass
 
     @staticmethod
     #note que por enquanto só funciona p/ transformada wavelet
-    def ista_fixo( f, x0, grad_f, prox, step, gamma, H, HT, max_iter = 1000, tol = 1.0e-1  ):
+    def ista_fixo( f, x0, grad_f, prox, step, gamma, max_iter = 1000, tol = 1.0e-1, wavelet = 'haar' ):
         x = x0.copy()
         iterations = 0
         iters = [ x.copy() ]
-        while f( x ) > tol and iterations < max_iter:
-            g_f = grad_f( x )        
-            y = x - step * g_f
-            x = prox( H = H, HT = HT, x = y, step = step, gamma = gamma )
+        g_f = grad_f( x )        
+
+        dif = float( 'inf' )
+
+        while dif > tol and iterations < max_iter:
+            x0 = x.copy()
+            g_f = grad_f( x0 )        
+            y = x0 - step * g_f
+            x = prox( x = y, step = step, gamma = gamma, wavelet = wavelet )
             iterations += 1
             iters.append( x.copy() )
-
+            dif = np.linalg.norm( x - x0 )
         return iters
    
     @staticmethod
-    def ista_exato( f, x0, grad_f, prox, gamma, Q, H, HT, max_iter = 1000, tol = 1.0e-1  ):
+    def ista_exato( f, x0, grad_f, prox, gamma, Q, max_iter = 1000, tol = 1.0e-1, wavelet = 'haar' ):
         x = x0.copy()
         iterations = 0
         iters = [ x.copy() ]
-        while f( x ) > tol and iterations < max_iter:
-            g_f = grad_f( x )
+        dif = float( 'inf' )
+
+        while dif > tol and iterations < max_iter:
+            x0 = x.copy()
+            g_f = grad_f( x0 )
 
             num = np.sum( g_f * g_f )  
             den = np.sum( g_f * Q( g_f ) )
             step = num / den
             
-            y = x - step * g_f
-            x = prox( H = H, HT = HT, x = y, step = step, gamma = gamma )
+            y = x0 - step * g_f
+            x = prox( x = y, step = step, gamma = gamma, wavelet = wavelet )
                     
             iterations += 1
             iters.append( x.copy() )
+            dif = np.linalg.norm( x - x0 )
 
         return iters
 
@@ -54,54 +73,63 @@ class Algorithms():
     #     pass
 
     @staticmethod
-    def fista_fixo( f, x0, grad_f, prox, step, gamma, H, HT, max_iter = 1000, tol = 1.0e-1  ):
+    def fista_fixo( f, x0, grad_f, prox, step, gamma, max_iter = 1000, tol = 1.0e-1, wavelet = 'haar' ):
         y0 = x0.copy()
         x = x0.copy()
         iterations = 0
         t0 = 1
         iters = [ x.copy() ]
+        dif = float( 'inf' )
 
-        while f( x ) > tol and iterations < max_iter:
-        
+        while dif > tol and iterations < max_iter:
+            x0 = x.copy()
+
             ygrad = y0 - step * grad_f( y0 )
         
-            x = prox( H = H, HT = HT, x = ygrad, step = step, gamma = gamma )
+            x = prox( x = ygrad, step = step, gamma = gamma, wavelet = wavelet )
             t = ( 1 + np.sqrt( 1 + 4*t0 ** 2 ) ) / 2
             y = x + ( ( t0 - 1 ) / ( t ) )  * ( x - x0 )
             iterations += 1
             iters.append( x.copy() )
 
-            x0 = x
             y0 = y
             t0 = t
+            dif = np.linalg.norm( x - x0 )
 
         return iters
 
     @staticmethod
-    def fista_exato( f, x0, Q, grad_f, prox, H, HT, gamma, max_iter = 1000, tol = 1.0e-1  ):
+    def fista_exato( f, x0, Q, grad_f, prox, gamma, max_iter = 1000, tol = 1.0e-1, wavelet = 'haar'  ):
         y0 = x0.copy()
         x = x0.copy()
         iterations = 0
         t0 = 1
         iters = [ x.copy() ]
+        dif = float( 'inf' )
 
-        while f( x ) > tol and iterations < max_iter:
+        while dif > tol and iterations < max_iter:
+            x0 = x.copy()
             g_y = grad_f( y0 )
             num = np.sum( g_y * g_y )  
             den = np.sum( g_y * Q( g_y ) )
             step = num / den
-
+            if iterations % 50 == 0:
+                print( f'O tamanho do passo calculado foi de: {step}' )
             ygrad = y0 - step * g_y
         
-            x = prox( H = H, HT = HT, x = ygrad, step = step, gamma = gamma )
+            x = prox( x = ygrad, step = step, gamma = gamma, wavelet = wavelet )
             t = ( 1 + np.sqrt( 1 + 4*t0 ** 2 ) ) / 2
             y = x + ( ( t0 - 1 ) / ( t ) )  * ( x - x0 )
+            
+            dif = np.linalg.norm( x - x0 )
+
+
+            y0 = y
+            t0 = t
             iterations += 1
             iters.append( x.copy() )
 
-            x0 = x
-            y0 = y
-            t0 = t
+
         return iters
 
 
