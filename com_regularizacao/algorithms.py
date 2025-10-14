@@ -9,17 +9,10 @@ class Algorithms:
 
     @staticmethod
     def prox_wavelet( x, step, gamma, wavelet = 'haar' ):
-        coeffs = pywt.wavedec2( x, wavelet = wavelet, mode = 'periodization' )
-        coeffs_t = []
-        coeffs_t.append( coeffs[0] )#salva a representação LL
-        for i in coeffs[ 1: ]:
-            cH_t = Algorithms.soft_thresholding( i[0], step = step, gamma = gamma )
-            cH_v = Algorithms.soft_thresholding( i[1], step = step, gamma = gamma )            
-            cH_d = Algorithms.soft_thresholding( i[2], step = step, gamma = gamma )            
-            
-            coeffs_t.append( ( cH_t, cH_v, cH_d ) )
-
-        return pywt.waverec2( coeffs = coeffs_t, wavelet = wavelet, mode = 'periodization' )
+        Hx, slices = pywt.coeffs_to_array( pywt.wavedec2( x, wavelet = wavelet, mode = 'periodization' ) )
+        c = Algorithms.soft_thresholding( Hx, step = step, gamma = gamma )
+    
+        return pywt.waverec2( pywt.array_to_coeffs( c, slices, output_format = 'wavedec2' ), wavelet = wavelet, mode = 'periodization' )
 
     def prox_tv(  ):
         pass
