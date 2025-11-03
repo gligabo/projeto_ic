@@ -51,7 +51,9 @@ class Algorithms:
             num = np.sum( g_f * g_f )  
             den = np.sum( g_f * Q( g_f ) )
             step = num / den
-            
+            if iterations % 50 == 0:
+                print( f'O tamanho do passo para o ista com passo exato foi de: {step}' )
+
             y = x0 - step * g_f
             x = prox( x = y, step = step, gamma = gamma, wavelet = wavelet )
                     
@@ -107,7 +109,7 @@ class Algorithms:
             den = np.sum( g_y * Q( g_y ) )
             step = num / den
             if iterations % 50 == 0:
-                print( f'O tamanho do passo calculado foi de: {step}' )
+                print( f'O tamanho do passo para o fista com passo exato foi de: {step}' )
             ygrad = y0 - step * g_y
         
             x = prox( x = ygrad, step = step, gamma = gamma, wavelet = wavelet )
