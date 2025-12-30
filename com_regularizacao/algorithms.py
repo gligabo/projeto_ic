@@ -6,7 +6,6 @@ class Algorithms:
     def soft_thresholding( c, step, gamma ):
         return np.sign( c ) * np.maximum( np.abs( c ) - step * gamma, 0 ) # numpy faz vetorização
     
-
     @staticmethod
     def prox_wavelet( x, step, gamma, wavelet = 'haar' ):
         Hx, slices = pywt.coeffs_to_array( pywt.wavedec2( x, wavelet = wavelet, mode = 'periodization' ) )
@@ -64,8 +63,42 @@ class Algorithms:
         return iters
 
 
-    # def ista_backtracking( f, x0, grad_f, prox, step, H, max_iter = 1000, tol = 1.0e-1  ):
-    #     pass
+    def fista_backtracking( F, f, x0, grad_f, prox, step, beta, gamma, max_iter = 1000, tol = 1.0e-1, wavelet = 'haar' ):
+        y0 = x0.copy()
+        x = x0.copy()
+        iterations = 0
+        t0 = 1
+        iters = [ x.copy() ]
+        dif = float( 'inf' )
+
+        while dif > tol and iterations < max_iter:
+            x0 = x.copy()
+
+            fy = f( y0 )
+            g_y = grad_f( y0 )
+
+            ygrad = y0 - step * g_y
+            x = prox( x = ygrad, step = step, gamma = gamma, wavelet = wavelet )
+   
+            #while F( x ) > fy + np.sum( ( x - y0 ) * g_y ) + 1 / ( 2 * step ) * np.sum( ( x - y0 ) ** 2 ) + gamma * g( x ):
+            #esse while de cima é equivalente a subtrair gamma * g(x) dos dois lados, o que resulta em:
+            
+            while f( x ) > fy + np.sum( ( x - y0 ) * g_y ) + 1 / ( 2 * step ) * np.sum( ( x - y0 ) ** 2 ):
+                step = beta * step
+
+                ygrad = y0 - step * g_y
+                x = prox( x = ygrad, step = step, gamma = gamma, wavelet = wavelet )
+
+            t = ( 1 + np.sqrt( 1 + 4*t0 ** 2 ) ) / 2
+            y = x + ( ( t0 - 1 ) / ( t ) )  * ( x - x0 )
+            iterations += 1
+            iters.append( x.copy() )
+
+            y0 = y
+            t0 = t
+            dif = np.linalg.norm( x - x0 )
+
+        return iters
 
     @staticmethod
     def fista_fixo( f, x0, grad_f, prox, step, gamma, max_iter = 1000, tol = 1.0e-1, wavelet = 'haar' ):
