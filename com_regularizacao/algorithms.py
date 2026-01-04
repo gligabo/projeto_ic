@@ -63,7 +63,7 @@ class Algorithms:
         return iters
 
 
-    def fista_backtracking( F, f, x0, grad_f, prox, step, beta, gamma, max_iter = 1000, tol = 1.0e-1, wavelet = 'haar' ):
+    def fista_backtracking( f, x0, grad_f, prox, step, beta, gamma, max_iter = 1000, tol = 1.0e-1, wavelet = 'haar' ):
         y0 = x0.copy()
         x = x0.copy()
         iterations = 0
@@ -159,8 +159,3 @@ class Algorithms:
 
 
         return iters
-
-
-    # def fista_backtracking( f, x0, grad_f, prox, step, H, max_iter = 1000, tol = 1.0e-1  ):
-    #     pass
-
