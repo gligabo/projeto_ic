@@ -53,8 +53,8 @@ class Algorithms:
         t0 = 1.0
         iters = [ x ]
         iterations = 0
-
-        while f( x ) > tol and iterations < max_iter:
+        
+        while f( y0 ) > tol and iterations < max_iter:
             g_x = grad_f( x )
             y = x - step * g_x
 
@@ -66,7 +66,7 @@ class Algorithms:
             y0 = y
             x = x_trial
             iterations += 1
-            iters.append( x )
+            iters.append( y )
 
         return iters
 
@@ -77,7 +77,7 @@ class Algorithms:
         iters = [ x ]
         iterations = 0
         
-        while f( x ) > tol and iterations < max_iter:            
+        while f( y0 ) > tol and iterations < max_iter:            
             g_x = grad_f( x )
 
 
@@ -95,7 +95,7 @@ class Algorithms:
             y0 = y
             x = x_trial
             iterations += 1
-            iters.append( x )
+            iters.append( y )
 
         return iters        
 
@@ -106,7 +106,7 @@ class Algorithms:
         iters = [ x ]
         iterations = 0
 
-        while f( x ) > tol and iterations < max_iter:
+        while f( y0 ) > tol and iterations < max_iter:
             s = step
             g_x = grad_f( x )
             g2 = np.sum( g_x ** 2 )
@@ -123,7 +123,7 @@ class Algorithms:
             y0 = y
             x = x_trial
             iterations += 1
-            iters.append( x )
+            iters.append( y )
 
         return iters
 
