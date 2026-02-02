@@ -127,39 +127,8 @@ class Algorithms:
 
         return iters
 
-
     @staticmethod
     def conjugate( Q, b, x0, f, tol = 1.0e-4, max_iter = 1000 ):
-        x = x0.copy()
-        g = Q( x ) - b
-        d = -g
-        iters = [ x ]
-        iterations = 0
-
-        while f( x ) > tol and iterations < max_iter:
-            Qd = Q( d )
-            alpha = -np.sum( g * d ) / np.sum( d * Qd )
-
-            x = x + alpha * d
-
-            g_next = Q( x ) - b
-
-            if np.linalg.norm( g_next ) <= tol:
-                iters.append( x )
-                break
-
-            beta = np.sum( g_next * g_next ) / np.sum( g * g )
-
-            d = -g_next + beta * d
-            g = g_next
-
-            iterations += 1
-            iters.append( x )
-
-        return iters
-
-    @staticmethod
-    def conjugate_optimized( Q, b, x0, f, tol = 1.0e-4, max_iter = 1000 ):
         x = x0.copy()
         g = Q( x ) - b
         d = -g
