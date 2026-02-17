@@ -29,8 +29,7 @@ class Algorithms:
         return r,s
 
     @staticmethod
-    #gamma na verdade é gamma * step no nosso problema
-    def prox_tv( b, step, gamma, max_iter, L, LT, proj_P, **kwargs ):
+    def prox_tv( b, step, gamma, max_iter_tv, L, LT, proj_P, **kwargs ):
         p0, q0 = np.zeros( shape = ( b.shape[ 0 ] - 1, b.shape[ 1 ] ) ), np.zeros( shape = ( b.shape[ 0 ], b.shape[ 1 ] - 1 ) )
         r0, s0 = p0, q0
 
@@ -39,7 +38,7 @@ class Algorithms:
 
         lbd = step * gamma
 
-        while iters < max_iter:
+        while iters < max_iter_tv:
             dp, dq = LT( np.maximum( 0, b - lbd * L( r0, s0 ) ) )
             p, q = proj_P( r0 + 1 / ( 8 * lbd ) * dp, s0 + 1 / ( 8 * lbd ) * dq )
 
@@ -69,7 +68,7 @@ class Algorithms:
             x0 = x.copy()
             g_f = grad_f( x0 )        
             y = x0 - step * g_f
-            x = prox( x = y, step = step, gamma = gamma, **kwargs )
+            x = prox( y, step = step, gamma = gamma, **kwargs )
             iterations += 1
             iters.append( x.copy() )
             dif = np.linalg.norm( x - x0 )
@@ -93,7 +92,7 @@ class Algorithms:
             #     print( f'O tamanho do passo para o ista com passo exato foi de: {step}' )
 
             y = x0 - step * g_f
-            x = prox( x = y, step = step, gamma = gamma, **kwargs )
+            x = prox( y, step = step, gamma = gamma, **kwargs )
                     
             iterations += 1
             iters.append( x.copy() )
@@ -117,7 +116,7 @@ class Algorithms:
             g_y = grad_f( y0 )
 
             ygrad = y0 - step * g_y
-            x = prox( x = ygrad, step = step, gamma = gamma, **kwargs )
+            x = prox( ygrad, step = step, gamma = gamma, **kwargs )
    
             #while F( x ) > fy + np.sum( ( x - y0 ) * g_y ) + 1 / ( 2 * step ) * np.sum( ( x - y0 ) ** 2 ) + gamma * g( x ):
             #esse while de cima é equivalente a subtrair gamma * g(x) dos dois lados, o que resulta em:
@@ -126,7 +125,7 @@ class Algorithms:
                 step = beta * step
 
                 ygrad = y0 - step * g_y
-                x = prox( x = ygrad, step = step, gamma = gamma, **kwargs )
+                x = prox( ygrad, step = step, gamma = gamma, **kwargs )
 
             t = ( 1 + np.sqrt( 1 + 4*t0 ** 2 ) ) / 2
             y = x + ( ( t0 - 1 ) / ( t ) )  * ( x - x0 )
@@ -153,7 +152,7 @@ class Algorithms:
 
             ygrad = y0 - step * grad_f( y0 )
         
-            x = prox( x = ygrad, step = step, gamma = gamma, **kwargs )
+            x = prox( ygrad, step = step, gamma = gamma, **kwargs )
             t = ( 1 + np.sqrt( 1 + 4*t0 ** 2 ) ) / 2
             y = x + ( ( t0 - 1 ) / ( t ) )  * ( x - x0 )
             iterations += 1
@@ -184,7 +183,7 @@ class Algorithms:
             #     print( f'O tamanho do passo para o fista com passo exato foi de: {step}' )
             ygrad = y0 - step * g_y
         
-            x = prox( x = ygrad, step = step, gamma = gamma, **kwargs )
+            x = prox( ygrad, step = step, gamma = gamma, **kwargs )
             t = ( 1 + np.sqrt( 1 + 4*t0 ** 2 ) ) / 2
             y = x + ( ( t0 - 1 ) / ( t ) )  * ( x - x0 )
             
@@ -215,7 +214,7 @@ class Algorithms:
             step = eta * ( num / den )
 
             y = x0 - step * g_f
-            x = prox( x = y, step = step, gamma = gamma, **kwargs )
+            x = prox( y, step = step, gamma = gamma, **kwargs )
                     
             iterations += 1
             iters.append( x.copy() )
@@ -241,7 +240,7 @@ class Algorithms:
             step = eta * ( num / den )
             ygrad = y0 - step * g_y
         
-            x = prox( x = ygrad, step = step, gamma = gamma, **kwargs )
+            x = prox( ygrad, step = step, gamma = gamma, **kwargs )
             t = ( 1 + np.sqrt( 1 + 4*t0 ** 2 ) ) / 2
             y = x + ( ( t0 - 1 ) / ( t ) )  * ( x - x0 )
             
