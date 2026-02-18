@@ -1,0 +1,6 @@
+# Python (Ambientes virtuais e cache)
+venv/
+.venv/
+__pycache__/
+*.pyc
+
