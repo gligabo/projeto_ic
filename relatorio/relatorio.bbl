@@ -1,0 +1,106 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global}
+    \entry{doi:10.1137/080716542}{article}{}
+      \name{author}{2}{}{%
+        {{hash=7e285058a4af1ce645d910e3951d7b82}{%
+           family={Beck},
+           familyi={B\bibinitperiod},
+           given={Amir},
+           giveni={A\bibinitperiod}}}%
+        {{hash=009141d6de34d70316721834af7f1e0b}{%
+           family={Teboulle},
+           familyi={T\bibinitperiod},
+           given={Marc},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{c91e0d857797424d21c636688a53c132}
+      \strng{fullhash}{c91e0d857797424d21c636688a53c132}
+      \strng{bibnamehash}{c91e0d857797424d21c636688a53c132}
+      \strng{authorbibnamehash}{c91e0d857797424d21c636688a53c132}
+      \strng{authornamehash}{c91e0d857797424d21c636688a53c132}
+      \strng{authorfullhash}{c91e0d857797424d21c636688a53c132}
+      \field{extraname}{1}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Abstract. We consider the class of iterative shrinkage-thresholding algorithms (ISTA) for solving linear inverse problems arising in signal/image processing. This class of methods, which can be viewed as an extension of the classical gradient algorithm, is attractive due to its simplicity and thus is adequate for solving large-scale problems even with dense matrix data. However, such methods are also known to converge quite slowly. In this paper we present a new fast iterative shrinkage-thresholding algorithm (FISTA) which preserves the computational simplicity of ISTA but with a global rate of convergence which is proven to be significantly better, both theoretically and practically. Initial promising numerical results for wavelet-based image deblurring demonstrate the capabilities of FISTA which is shown to be faster than ISTA by several orders of magnitude.}
+      \field{journaltitle}{SIAM Journal on Imaging Sciences}
+      \field{number}{1}
+      \field{title}{A Fast Iterative Shrinkage-Thresholding Algorithm for Linear Inverse Problems}
+      \field{volume}{2}
+      \field{year}{2009}
+      \field{pages}{183\bibrangedash 202}
+      \range{pages}{20}
+      \verb{doi}
+      \verb 10.1137/080716542
+      \endverb
+      \verb{eprint}
+      \verb https://doi.org/10.1137/080716542
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1137/080716542
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1137/080716542
+      \endverb
+    \endentry
+    \entry{5173518}{article}{}
+      \name{author}{2}{}{%
+        {{hash=7e285058a4af1ce645d910e3951d7b82}{%
+           family={Beck},
+           familyi={B\bibinitperiod},
+           given={Amir},
+           giveni={A\bibinitperiod}}}%
+        {{hash=009141d6de34d70316721834af7f1e0b}{%
+           family={Teboulle},
+           familyi={T\bibinitperiod},
+           given={Marc},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{c91e0d857797424d21c636688a53c132}
+      \strng{fullhash}{c91e0d857797424d21c636688a53c132}
+      \strng{bibnamehash}{c91e0d857797424d21c636688a53c132}
+      \strng{authorbibnamehash}{c91e0d857797424d21c636688a53c132}
+      \strng{authornamehash}{c91e0d857797424d21c636688a53c132}
+      \strng{authorfullhash}{c91e0d857797424d21c636688a53c132}
+      \field{extraname}{2}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Transactions on Image Processing}
+      \field{number}{11}
+      \field{title}{Fast Gradient-Based Algorithms for Constrained Total Variation Image Denoising and Deblurring Problems}
+      \field{volume}{18}
+      \field{year}{2009}
+      \field{pages}{2419\bibrangedash 2434}
+      \range{pages}{16}
+      \verb{doi}
+      \verb 10.1109/TIP.2009.2028250
+      \endverb
+      \keyw{Image denoising;Iterative algorithms;TV;Deburring;Acceleration;Noise reduction;Iterative methods;Convergence;Anisotropic magnetoresistance;Image restoration;Convex optimization;fast gradient-based methods;image deblurring;image denoising;total variation}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
