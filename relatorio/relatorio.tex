@@ -403,7 +403,7 @@ Em um primeiro momento, consideramos o problema compósito:
 \min F(x) = \frac{1}{2}\norm{Ax - b}_2^2 + \gamma \norm{Hx}_1
 \]
 
-onde $A$ é um operador de convolução, $x$ é a imagem a ser recuperada, $b$ é a imagem borrada e ruidosa e $H$ é uma transformada \textit{wavelet}. Para a geração de $b$, foi utilizada a imagem \textit{astronaut} da biblioteca \textit{scikit-image} e foram utilizados um operador de convolução com um kernel de média de dimensões $7 \times 7$ e um ruído gaussiano com média $\mu = 0$ e desvio padrão $\sigma = 0.01$. Para o termo de regularização foi utilizada a \textit{wavelet} de Daubechies. Além disso, foi possível estimar a constante de Lipschitz $L_f = 0.9997$, permitindo assim garantir o limite de convergência teórico para o ISTA ($\lambda < \frac{2}{L_f} = 2.0006$) e para o FISTA ($\lambda \leq \frac{1}{L_f} = 1.0003$). Portanto, o tamanho de passo $\lambda = 1$ foi utilizado para os algoritmos de passo fixo e \textit{backtracking}. Nesta seção utilizamos a norma $\norm{x_k - x_{k-1}}_F$ como critério de parada.
+onde $A$ é um operador de convolução, $x$ é a imagem a ser recuperada, $b$ é a imagem borrada e ruidosa e $H$ é uma transformada \textit{wavelet}. Para a geração de $b$, foi utilizada a imagem \textit{astronaut} da biblioteca \textit{scikit-image} e foram utilizados um operador de convolução com um kernel de média de dimensões $7 \times 7$ e um ruído gaussiano com média $\mu = 0$ e desvio padrão $\sigma = 0.01$ (para reprodutibilidade foi adotada a \textit{seed} $ = 0$). Para o termo de regularização foi utilizada a \textit{wavelet} de Daubechies. Além disso, foi possível estimar a constante de Lipschitz $L_f = 0.9997$, permitindo assim garantir o limite de convergência teórico para o ISTA ($\lambda < \frac{2}{L_f} = 2.0006$) e para o FISTA ($\lambda \leq \frac{1}{L_f} = 1.0003$). Portanto, o tamanho de passo $\lambda = 1$ foi utilizado para os algoritmos de passo fixo e \textit{backtracking}. Nesta seção utilizamos a norma $\norm{x_k - x_{k-1}}_F$ como critério de parada.
 
 O parâmetro de regularização $\gamma$ foi determinado de maneira empírica, através de um grid search que seleciona o valor que minimiza o erro quadrático em relação a imagem original. Os testes feitos podem ser observados na Figura \ref{fig:params_reg}
 
@@ -484,9 +484,36 @@ Na Tabela \ref{tab:dif_gammas} pode ser visto um resumo do comportamento dos mé
     \end{tabular}
 \end{table}
 
-Veja que para grandes valores de $\gamma$, o operador de \textit{soft-thresholding} impõe uma forte esparsidade à solução. No caso do ISTA, esse efeito favorece a estabilidade do método pois, visto que cada iteração $x_k$ depende exclusivamente de $x_{k-1}$, qualquer passo excessivo é zerado pelo operador de \textit{soft thresholding} e descartado na iteração seguinte. Isso é evidenciado na Figura \ref{fig:norm_diff}, onde a curva azul apresenta um decaimento exponencial da norma $\norm{x_k - x_{k-1}}_F$. Esse comportamento está vinculado à estabilização do tamanho do passo, vista na Figura \ref{fig:passos_gamma_grande}, que permite que o algoritmo convirja para o ótimo. Já no FISTA, a instabilidade persiste. O termo de \textit{momentum} utiliza o histórico das iterações $\beta_k(x_k - x_{k-1})$ para o passo futuro. A consequência disso é que se a busca exata gera um passo grande demais em $x_k$, o erro persiste e é reverberado para $x_{k+1}$, criando um ciclo de oscilações que o operador de \textit{soft thresholding} não consegue suprimir. Esse comportamento pode ser visto nas Figuras \ref{fig:norm_diff} e \ref{fig:passos_gamma_grande}.
-
 Para pequenos valores de $\gamma$ (quando $\gamma \to 0$), temos que a função objetivo se aproxima do problema puramente quadrático, onde vimos na seção anterior que os algoritmos funcionam bem nesse caso.
+
+Para valores elevados de $\gamma$, o operador de soft-thresholding impõe uma forte esparsidade à solução, limitando a magnitude dos iterados. No ISTA, esse efeito favorece a estabilidade. Como cada iteração $x_k$ depende exclusivamente de $x_{k-1}$, o soft-thresholding atua como um amortecedor, mantendo os iterados próximos, como visto na Figura \ref{fig:norm_diff} e, consequentemente, o gradiente de $f$ varia pouco, já que este é Lipschitz contínuo. Com gradientes semelhantes, a busca linear exata produz tamanhos de passo $\lambda_k$ que se estabilizam, permitindo a convergência observada na Figura \ref{fig:passos_gamma_grande}. Já no FISTA, a instabilidade persiste devido ao termo de \textit{momentum}. A extrapolação $y_k = x_k + \beta_k(x_k - x_{k-1})$ amplifica pequenas diferenças entre iterados. O gradiente $\nabla f(y_k)$ pode diferir significativamente entre iterações, levando a passos $\lambda_k$ distintos e reverberando oscilações que o soft-thresholding não consegue suprimir. Esse comportamento é evidenciado nas Figuras \ref{fig:norm_diff} e \ref{fig:passos_gamma_grande}, onde as curvas do FISTA não apresentam a estabilização observada no ISTA.
+
+Para os valores intermediários, que são os de grande interesse já que resultam nas melhores reconstruções das imagens (ver Tabela \ref{tab:psnr_dif_gammas}), o operador de \textit{soft thresholding} não consegue amortecer as oscilações da busca exata. Sendo assim, tanto o ISTA quanto o FISTA apresentam instabilidades.
+
+
+\begin{table}[H]
+    \centering
+    \caption{PSNR para diferentes valores de $\gamma$}
+    \label{tab:psnr_dif_gammas}
+    \begin{tabular}{lc}
+        \toprule
+        \textbf{Gamma} & \textbf{PSNR}\\
+        \midrule
+        $0.0001$ & 27.0 dB\\
+        $0.001$ & 27.87 dB\\
+        $0.01$ & 25.64 dB\\
+        $0.1$ & 23.26 dB\\
+        $0.2$ & 22.09 dB\\
+       
+        \bottomrule
+    \end{tabular}
+
+\vspace{0.2cm}
+{\footnotesize Aqui foi considerado as reconstruções do FISTA com \textit{backtracking}}
+
+\end{table}
+
+
 
 \begin{figure}[H]
     \centering

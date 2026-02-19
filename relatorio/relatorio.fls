@@ -379,6 +379,7 @@ INPUT ./testes2_creg.png
 INPUT ./testes2_creg.png
 INPUT ./testes2_creg.png
 INPUT ./testes2_creg.png
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmri8t.tfm
 INPUT ./norm_xk1_xk.png
 INPUT ./norm_xk1_xk.png
 INPUT ./norm_xk1_xk.png
@@ -389,6 +390,8 @@ INPUT ./passos_gamma_grande.png
 INPUT ./passos_gamma_grande.png
 INPUT ./passos_gamma_grande.png
 INPUT ./passos_gamma_grande.png
+INPUT /usr/share/texlive/texmf-dist/fonts/vf/adobe/times/ptmri8t.vf
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmri8r.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmrc8t.tfm
 INPUT /usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
 INPUT /usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
