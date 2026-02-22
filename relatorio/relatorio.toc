@@ -4,5 +4,5 @@
 \contentsline {subsection}{\numberline {2.1}ISTA e FISTA}{4}{subsection.2.1}%
 \contentsline {section}{\numberline {3}Resultados}{5}{section.3}%
 \contentsline {subsection}{\numberline {3.1}Métodos sem Regularização para \textit {Deblurring} de Imagens}{5}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Métodos com Regularização para Reconstrução de Imagens}{12}{subsection.3.2}%
-\contentsline {section}{\numberline {4}Conclusão}{20}{section.4}%
+\contentsline {subsection}{\numberline {3.2}Métodos com Regularização para Reconstrução de Imagens}{13}{subsection.3.2}%
+\contentsline {section}{\numberline {4}Conclusão}{21}{section.4}%

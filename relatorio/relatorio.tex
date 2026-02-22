@@ -89,7 +89,9 @@
 \newpage
 
 \section{Introdução}
+
 Métodos de otimização são peça-chave em reconstrução de imagens médicas, especialmente em tomografia computadorizada. Os dados adquiridos por esta técnica consistem em uma amostragem ruidosa da transformada de Radon, o que leva à necessidade da adição de termos de regularização ao modelo de otimização, para que assim o ruído contido nos dados não seja excessivamente amplificado na imagem reconstruída. Muitas das possíveis escolhas para o termo regularizador não são suaves, mas são convexas e prox-amigáveis, levando ao uso de algoritmos de otimização do tipo gradiente proximal acelerado. Este projeto aborda um ponto específico e pouco explorado: propomos substituir as estratégias de tamanho de passo usuais (e.g., passo fixo ou determinado por busca inexata com critério de descida suficiente) no algoritmo FISTA (Fast Iterative Shrinkage-Thresholding Algorithm). Em seu lugar, investigar-se-á o uso de uma busca linear exata para determinar o tamanho de passo. Especificamente, usaremos um termo de quadrados mínimos na parcela de consistência e calcularemos analiticamente o passo que minimiza tal parcela ao longo da direção de máxima descida. A meta é medir, de forma objetiva, como tal escolha afeta a convergência em iterações e o tempo de computação, além da qualidade de reconstrução em dados de tomografia computadorizada.
+Os experimentos iniciais, detalhados neste relatório, utilizam problemas de deblurring de imagens para testar a eficiência computacional e a estabilidade desses métodos antes de sua aplicação em dados de tomografia computadorizada, buscando medir o impacto na taxa de convergência e na qualidade da reconstrução final.
 
 \section{Fundamentação Matemática}
 
