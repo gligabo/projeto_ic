@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.11.20)  21 FEB 2026 23:58
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.11.20)  7 MAR 2026 17:13
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -728,104 +728,94 @@ Overfull \hbox (10.02594pt too wide) in paragraph at lines 186--187
  []
 
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 209.
-[4]
-Overfull \hbox (58.74585pt too wide) detected at line 247
-\OML/cmm/m/it/12 TV\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x\OT1/cmr/m/n/12 ) = [] [] [] + [] \OMS/cmsy/m/n/12 j\OML/cmm/m/it/12 x[] \OMS/cmsy/m/n/12 ^^@ \OML/cmm/m/it/12 x[]\OMS/cmsy/m/n/12 j \OT1/cmr/m/n/12 + [] \OMS/cmsy/m/n/12 j\OML/cmm/m/it/12 x[] \OMS/cmsy/m/n/12 ^^@ \OML/cmm/m/it/12 x[]\OMS/cmsy/m/n/12 j
- []
-
-[5]
+[4] [5]
 <tamanho_passo_semreg.png, id=95, 731.3724pt x 395.3169pt>
 File: tamanho_passo_semreg.png Graphic file (type png)
 <use tamanho_passo_semreg.png>
-Package pdftex.def Info: tamanho_passo_semreg.png  used on input line 268.
+Package pdftex.def Info: tamanho_passo_semreg.png  used on input line 272.
 (pdftex.def)             Requested size: 350.99762pt x 189.72581pt.
  [6 <./tamanho_passo_semreg.png>]
 <conv_iter_sreg.png, id=107, 619.3539pt x 396.0396pt>
 File: conv_iter_sreg.png Graphic file (type png)
 <use conv_iter_sreg.png>
-Package pdftex.def Info: conv_iter_sreg.png  used on input line 306.
+Package pdftex.def Info: conv_iter_sreg.png  used on input line 310.
 (pdftex.def)             Requested size: 350.99762pt x 224.4396pt.
  [7]
 <conv_tempo_sreg.png, id=116, 619.3539pt x 396.0396pt>
 File: conv_tempo_sreg.png Graphic file (type png)
 <use conv_tempo_sreg.png>
-Package pdftex.def Info: conv_tempo_sreg.png  used on input line 315.
+Package pdftex.def Info: conv_tempo_sreg.png  used on input line 319.
 (pdftex.def)             Requested size: 350.99762pt x 224.4396pt.
  [8 <./conv_iter_sreg.png>] [9 <./conv_tempo_sreg.png>]
 <reconstrucao_200_iter.png, id=131, 1438.173pt x 1191.7323pt>
 File: reconstrucao_200_iter.png Graphic file (type png)
 <use reconstrucao_200_iter.png>
-Package pdftex.def Info: reconstrucao_200_iter.png  used on input line 360.
+Package pdftex.def Info: reconstrucao_200_iter.png  used on input line 364.
 (pdftex.def)             Requested size: 390.0pt x 323.17221pt.
  [10]
 <reconstrucao_nesterov.png, id=139, 1438.173pt x 763.8939pt>
 File: reconstrucao_nesterov.png Graphic file (type png)
 <use reconstrucao_nesterov.png>
-Package pdftex.def Info: reconstrucao_nesterov.png  used on input line 368.
+Package pdftex.def Info: reconstrucao_nesterov.png  used on input line 372.
 (pdftex.def)             Requested size: 390.0pt x 207.15163pt.
  [11 <./reconstrucao_200_iter.png>]
 <reconstrucao_nest_gc.png, id=148, 1438.173pt x 763.8939pt>
 File: reconstrucao_nest_gc.png Graphic file (type png)
 <use reconstrucao_nest_gc.png>
-Package pdftex.def Info: reconstrucao_nest_gc.png  used on input line 395.
+Package pdftex.def Info: reconstrucao_nest_gc.png  used on input line 399.
 (pdftex.def)             Requested size: 390.0pt x 207.15163pt.
  [12 <./reconstrucao_nesterov.png>]
 <reg_params.png, id=159, 712.5822pt x 426.393pt>
 File: reg_params.png Graphic file (type png)
 <use reg_params.png>
-Package pdftex.def Info: reg_params.png  used on input line 414.
+Package pdftex.def Info: reg_params.png  used on input line 418.
 (pdftex.def)             Requested size: 390.0pt x 233.37177pt.
  [13 <./reconstrucao_nest_gc.png>]
 <f_fstar1.png, id=168, 1003.8303pt x 354.123pt>
 File: f_fstar1.png Graphic file (type png)
 <use f_fstar1.png>
-Package pdftex.def Info: f_fstar1.png  used on input line 424.
+Package pdftex.def Info: f_fstar1.png  used on input line 428.
 (pdftex.def)             Requested size: 390.0pt x 137.57787pt.
 <fk1_fk.png, id=169, 859.2903pt x 426.393pt>
 File: fk1_fk.png Graphic file (type png)
 <use fk1_fk.png>
-Package pdftex.def Info: fk1_fk.png  used on input line 435.
+Package pdftex.def Info: fk1_fk.png  used on input line 439.
 (pdftex.def)             Requested size: 390.0pt x 193.52115pt.
  [14 <./reg_params.png> <./f_fstar1.png>]
 <tamanho_passo_creg.png, id=182, 1727.253pt x 860.013pt>
 File: tamanho_passo_creg.png Graphic file (type png)
 <use tamanho_passo_creg.png>
-Package pdftex.def Info: tamanho_passo_creg.png  used on input line 448.
+Package pdftex.def Info: tamanho_passo_creg.png  used on input line 452.
 (pdftex.def)             Requested size: 390.0pt x 194.17696pt.
  [15 <./fk1_fk.png>]
-Overfull \hbox (7.0553pt too wide) in paragraph at lines 455--456
+Overfull \hbox (7.0553pt too wide) in paragraph at lines 459--460
 []\T1/ptm/m/n/12 (-20) Para in-ves-ti-gar a sen-si-bi-li-dade dos mé-to-dos ao termo de re-gu-la-ri-za-ção, realizaram-
- []
-
-
-Overfull \hbox (99.07477pt too wide) in paragraph at lines 455--456
-\T1/ptm/m/n/12 (-20) se tes-tes com di-fe-ren-tes va-lo-res de $\OML/cmm/m/it/12 ^^M$ \T1/ptm/m/n/12 (-20) (em es-pe-cí-fico os va-lo-res fo-ram $\OML/cmm/m/it/12 ^^M \OMS/cmsy/m/n/12 2 f\OT1/cmr/m/n/12 0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 0001\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 001\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 01\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 1\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 2\OMS/cmsy/m/n/12 g$\T1/ptm/m/n/12 (-20) ),
  []
 
 <testes1_creg.png, id=191, 1076.1003pt x 1799.523pt>
 File: testes1_creg.png Graphic file (type png)
 <use testes1_creg.png>
-Package pdftex.def Info: testes1_creg.png  used on input line 459.
+Package pdftex.def Info: testes1_creg.png  used on input line 463.
 (pdftex.def)             Requested size: 312.00119pt x 521.73848pt.
 [16 <./tamanho_passo_creg.png>]
 <testes2_creg.png, id=199, 1438.173pt x 2160.873pt>
 File: testes2_creg.png Graphic file (type png)
 <use testes2_creg.png>
-Package pdftex.def Info: testes2_creg.png  used on input line 466.
+Package pdftex.def Info: testes2_creg.png  used on input line 470.
 (pdftex.def)             Requested size: 312.00119pt x 468.76611pt.
  [17 <./testes1_creg.png>] [18 <./testes2_creg.png>] [19]
 <norm_xk1_xk.png, id=225, 1727.253pt x 860.013pt>
 File: norm_xk1_xk.png Graphic file (type png)
 <use norm_xk1_xk.png>
-Package pdftex.def Info: norm_xk1_xk.png  used on input line 522.
+Package pdftex.def Info: norm_xk1_xk.png  used on input line 526.
 (pdftex.def)             Requested size: 350.99762pt x 174.75533pt.
 <passos_gamma_grande.png, id=226, 1726.5303pt x 860.013pt>
 File: passos_gamma_grande.png Graphic file (type png)
 <use passos_gamma_grande.png>
-Package pdftex.def Info: passos_gamma_grande.png  used on input line 529.
+Package pdftex.def Info: passos_gamma_grande.png  used on input line 533.
 (pdftex.def)             Requested size: 350.99762pt x 174.83406pt.
  [20 <./norm_xk1_xk.png>] [21 <./passos_gamma_grande.png>]
-LaTeX Font Info:    Trying to load font information for T1+pcr on input line 602.
+LaTeX Font Info:    Trying to load font information for T1+pcr on input line 606.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
@@ -833,7 +823,12 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `pcr' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [22] (./relatorio.aux)
+ [22]
+Overfull \hbox (68.3816pt too wide) in paragraph at lines 607--607
+\T1/pcr/m/n/12 article / B6TVK -[] 46JYGGT -[] GH / 2 / f85f57585ec9af00a1a088d0b8e6d452$[]\T1/ptm/m/n/12 (-20) . 
+ []
+
+[23] (./relatorio.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
@@ -845,18 +840,18 @@ Package logreq Info: Writing requests to 'relatorio.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 22877 strings out of 474222
- 399022 string characters out of 5748732
+ 22995 strings out of 474222
+ 402142 string characters out of 5748732
  1934975 words of memory out of 5000000
- 44495 multiletter control sequences out of 15000+600000
- 629713 words of font info for 282 fonts, out of 8000000 for 9000
+ 44561 multiletter control sequences out of 15000+600000
+ 631702 words of font info for 305 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  66i,9n,81p,1740b,1732s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on relatorio.pdf (23 pages, 6512978 bytes).
+Output written on relatorio.pdf (24 pages, 6524971 bytes).
 PDF statistics:
- 343 PDF objects out of 1000 (max. 8388607)
- 251 compressed objects within 3 object streams
- 67 named destinations out of 1000 (max. 500000)
+ 379 PDF objects out of 1000 (max. 8388607)
+ 286 compressed objects within 3 object streams
+ 86 named destinations out of 1000 (max. 500000)
  62079 words of extra memory for PDF output out of 74296 (max. 10000000)
 

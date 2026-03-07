@@ -80,7 +80,7 @@
       <file>relatorio.bcf</file>
     </requires>
     <requires type="editable">
-      <file>bibliography.bib</file>
+      <file>referencias.bib</file>
     </requires>
   </external>
 </requests>
