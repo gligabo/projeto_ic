@@ -48,17 +48,17 @@ class Algorithms:
 
         den = ( p[ :, :-1 ]**2 + q[ :-1, : ]**2 ) ** 0.5#pra nao ter que calcular duas vezes essa raíz
         
-        r[ :, :-1 ] = p[ :, :-1 ] / torch.maximum( 1, den )
-        r[ :, -1 ] = p[ :, -1 ] / torch.maximum( 1, torch.abs( p[ :, -1 ] ) )
+        r[ :, :-1 ] = p[ :, :-1 ] / torch.clamp( den, min = 1 )
+        r[ :, -1 ] = p[ :, -1 ] / torch.clamp( torch.abs( p[ :, -1 ] ), min = 1 )
 
-        s[ :-1, : ] = q[ :-1, : ] / torch.maximum( 1, den )
-        s[ -1, : ] = q[ -1, : ] / torch.maximum( 1, torch.abs( q[ -1, : ] ) )
+        s[ :-1, : ] = q[ :-1, : ] / torch.clamp( den, min = 1 )
+        s[ -1, : ] = q[ -1, : ] / torch.clamp( torch.abs( q[ -1, : ] ), min = 1 )
 
         return r,s
 
     @staticmethod
     def prox_tv( b, step, gamma, max_iter_tv, L, LT, proj_P, **kwargs ):
-        p0, q0 = torch.zeros( shape = ( b.shape[ 0 ] - 1, b.shape[ 1 ] ) ), torch.zeros( shape = ( b.shape[ 0 ], b.shape[ 1 ] - 1 ) )
+        p0, q0 = torch.zeros( size = ( b.shape[ 0 ] - 1, b.shape[ 1 ] ), device = b.device ), torch.zeros( size = ( b.shape[ 0 ], b.shape[ 1 ] - 1 ), device = b.device )
         r0, s0 = p0, q0
 
         t0 = 1
@@ -67,7 +67,7 @@ class Algorithms:
         lbd = step * gamma
 
         while iters < max_iter_tv:
-            dp, dq = LT( torch.maximum( 0, b - lbd * L( r0, s0 ) ) )
+            dp, dq = LT( torch.clamp( b - lbd * L( r0, s0 ), min = 0 ) )
             p, q = proj_P( r0 + 1 / ( 8 * lbd ) * dp, s0 + 1 / ( 8 * lbd ) * dq )
 
             t = ( 1 + ( 1 + 4 * t0 ** 2 ) ** 0.5 ) / 2
@@ -80,7 +80,7 @@ class Algorithms:
             t0 = t
             iters += 1
 
-        return torch.maximum( 0, b - lbd * L( p, q ) )
+        return torch.clamp( b - lbd * L( p, q ), min = 0 )
 
 
     @staticmethod
