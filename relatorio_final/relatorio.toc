@@ -1,0 +1,28 @@
+\babel@toc {brazil}{}\relax 
+\contentsline {section}{\numberline {1}Introdução}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}ISTA e FISTA}{3}{subsection.1.1}%
+\contentsline {section}{\numberline {2}Metodologia}{5}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Problemas sem Regularização}{5}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Problemas com Regularização}{6}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Estimativa da Constante de Lipschitz}{6}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Otimização Computacional da Busca Linear Exata}{6}{subsection.2.4}%
+\contentsline {section}{\numberline {3}Resultados}{7}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Problemas Quadráticos (Sem Regularização)}{7}{subsection.3.1}%
+\contentsline {subsubsection}{\numberline {3.1.1}Deblurring de Imagens}{7}{subsubsection.3.1.1}%
+\contentsline {subsubsection}{\numberline {3.1.2}Tomografia Computadorizada}{9}{subsubsection.3.1.2}%
+\contentsline {paragraph}{Impacto da Otimização Computacional}{10}{section*.8}%
+\contentsline {subsection}{\numberline {3.2}Problemas Regularizados}{10}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}Regularização no Domínio \textit {Wavelet} ($\ell _1$)}{10}{subsubsection.3.2.1}%
+\contentsline {paragraph}{Deblurring de Imagens}{10}{section*.10}%
+\contentsline {paragraph}{Tomografia Computadorizada}{12}{section*.13}%
+\contentsline {subsubsection}{\numberline {3.2.2}Regularização por Variação Total (TV)}{13}{subsubsection.3.2.2}%
+\contentsline {paragraph}{Deblurring de Imagens}{13}{section*.18}%
+\contentsline {paragraph}{Tomografia Computadorizada}{14}{section*.21}%
+\contentsline {subsubsection}{\numberline {3.2.3}Comparação de Reconstrução: Variação Total \textit {vs.} \textit {Wavelets}}{16}{subsubsection.3.2.3}%
+\contentsline {section}{\numberline {4}Conclusão}{16}{section.4}%
+\contentsline {section}{\numberline {A}Fundamentação Teórica e Definições Básicas}{19}{appendix.A}%
+\contentsline {section}{\numberline {B}Gráficos dos Algoritmos}{21}{appendix.B}%
+\contentsline {subsection}{\numberline {B.1}Métodos sem Regularização}{21}{subsection.B.1}%
+\contentsline {subsection}{\numberline {B.2}Métodos com Regularização (\textit {Wavelets} e TV em Imagens)}{25}{subsection.B.2}%
+\contentsline {subsection}{\numberline {B.3}Gráficos - Tomografia Computadorizada (Sem Regularização)}{33}{subsection.B.3}%
+\contentsline {subsection}{\numberline {B.4}Gráficos - Tomografia Computadorizada (\textit {Wavelets} e Variação Total)}{40}{subsection.B.4}%

@@ -1,0 +1,779 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global/global}
+    \entry{bet09}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=7e285058a4af1ce645d910e3951d7b82}{%
+           family={Beck},
+           familyi={B\bibinitperiod},
+           given={Amir},
+           giveni={A\bibinitperiod}}}%
+        {{hash=009141d6de34d70316721834af7f1e0b}{%
+           family={Teboulle},
+           familyi={T\bibinitperiod},
+           given={Marc},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {SIAM}%
+      }
+      \strng{namehash}{c91e0d857797424d21c636688a53c132}
+      \strng{fullhash}{c91e0d857797424d21c636688a53c132}
+      \strng{fullhashraw}{c91e0d857797424d21c636688a53c132}
+      \strng{bibnamehash}{c91e0d857797424d21c636688a53c132}
+      \strng{authorbibnamehash}{c91e0d857797424d21c636688a53c132}
+      \strng{authornamehash}{c91e0d857797424d21c636688a53c132}
+      \strng{authorfullhash}{c91e0d857797424d21c636688a53c132}
+      \strng{authorfullhashraw}{c91e0d857797424d21c636688a53c132}
+      \field{extraname}{1}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{SIAM Journal on Imaging Sciences}
+      \field{number}{1}
+      \field{title}{A Fast Iterative Shrinkage-Thresholding Algorithm for Linear Inverse Problems}
+      \field{volume}{2}
+      \field{year}{2009}
+      \field{pages}{183\bibrangedash 202}
+      \range{pages}{20}
+      \verb{doi}
+      \verb 10.1137/080716542
+      \endverb
+      \keyw{iterative shrinkage-thresholding algorithm; deconvolution; linear inverse problem; least squares and $\ell_1$ regularization problems; optimal gradient method; global rate of convergence; two-step iterative algorithms; image deblurring}
+    \endentry
+    \entry{bet09b}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=7e285058a4af1ce645d910e3951d7b82}{%
+           family={Beck},
+           familyi={B\bibinitperiod},
+           given={Amir},
+           giveni={A\bibinitperiod}}}%
+        {{hash=009141d6de34d70316721834af7f1e0b}{%
+           family={Teboulle},
+           familyi={T\bibinitperiod},
+           given={Marc},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{c91e0d857797424d21c636688a53c132}
+      \strng{fullhash}{c91e0d857797424d21c636688a53c132}
+      \strng{fullhashraw}{c91e0d857797424d21c636688a53c132}
+      \strng{bibnamehash}{c91e0d857797424d21c636688a53c132}
+      \strng{authorbibnamehash}{c91e0d857797424d21c636688a53c132}
+      \strng{authornamehash}{c91e0d857797424d21c636688a53c132}
+      \strng{authorfullhash}{c91e0d857797424d21c636688a53c132}
+      \strng{authorfullhashraw}{c91e0d857797424d21c636688a53c132}
+      \field{extraname}{2}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Transactions on Image Processing}
+      \field{number}{11}
+      \field{title}{Fast Gradient-Based Algorithms for Constrained Total Variation Image Denoising and Deblurring Problems}
+      \field{volume}{18}
+      \field{year}{2009}
+      \field{pages}{2419\bibrangedash 2434}
+      \range{pages}{16}
+      \verb{doi}
+      \verb 10.1109/TIP.2009.2028250
+      \endverb
+    \endentry
+    \entry{ehn00}{book}{}{}
+      \name{author}{3}{}{%
+        {{hash=d15d30ccf2de399b6ccd6592e67df9ee}{%
+           family={Engl},
+           familyi={E\bibinitperiod},
+           given={Heinz\bibnamedelima W.},
+           giveni={H\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+        {{hash=fa9b3b27bfabb55910b70e93671b1dd2}{%
+           family={Hanke},
+           familyi={H\bibinitperiod},
+           given={Martin},
+           giveni={M\bibinitperiod}}}%
+        {{hash=b25cac521e38b5d4385cd6d2a1e5bd55}{%
+           family={Neubauer},
+           familyi={N\bibinitperiod},
+           given={Andreas},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Dordrecht, Boston, London}%
+      }
+      \list{publisher}{1}{%
+        {Kluwer Academic Publishers}%
+      }
+      \strng{namehash}{f221c54bd093ec33cfdb71a27ea6f269}
+      \strng{fullhash}{f221c54bd093ec33cfdb71a27ea6f269}
+      \strng{fullhashraw}{f221c54bd093ec33cfdb71a27ea6f269}
+      \strng{bibnamehash}{f221c54bd093ec33cfdb71a27ea6f269}
+      \strng{authorbibnamehash}{f221c54bd093ec33cfdb71a27ea6f269}
+      \strng{authornamehash}{f221c54bd093ec33cfdb71a27ea6f269}
+      \strng{authorfullhash}{f221c54bd093ec33cfdb71a27ea6f269}
+      \strng{authorfullhashraw}{f221c54bd093ec33cfdb71a27ea6f269}
+      \field{sortinit}{E}
+      \field{sortinithash}{8da8a182d344d5b9047633dfc0cc9131}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Regularization of Inverse Problems}
+      \field{year}{2000}
+      \true{nocite}
+    \endentry
+    \entry{hadamard1902problemes}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=867a2303b0c6cc9d6fb2010bbc2f6fbe}{%
+           family={Hadamard},
+           familyi={H\bibinitperiod},
+           given={Jacques},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Princeton University}%
+      }
+      \strng{namehash}{867a2303b0c6cc9d6fb2010bbc2f6fbe}
+      \strng{fullhash}{867a2303b0c6cc9d6fb2010bbc2f6fbe}
+      \strng{fullhashraw}{867a2303b0c6cc9d6fb2010bbc2f6fbe}
+      \strng{bibnamehash}{867a2303b0c6cc9d6fb2010bbc2f6fbe}
+      \strng{authorbibnamehash}{867a2303b0c6cc9d6fb2010bbc2f6fbe}
+      \strng{authornamehash}{867a2303b0c6cc9d6fb2010bbc2f6fbe}
+      \strng{authorfullhash}{867a2303b0c6cc9d6fb2010bbc2f6fbe}
+      \strng{authorfullhashraw}{867a2303b0c6cc9d6fb2010bbc2f6fbe}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Princeton university bulletin}
+      \field{title}{Sur les problèmes aux dérivées partielles et leur signification physique}
+      \field{year}{1902}
+      \true{nocite}
+      \field{pages}{49\bibrangedash 52}
+      \range{pages}{4}
+    \endentry
+    \entry{hes17}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=20dadc65ed198699740744231b080444}{%
+           family={Helou},
+           familyi={H\bibinitperiod},
+           given={Elias\bibnamedelima S.},
+           giveni={E\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=6878cb35f216cf38feadcb1d5bee8e3c}{%
+           family={Simões},
+           familyi={S\bibinitperiod},
+           given={Lucas\bibnamedelimb E.\bibnamedelimi A.},
+           giveni={L\bibinitperiod\bibinitdelim E\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IOP Publishing}%
+      }
+      \strng{namehash}{be459723ae974a8ff9e309c0480c7525}
+      \strng{fullhash}{be459723ae974a8ff9e309c0480c7525}
+      \strng{fullhashraw}{be459723ae974a8ff9e309c0480c7525}
+      \strng{bibnamehash}{be459723ae974a8ff9e309c0480c7525}
+      \strng{authorbibnamehash}{be459723ae974a8ff9e309c0480c7525}
+      \strng{authornamehash}{be459723ae974a8ff9e309c0480c7525}
+      \strng{authorfullhash}{be459723ae974a8ff9e309c0480c7525}
+      \strng{authorfullhashraw}{be459723ae974a8ff9e309c0480c7525}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Inverse Problems}
+      \field{number}{5}
+      \field{title}{$\epsilon$-Subgradient Algorithms for Bilevel Convex Optimization}
+      \field{volume}{33}
+      \field{year}{2017}
+      \true{nocite}
+      \field{pages}{055020}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1088/1361-6420/aa6136
+      \endverb
+    \endentry
+    \entry{hzh20}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=20dadc65ed198699740744231b080444}{%
+           family={Helou},
+           familyi={H\bibinitperiod},
+           given={Elias\bibnamedelima S.},
+           giveni={E\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=4a99332a8b3fccf15c858e47fba0c221}{%
+           family={Zibetti},
+           familyi={Z\bibinitperiod},
+           given={Marcelo\bibnamedelimb V.\bibnamedelimi W.},
+           giveni={M\bibinitperiod\bibinitdelim V\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+        {{hash=10a486094bfc7e10759c6d577c89c3e8}{%
+           family={Herman},
+           familyi={H\bibinitperiod},
+           given={Gabor\bibnamedelima T.},
+           giveni={G\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+      }
+      \strng{namehash}{906f61627c06e1836abe930d03137fd8}
+      \strng{fullhash}{906f61627c06e1836abe930d03137fd8}
+      \strng{fullhashraw}{906f61627c06e1836abe930d03137fd8}
+      \strng{bibnamehash}{906f61627c06e1836abe930d03137fd8}
+      \strng{authorbibnamehash}{906f61627c06e1836abe930d03137fd8}
+      \strng{authornamehash}{906f61627c06e1836abe930d03137fd8}
+      \strng{authorfullhash}{906f61627c06e1836abe930d03137fd8}
+      \strng{authorfullhashraw}{906f61627c06e1836abe930d03137fd8}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Sensing and Imaging}
+      \field{number}{45}
+      \field{title}{Fast Proximal Gradient Methods for Nonsmooth Convex Optimization for Tomographic Image Reconstruction}
+      \field{volume}{21}
+      \field{year}{2020}
+      \true{nocite}
+      \verb{doi}
+      \verb 10.1007/s11220-020-00309-z
+      \endverb
+    \endentry
+    \entry{hed09}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=bf260c0bc61b5f9165842839e7a09719}{%
+           family={{Helou Neto}},
+           familyi={H\bibinitperiod},
+           given={Elias\bibnamedelima Salomão},
+           giveni={E\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=989a9d302a31afd84b7750d832ae4500}{%
+           family={{De Pierro}},
+           familyi={D\bibinitperiod},
+           given={Álvaro\bibnamedelima Rodolfo},
+           giveni={Á\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {SIAM}%
+      }
+      \strng{namehash}{a46c307f165145683fbd80d8385d62bd}
+      \strng{fullhash}{a46c307f165145683fbd80d8385d62bd}
+      \strng{fullhashraw}{a46c307f165145683fbd80d8385d62bd}
+      \strng{bibnamehash}{a46c307f165145683fbd80d8385d62bd}
+      \strng{authorbibnamehash}{a46c307f165145683fbd80d8385d62bd}
+      \strng{authornamehash}{a46c307f165145683fbd80d8385d62bd}
+      \strng{authorfullhash}{a46c307f165145683fbd80d8385d62bd}
+      \strng{authorfullhashraw}{a46c307f165145683fbd80d8385d62bd}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{SIAM Journal on Optimization}
+      \field{number}{3}
+      \field{title}{Incremental Subgradients for Constrained Convex Optimization: a Unified Framework and New Methods}
+      \field{volume}{20}
+      \field{year}{2009}
+      \true{nocite}
+      \field{pages}{1547\bibrangedash 1572}
+      \range{pages}{26}
+      \verb{doi}
+      \verb 10.1137/070711712
+      \endverb
+      \verb{urlraw}
+      \verb http://link.aip.org/link/?SJE/20/1547/1
+      \endverb
+      \verb{url}
+      \verb http://link.aip.org/link/?SJE/20/1547/1
+      \endverb
+      \keyw{convex optimization; projection methods; subgradient methods; incremental subgradient}
+    \endentry
+    \entry{her80}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=10a486094bfc7e10759c6d577c89c3e8}{%
+           family={Herman},
+           familyi={H\bibinitperiod},
+           given={Gabor\bibnamedelima T.},
+           giveni={G\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Boston (MA)}%
+      }
+      \list{publisher}{1}{%
+        {Academic Press}%
+      }
+      \strng{namehash}{10a486094bfc7e10759c6d577c89c3e8}
+      \strng{fullhash}{10a486094bfc7e10759c6d577c89c3e8}
+      \strng{fullhashraw}{10a486094bfc7e10759c6d577c89c3e8}
+      \strng{bibnamehash}{10a486094bfc7e10759c6d577c89c3e8}
+      \strng{authorbibnamehash}{10a486094bfc7e10759c6d577c89c3e8}
+      \strng{authornamehash}{10a486094bfc7e10759c6d577c89c3e8}
+      \strng{authorfullhash}{10a486094bfc7e10759c6d577c89c3e8}
+      \strng{authorfullhashraw}{10a486094bfc7e10759c6d577c89c3e8}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Image Reconstruction from Projections: The Fundamentals of Computerized Tomography}
+      \field{year}{1980}
+      \true{nocite}
+    \endentry
+    \entry{van2005computed}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=86f740144371e100fa1e7bc2f512663e}{%
+           family={Kaick},
+           familyi={K\bibinitperiod},
+           given={Gerhard},
+           giveni={G\bibinitperiod},
+           prefix={van},
+           prefixi={v\bibinitperiod}}}%
+        {{hash=946e8f05fe16c12c0549d09b0739a2b8}{%
+           family={Delorme},
+           familyi={D\bibinitperiod},
+           given={Stefan},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{4195349972dabcfd8fe0a8313aa6f964}
+      \strng{fullhash}{4195349972dabcfd8fe0a8313aa6f964}
+      \strng{fullhashraw}{4195349972dabcfd8fe0a8313aa6f964}
+      \strng{bibnamehash}{4195349972dabcfd8fe0a8313aa6f964}
+      \strng{authorbibnamehash}{4195349972dabcfd8fe0a8313aa6f964}
+      \strng{authornamehash}{4195349972dabcfd8fe0a8313aa6f964}
+      \strng{authorfullhash}{4195349972dabcfd8fe0a8313aa6f964}
+      \strng{authorfullhashraw}{4195349972dabcfd8fe0a8313aa6f964}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{European Radiology Supplements}
+      \field{title}{Computed tomography in various fields outside medicine}
+      \field{volume}{15}
+      \field{year}{2005}
+      \true{nocite}
+      \field{pages}{d74\bibrangedash d81}
+      \range{pages}{-1}
+    \endentry
+    \entry{kas88}{book}{}{}
+      \name{author}{2}{}{%
+        {{hash=79d20b9313c4fe34a6618496ed4afd96}{%
+           family={Kak},
+           familyi={K\bibinitperiod},
+           given={Avinash\bibnamedelima C.},
+           giveni={A\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=af3eb849c7bb824718da580e0514e62b}{%
+           family={Slaney},
+           familyi={S\bibinitperiod},
+           given={Malcolm},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {New York}%
+      }
+      \list{publisher}{1}{%
+        {IEEE Press}%
+      }
+      \strng{namehash}{fae4ea75541958580743dd6b82008bbd}
+      \strng{fullhash}{fae4ea75541958580743dd6b82008bbd}
+      \strng{fullhashraw}{fae4ea75541958580743dd6b82008bbd}
+      \strng{bibnamehash}{fae4ea75541958580743dd6b82008bbd}
+      \strng{authorbibnamehash}{fae4ea75541958580743dd6b82008bbd}
+      \strng{authornamehash}{fae4ea75541958580743dd6b82008bbd}
+      \strng{authorfullhash}{fae4ea75541958580743dd6b82008bbd}
+      \strng{authorfullhashraw}{fae4ea75541958580743dd6b82008bbd}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Principles of Computerized Tomographic Imaging}
+      \field{year}{1988}
+      \true{nocite}
+    \endentry
+    \entry{nat86}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=dcd0ee5c60bc4915310477f38112a2dc}{%
+           family={Natterer},
+           familyi={N\bibinitperiod},
+           given={Frank},
+           giveni={F\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Chichester, New York, Brisbane, Toronto, Singapore}%
+      }
+      \list{publisher}{1}{%
+        {John Wiley \& Sons Ltd}%
+      }
+      \strng{namehash}{dcd0ee5c60bc4915310477f38112a2dc}
+      \strng{fullhash}{dcd0ee5c60bc4915310477f38112a2dc}
+      \strng{fullhashraw}{dcd0ee5c60bc4915310477f38112a2dc}
+      \strng{bibnamehash}{dcd0ee5c60bc4915310477f38112a2dc}
+      \strng{authorbibnamehash}{dcd0ee5c60bc4915310477f38112a2dc}
+      \strng{authornamehash}{dcd0ee5c60bc4915310477f38112a2dc}
+      \strng{authorfullhash}{dcd0ee5c60bc4915310477f38112a2dc}
+      \strng{authorfullhashraw}{dcd0ee5c60bc4915310477f38112a2dc}
+      \field{sortinit}{N}
+      \field{sortinithash}{22369a73d5f88983a108b63f07f37084}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{The Mathematics of Computerized Tomography}
+      \field{year}{1986}
+      \true{nocite}
+    \endentry
+    \entry{naw01}{book}{}{}
+      \name{author}{2}{}{%
+        {{hash=dcd0ee5c60bc4915310477f38112a2dc}{%
+           family={Natterer},
+           familyi={N\bibinitperiod},
+           given={Frank},
+           giveni={F\bibinitperiod}}}%
+        {{hash=8f2d9a5f8b42f37e0689e49b25bed680}{%
+           family={Wübbeling},
+           familyi={W\bibinitperiod},
+           given={Frank},
+           giveni={F\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Philadelphia (PA)}%
+      }
+      \list{publisher}{1}{%
+        {SIAM}%
+      }
+      \strng{namehash}{a74a560a3acd8fc898165699fe54fd6c}
+      \strng{fullhash}{a74a560a3acd8fc898165699fe54fd6c}
+      \strng{fullhashraw}{a74a560a3acd8fc898165699fe54fd6c}
+      \strng{bibnamehash}{a74a560a3acd8fc898165699fe54fd6c}
+      \strng{authorbibnamehash}{a74a560a3acd8fc898165699fe54fd6c}
+      \strng{authornamehash}{a74a560a3acd8fc898165699fe54fd6c}
+      \strng{authorfullhash}{a74a560a3acd8fc898165699fe54fd6c}
+      \strng{authorfullhashraw}{a74a560a3acd8fc898165699fe54fd6c}
+      \field{sortinit}{N}
+      \field{sortinithash}{22369a73d5f88983a108b63f07f37084}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Mathematical Methods in Image Reconstruction}
+      \field{year}{2001}
+      \true{nocite}
+    \endentry
+    \entry{obg05}{article}{}{}
+      \name{author}{5}{}{%
+        {{hash=d4ee7c8daf846ee1eddbbe56e4d658d9}{%
+           family={Osher},
+           familyi={O\bibinitperiod},
+           given={Stanley},
+           giveni={S\bibinitperiod}}}%
+        {{hash=533dbca22222f7c51a497c9cdf6aa50f}{%
+           family={Burger},
+           familyi={B\bibinitperiod},
+           given={Martin},
+           giveni={M\bibinitperiod}}}%
+        {{hash=5bf0f5ae463d891111f759554ade71fa}{%
+           family={Goldfarb},
+           familyi={G\bibinitperiod},
+           given={Donald},
+           giveni={D\bibinitperiod}}}%
+        {{hash=2b3887f6e1f4e44c4f36fccad797bd3a}{%
+           family={Xu},
+           familyi={X\bibinitperiod},
+           given={Jinjun},
+           giveni={J\bibinitperiod}}}%
+        {{hash=283c439ffb0015e38107aa1c35da9a6b}{%
+           family={Yin},
+           familyi={Y\bibinitperiod},
+           given={Wotao},
+           giveni={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{33736f226688252ced3aa43482010836}
+      \strng{fullhash}{92d691e1c58a533755a738a873f9a208}
+      \strng{fullhashraw}{92d691e1c58a533755a738a873f9a208}
+      \strng{bibnamehash}{33736f226688252ced3aa43482010836}
+      \strng{authorbibnamehash}{33736f226688252ced3aa43482010836}
+      \strng{authornamehash}{33736f226688252ced3aa43482010836}
+      \strng{authorfullhash}{92d691e1c58a533755a738a873f9a208}
+      \strng{authorfullhashraw}{92d691e1c58a533755a738a873f9a208}
+      \field{sortinit}{O}
+      \field{sortinithash}{2cd7140a07aea5341f9e2771efe90aae}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Multiscale Modeling \& Simulation}
+      \field{number}{2}
+      \field{title}{An Iterative Regularization Method for Total Variation-Based Image Restoration}
+      \field{volume}{4}
+      \field{year}{2005}
+      \true{nocite}
+      \field{pages}{460\bibrangedash 489}
+      \range{pages}{30}
+      \verb{doi}
+      \verb 10.1137/040605412
+      \endverb
+    \endentry
+    \entry{quinto2006introduction}{inproceedings}{}{}
+      \name{author}{1}{}{%
+        {{hash=1f63735e6ceb8ef283fd21827b232449}{%
+           family={Quinto},
+           familyi={Q\bibinitperiod},
+           given={Eric\bibnamedelima Todd},
+           giveni={E\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+      }
+      \strng{namehash}{1f63735e6ceb8ef283fd21827b232449}
+      \strng{fullhash}{1f63735e6ceb8ef283fd21827b232449}
+      \strng{fullhashraw}{1f63735e6ceb8ef283fd21827b232449}
+      \strng{bibnamehash}{1f63735e6ceb8ef283fd21827b232449}
+      \strng{authorbibnamehash}{1f63735e6ceb8ef283fd21827b232449}
+      \strng{authornamehash}{1f63735e6ceb8ef283fd21827b232449}
+      \strng{authorfullhash}{1f63735e6ceb8ef283fd21827b232449}
+      \strng{authorfullhashraw}{1f63735e6ceb8ef283fd21827b232449}
+      \field{sortinit}{Q}
+      \field{sortinithash}{ce69a400a872ddd02ee7fdb3b38c6abd}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of symposia in Applied Mathematics}
+      \field{title}{An introduction to X-ray tomography and Radon transforms}
+      \field{volume}{63}
+      \field{year}{2006}
+      \true{nocite}
+      \field{pages}{1}
+      \range{pages}{1}
+    \endentry
+    \entry{RADON}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=23ed214288fe19c33cb7955af0be47b1}{%
+           family={Radon},
+           familyi={R\bibinitperiod},
+           given={Johann},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{23ed214288fe19c33cb7955af0be47b1}
+      \strng{fullhash}{23ed214288fe19c33cb7955af0be47b1}
+      \strng{fullhashraw}{23ed214288fe19c33cb7955af0be47b1}
+      \strng{bibnamehash}{23ed214288fe19c33cb7955af0be47b1}
+      \strng{authorbibnamehash}{23ed214288fe19c33cb7955af0be47b1}
+      \strng{authornamehash}{23ed214288fe19c33cb7955af0be47b1}
+      \strng{authorfullhash}{23ed214288fe19c33cb7955af0be47b1}
+      \strng{authorfullhashraw}{23ed214288fe19c33cb7955af0be47b1}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Transactions on Medical Imaging}
+      \field{number}{4}
+      \field{title}{On the determination of functions from their integral values along certain manifolds}
+      \field{volume}{5}
+      \field{year}{1986}
+      \true{nocite}
+      \field{pages}{170\bibrangedash 176}
+      \range{pages}{7}
+      \verb{doi}
+      \verb 10.1109/TMI.1986.4307775
+      \endverb
+      \keyw{Integral equations;Mathematics}
+    \endentry
+    \entry{rudin1992nonlinear}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=a13318fd7eeacb031b2c08504e543ba0}{%
+           family={Rudin},
+           familyi={R\bibinitperiod},
+           given={Leonid\bibnamedelima I},
+           giveni={L\bibinitperiod\bibinitdelim I\bibinitperiod}}}%
+        {{hash=d4ee7c8daf846ee1eddbbe56e4d658d9}{%
+           family={Osher},
+           familyi={O\bibinitperiod},
+           given={Stanley},
+           giveni={S\bibinitperiod}}}%
+        {{hash=b33a2e7812c1fc5a560bd74e09a29cdc}{%
+           family={Fatemi},
+           familyi={F\bibinitperiod},
+           given={Emad},
+           giveni={E\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{84524f7812bbf8af3fdd941e0317728d}
+      \strng{fullhash}{84524f7812bbf8af3fdd941e0317728d}
+      \strng{fullhashraw}{84524f7812bbf8af3fdd941e0317728d}
+      \strng{bibnamehash}{84524f7812bbf8af3fdd941e0317728d}
+      \strng{authorbibnamehash}{84524f7812bbf8af3fdd941e0317728d}
+      \strng{authornamehash}{84524f7812bbf8af3fdd941e0317728d}
+      \strng{authorfullhash}{84524f7812bbf8af3fdd941e0317728d}
+      \strng{authorfullhashraw}{84524f7812bbf8af3fdd941e0317728d}
+      \field{extraname}{1}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Physica D: nonlinear phenomena}
+      \field{number}{1-4}
+      \field{title}{Nonlinear total variation based noise removal algorithms}
+      \field{volume}{60}
+      \field{year}{1992}
+      \true{nocite}
+      \field{pages}{259\bibrangedash 268}
+      \range{pages}{10}
+    \endentry
+    \entry{rof92}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=a13318fd7eeacb031b2c08504e543ba0}{%
+           family={Rudin},
+           familyi={R\bibinitperiod},
+           given={Leonid\bibnamedelima I.},
+           giveni={L\bibinitperiod\bibinitdelim I\bibinitperiod}}}%
+        {{hash=d4ee7c8daf846ee1eddbbe56e4d658d9}{%
+           family={Osher},
+           familyi={O\bibinitperiod},
+           given={Stanley},
+           giveni={S\bibinitperiod}}}%
+        {{hash=b33a2e7812c1fc5a560bd74e09a29cdc}{%
+           family={Fatemi},
+           familyi={F\bibinitperiod},
+           given={Emad},
+           giveni={E\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {North-Holland}%
+      }
+      \strng{namehash}{84524f7812bbf8af3fdd941e0317728d}
+      \strng{fullhash}{84524f7812bbf8af3fdd941e0317728d}
+      \strng{fullhashraw}{84524f7812bbf8af3fdd941e0317728d}
+      \strng{bibnamehash}{84524f7812bbf8af3fdd941e0317728d}
+      \strng{authorbibnamehash}{84524f7812bbf8af3fdd941e0317728d}
+      \strng{authornamehash}{84524f7812bbf8af3fdd941e0317728d}
+      \strng{authorfullhash}{84524f7812bbf8af3fdd941e0317728d}
+      \strng{authorfullhashraw}{84524f7812bbf8af3fdd941e0317728d}
+      \field{extraname}{2}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Physica D: Nonlinear Phenomena}
+      \field{number}{1-4}
+      \field{title}{Nonlinear Total Variation Based Noise Removal Algorithms}
+      \field{volume}{60}
+      \field{year}{1992}
+      \true{nocite}
+      \field{pages}{259\bibrangedash 268}
+      \range{pages}{10}
+      \verb{doi}
+      \verb 10.1016/0167-2789(92)90242-F
+      \endverb
+      \verb{urlraw}
+      \verb http://www.sciencedirect.com/science/article/B6TVK-46JYGGT-GH/2/f85f57585ec9af00a1a088d0b8e6d452
+      \endverb
+      \verb{url}
+      \verb http://www.sciencedirect.com/science/article/B6TVK-46JYGGT-GH/2/f85f57585ec9af00a1a088d0b8e6d452
+      \endverb
+    \endentry
+    \entry{tnv04}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=0ab49305453ae95941b35e853c687f99}{%
+           family={Tadmor},
+           familyi={T\bibinitperiod},
+           given={Eitan},
+           giveni={E\bibinitperiod}}}%
+        {{hash=c008972e0d1d5a80787c5cce1a6bcdf0}{%
+           family={Nezzar},
+           familyi={N\bibinitperiod},
+           given={Suzanne},
+           giveni={S\bibinitperiod}}}%
+        {{hash=1e01a42f1a2b03cc4f56c6539e4a764d}{%
+           family={Vese},
+           familyi={V\bibinitperiod},
+           given={Luminita},
+           giveni={L\bibinitperiod}}}%
+      }
+      \strng{namehash}{c16af86bcd2514305043058e82cc383f}
+      \strng{fullhash}{c16af86bcd2514305043058e82cc383f}
+      \strng{fullhashraw}{c16af86bcd2514305043058e82cc383f}
+      \strng{bibnamehash}{c16af86bcd2514305043058e82cc383f}
+      \strng{authorbibnamehash}{c16af86bcd2514305043058e82cc383f}
+      \strng{authornamehash}{c16af86bcd2514305043058e82cc383f}
+      \strng{authorfullhash}{c16af86bcd2514305043058e82cc383f}
+      \strng{authorfullhashraw}{c16af86bcd2514305043058e82cc383f}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Multiscale Modeling \& Simulation}
+      \field{number}{4}
+      \field{title}{A Multiscale Image Representation Using Hierarchical $(BV,L^2)$ Decompositions}
+      \field{volume}{2}
+      \field{year}{2004}
+      \true{nocite}
+      \field{pages}{554\bibrangedash 579}
+      \range{pages}{26}
+      \verb{doi}
+      \verb 10.1137/030600448
+      \endverb
+    \endentry
+    \entry{tikhonov1963solution}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=5d6cad165ca525d03741572af69f2927}{%
+           family={Tikhonov},
+           familyi={T\bibinitperiod},
+           given={Andrei\bibnamedelima N},
+           giveni={A\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+      }
+      \strng{namehash}{5d6cad165ca525d03741572af69f2927}
+      \strng{fullhash}{5d6cad165ca525d03741572af69f2927}
+      \strng{fullhashraw}{5d6cad165ca525d03741572af69f2927}
+      \strng{bibnamehash}{5d6cad165ca525d03741572af69f2927}
+      \strng{authorbibnamehash}{5d6cad165ca525d03741572af69f2927}
+      \strng{authornamehash}{5d6cad165ca525d03741572af69f2927}
+      \strng{authorfullhash}{5d6cad165ca525d03741572af69f2927}
+      \strng{authorfullhashraw}{5d6cad165ca525d03741572af69f2927}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Sov Dok}
+      \field{title}{Solution of incorrectly formulated problems and the regularization method.}
+      \field{volume}{4}
+      \field{year}{1963}
+      \true{nocite}
+      \field{pages}{1035\bibrangedash 1038}
+      \range{pages}{4}
+    \endentry
+    \entry{tikhonov1977solutions}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=d9bddf5593036617c8edbcf826bc5749}{%
+           family={Tikhonov},
+           familyi={T\bibinitperiod},
+           given={Andrei\bibnamedelima Nikolaevich},
+           giveni={A\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+        {{hash=d8348ada3e44e04af6838b1cec7aa940}{%
+           family={Arsenin},
+           familyi={A\bibinitperiod},
+           given={V.\bibnamedelimi I.\bibnamedelimi A.\bibnamedelimi K.},
+           giveni={V\bibinitperiod\bibinitdelim I\bibinitperiod\bibinitdelim A\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+      }
+      \strng{namehash}{7b84d7efad2209c89e5544188674c485}
+      \strng{fullhash}{7b84d7efad2209c89e5544188674c485}
+      \strng{fullhashraw}{7b84d7efad2209c89e5544188674c485}
+      \strng{bibnamehash}{7b84d7efad2209c89e5544188674c485}
+      \strng{authorbibnamehash}{7b84d7efad2209c89e5544188674c485}
+      \strng{authornamehash}{7b84d7efad2209c89e5544188674c485}
+      \strng{authorfullhash}{7b84d7efad2209c89e5544188674c485}
+      \strng{authorfullhashraw}{7b84d7efad2209c89e5544188674c485}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{(No Title)}
+      \field{title}{Solutions of ill-posed problems}
+      \field{year}{1977}
+      \true{nocite}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

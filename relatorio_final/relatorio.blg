@@ -1,0 +1,15 @@
+[0] Config.pm:328> INFO - This is Biber 2.21
+[0] Config.pm:331> INFO - Logfile is 'relatorio.blg'
+[73] biber:342> INFO - === seg ago 24, 2026, 17:17:08
+[90] Biber.pm:421> INFO - Reading 'relatorio.bcf'
+[154] Biber.pm:999> INFO - Using all citekeys in bib section 0
+[169] Biber.pm:4487> INFO - Processing section 0
+[180] Biber.pm:4678> INFO - Looking for bibtex file 'referencias.bib' for section 0
+[181] bibtex.pm:1713> INFO - LaTeX decoding ...
+[199] bibtex.pm:1519> INFO - Found BibTeX data source 'referencias.bib'
+[346] UCollate.pm:68> INFO - Overriding locale 'pt-BR' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[346] UCollate.pm:68> INFO - Overriding locale 'pt-BR' defaults 'variable = shifted' with 'variable = non-ignorable'
+[346] Biber.pm:4307> INFO - Sorting list 'nty/global//global/global/global' of type 'entry' with template 'nty' and locale 'pt-BR'
+[346] Biber.pm:4313> INFO - No sort tailoring available for locale 'pt-BR'
+[373] bbl.pm:676> INFO - Writing 'relatorio.bbl' with encoding 'UTF-8'
+[381] bbl.pm:779> INFO - Output to relatorio.bbl
