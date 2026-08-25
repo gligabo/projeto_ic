@@ -1,14 +1,14 @@
 # Fdb version 4
-["biber relatorio"] 1787602627.36245 "relatorio.bcf" "relatorio.bbl" "relatorio" 1787618978.84477 0
+["biber relatorio"] 1787602627.36245 "relatorio.bcf" "relatorio.bbl" "relatorio" 1787668473.28732 0
   "referencias.bib" 1771432881.49919 6192 008e3ae0fd87ee2af28da84ee0310b0b ""
-  "relatorio.bcf" 1787618978.71804 108799 6fa64d075f3d98ca04f767376365470c "pdflatex"
+  "relatorio.bcf" 1787668473.18854 108799 6fa64d075f3d98ca04f767376365470c "pdflatex"
   (generated)
   "relatorio.bbl"
   "relatorio.blg"
   (rewritten before read)
-["pdflatex"] 1787618967.31909 "/home/gabriel/Documentos/ESTUDOS/IC Elias/relatorio_final/relatorio.tex" "relatorio.pdf" "relatorio" 1787618978.84523 0
+["pdflatex"] 1787668463.53631 "/home/gabriel/Documentos/ESTUDOS/IC Elias/relatorio_final/relatorio.tex" "relatorio.pdf" "relatorio" 1787668473.2876 0
   "/etc/texmf/web2c/texmf.cnf" 1786897224.69568 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/gabriel/Documentos/ESTUDOS/IC Elias/relatorio_final/relatorio.tex" 1787618967.03326 62539 643701b5a072d46a4777b15b486ba580 ""
+  "/home/gabriel/Documentos/ESTUDOS/IC Elias/relatorio_final/relatorio.tex" 1787668463.25628 62560 6a7b93b709d653a7ac05606ad4a1d7eb ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/courier/pcrr8r.tfm" 1136768653 1292 bd42be2f344128bff6d35d98474adfe3 ""
@@ -222,12 +222,12 @@
   "reconstrucao_200_iter.png" 1770225677.54658 1999458 9080983d26f66964ffdad853b9df5184 ""
   "reconstrucao_nest_gc.png" 1770225732.66769 1100949 dc58108650a77994ab2857e19986fff3 ""
   "reconstrucao_nesterov.png" 1770225711.55165 1053623 0c973da2e9f5f3416e8904f4f1afbdfe ""
-  "relatorio.aux" 1787618978.71204 25930 3b4a1011b0e7312155ca3f9403c53904 "pdflatex"
+  "relatorio.aux" 1787668473.18566 25930 3b4a1011b0e7312155ca3f9403c53904 "pdflatex"
   "relatorio.bbl" 1787602628.56767 31572 926c76bf87de4b8a305714825dd6440e "biber relatorio"
-  "relatorio.out" 1787618978.71604 5051 8e0fdfcb27034a4b7a53b7b66d0fc8ca "pdflatex"
-  "relatorio.run.xml" 1787618978.72059 2373 a80dfc757bea5911af21cb31b1f7c049 "pdflatex"
-  "relatorio.tex" 1787618967.03326 62539 643701b5a072d46a4777b15b486ba580 ""
-  "relatorio.toc" 1787618978.72059 2637 003f7f5a8bc99b72c51d691e4005f0ab "pdflatex"
+  "relatorio.out" 1787668473.18753 5051 8e0fdfcb27034a4b7a53b7b66d0fc8ca "pdflatex"
+  "relatorio.run.xml" 1787668473.19114 2373 a80dfc757bea5911af21cb31b1f7c049 "pdflatex"
+  "relatorio.tex" 1787668463.25628 62560 6a7b93b709d653a7ac05606ad4a1d7eb ""
+  "relatorio.toc" 1787668473.19114 2637 003f7f5a8bc99b72c51d691e4005f0ab "pdflatex"
   "tamanho_passo_creg.png" 1771346005.18414 445664 67122e3ce5153d415e9ac6f6b65e6917 ""
   "tamanho_passo_semreg.png" 1765835193.91082 77045 f51462f7b14bafac84936d7829531716 ""
   "testes1_creg.png" 1771351854.32831 346689 132dbc1198762e3c9d87823f4bd21491 ""
