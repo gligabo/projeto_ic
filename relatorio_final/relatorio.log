@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025/Debian) (preloaded format=pdflatex 2026.8.16)  25 AUG 2026 11:34
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025/Debian) (preloaded format=pdflatex 2026.8.16)  25 AUG 2026 11:38
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -839,63 +839,63 @@ Overfull \hbox (29.72397pt too wide) in paragraph at lines 658--658
  []
 
 [19]
-<tamanho_passo_semreg.png, id=387, 731.3724pt x 395.3169pt>
+<tamanho_passo_semreg.png, id=388, 731.3724pt x 395.3169pt>
 File: tamanho_passo_semreg.png Graphic file (type png)
 <use tamanho_passo_semreg.png>
 Package pdftex.def Info: tamanho_passo_semreg.png  used on input line 738.
 (pdftex.def)             Requested size: 389.00757pt x 210.27095pt.
  [20]
-<conv_iter_sreg.png, id=400, 619.3539pt x 396.0396pt>
+<conv_iter_sreg.png, id=401, 619.3539pt x 396.0396pt>
 File: conv_iter_sreg.png Graphic file (type png)
 <use conv_iter_sreg.png>
 Package pdftex.def Info: conv_iter_sreg.png  used on input line 745.
 (pdftex.def)             Requested size: 389.00757pt x 248.74483pt.
-<conv_tempo_sreg.png, id=401, 619.3539pt x 396.0396pt>
+<conv_tempo_sreg.png, id=402, 619.3539pt x 396.0396pt>
 File: conv_tempo_sreg.png Graphic file (type png)
 <use conv_tempo_sreg.png>
 Package pdftex.def Info: conv_tempo_sreg.png  used on input line 752.
 (pdftex.def)             Requested size: 389.00757pt x 248.74483pt.
  [21 <./tamanho_passo_semreg.png> <./conv_iter_sreg.png>]
-<reconstrucao_200_iter.png, id=408, 1438.173pt x 1191.7323pt>
+<reconstrucao_200_iter.png, id=409, 1438.173pt x 1191.7323pt>
 File: reconstrucao_200_iter.png Graphic file (type png)
 <use reconstrucao_200_iter.png>
 Package pdftex.def Info: reconstrucao_200_iter.png  used on input line 759.
 (pdftex.def)             Requested size: 486.25761pt x 402.92877pt.
  [22 <./conv_tempo_sreg.png>]
-<reconstrucao_nesterov.png, id=414, 1438.173pt x 763.8939pt>
+<reconstrucao_nesterov.png, id=415, 1438.173pt x 763.8939pt>
 File: reconstrucao_nesterov.png Graphic file (type png)
 <use reconstrucao_nesterov.png>
 Package pdftex.def Info: reconstrucao_nesterov.png  used on input line 766.
 (pdftex.def)             Requested size: 486.25761pt x 258.27513pt.
  [23 <./reconstrucao_200_iter.png>]
-<reconstrucao_nest_gc.png, id=420, 1438.173pt x 763.8939pt>
+<reconstrucao_nest_gc.png, id=422, 1438.173pt x 763.8939pt>
 File: reconstrucao_nest_gc.png Graphic file (type png)
 <use reconstrucao_nest_gc.png>
 Package pdftex.def Info: reconstrucao_nest_gc.png  used on input line 773.
 (pdftex.def)             Requested size: 486.25761pt x 258.27513pt.
-<grid_gamma_wav.png, id=421, 712.5822pt x 426.393pt>
+<grid_gamma_wav.png, id=423, 712.5822pt x 426.393pt>
 File: grid_gamma_wav.png Graphic file (type png)
 <use grid_gamma_wav.png>
 Package pdftex.def Info: grid_gamma_wav.png  used on input line 783.
 (pdftex.def)             Requested size: 389.00757pt x 232.7732pt.
  [24 <./reconstrucao_nesterov.png> <./reconstrucao_nest_gc.png>]
-<f_fstar1.png, id=429, 1003.8303pt x 354.123pt>
+<f_fstar1.png, id=430, 1003.8303pt x 354.123pt>
 File: f_fstar1.png Graphic file (type png)
 <use f_fstar1.png>
 Package pdftex.def Info: f_fstar1.png  used on input line 791.
 (pdftex.def)             Requested size: 486.25761pt x 171.5387pt.
-<fk1_fk.png, id=430, 859.2903pt x 426.393pt>
+<fk1_fk.png, id=431, 859.2903pt x 426.393pt>
 File: fk1_fk.png Graphic file (type png)
 <use fk1_fk.png>
 Package pdftex.def Info: fk1_fk.png  used on input line 798.
 (pdftex.def)             Requested size: 486.25761pt x 241.28984pt.
  [25 <./grid_gamma_wav.png> <./f_fstar1.png>]
-<tamanho_passo_creg.png, id=438, 1727.253pt x 860.013pt>
+<tamanho_passo_creg.png, id=439, 1727.253pt x 860.013pt>
 File: tamanho_passo_creg.png Graphic file (type png)
 <use tamanho_passo_creg.png>
 Package pdftex.def Info: tamanho_passo_creg.png  used on input line 805.
 (pdftex.def)             Requested size: 389.00757pt x 193.6914pt.
-<testes1_creg.png, id=439, 1076.1003pt x 1799.523pt>
+<testes1_creg.png, id=440, 1076.1003pt x 1799.523pt>
 File: testes1_creg.png Graphic file (type png)
 <use testes1_creg.png>
 Package pdftex.def Info: testes1_creg.png  used on input line 812.
@@ -904,143 +904,143 @@ Package pdftex.def Info: testes1_creg.png  used on input line 812.
 Overfull \vbox (22.31248pt too high) has occurred while \output is active []
 
  [27 <./testes1_creg.png>]
-<testes2_creg.png, id=451, 1438.173pt x 2160.873pt>
+<testes2_creg.png, id=452, 1438.173pt x 2160.873pt>
 File: testes2_creg.png Graphic file (type png)
 <use testes2_creg.png>
 Package pdftex.def Info: testes2_creg.png  used on input line 819.
 (pdftex.def)             Requested size: 389.00757pt x 584.46565pt.
-<grid_tv.png, id=452, 712.5822pt x 426.393pt>
+<grid_tv.png, id=453, 712.5822pt x 426.393pt>
 File: grid_tv.png Graphic file (type png)
 <use grid_tv.png>
 Package pdftex.def Info: grid_tv.png  used on input line 840.
 (pdftex.def)             Requested size: 389.00757pt x 232.7732pt.
  [28 <./testes2_creg.png>]
-<decaimento_iter_otimo_tv.png, id=458, 1003.1076pt x 354.123pt>
+<decaimento_iter_otimo_tv.png, id=459, 1003.1076pt x 354.123pt>
 File: decaimento_iter_otimo_tv.png Graphic file (type png)
 <use decaimento_iter_otimo_tv.png>
 Package pdftex.def Info: decaimento_iter_otimo_tv.png  used on input line 847.
 (pdftex.def)             Requested size: 486.25761pt x 171.66298pt.
-<decaimento_iters_tv.png, id=459, 859.2903pt x 426.393pt>
+<decaimento_iters_tv.png, id=460, 859.2903pt x 426.393pt>
 File: decaimento_iters_tv.png Graphic file (type png)
 <use decaimento_iters_tv.png>
 Package pdftex.def Info: decaimento_iters_tv.png  used on input line 854.
 (pdftex.def)             Requested size: 486.25761pt x 241.28984pt.
  [29 <./grid_tv.png> <./decaimento_iter_otimo_tv.png>]
-<comp_gammas_tv.png, id=466, 1076.1003pt x 1437.4503pt>
+<comp_gammas_tv.png, id=467, 1076.1003pt x 1437.4503pt>
 File: comp_gammas_tv.png Graphic file (type png)
 <use comp_gammas_tv.png>
 Package pdftex.def Info: comp_gammas_tv.png  used on input line 861.
 (pdftex.def)             Requested size: 389.00757pt x 519.63123pt.
  [30 <./decaimento_iters_tv.png>]
-<iterados_gamma_tv.png, id=472, 1076.1003pt x 1438.173pt>
+<iterados_gamma_tv.png, id=473, 1076.1003pt x 1438.173pt>
 File: iterados_gamma_tv.png Graphic file (type png)
 <use iterados_gamma_tv.png>
 Package pdftex.def Info: iterados_gamma_tv.png  used on input line 868.
 (pdftex.def)             Requested size: 389.00757pt x 519.89247pt.
  [31 <./comp_gammas_tv.png>]
-<comp_wav_tv.png, id=479, 1233.6489pt x 715.473pt>
+<comp_wav_tv.png, id=480, 1233.6489pt x 715.473pt>
 File: comp_wav_tv.png Graphic file (type png)
 <use comp_wav_tv.png>
 Package pdftex.def Info: comp_wav_tv.png  used on input line 875.
 (pdftex.def)             Requested size: 486.25761pt x 282.01375pt.
  [32 <./iterados_gamma_tv.png>]
-<figuras_sem_reg/conv_iter_exp1.png, id=485, 619.3539pt x 396.0396pt>
+<figuras_sem_reg/conv_iter_exp1.png, id=486, 619.3539pt x 396.0396pt>
 File: figuras_sem_reg/conv_iter_exp1.png Graphic file (type png)
 <use figuras_sem_reg/conv_iter_exp1.png>
 Package pdftex.def Info: figuras_sem_reg/conv_iter_exp1.png  used on input line 884.
 (pdftex.def)             Requested size: 389.00757pt x 248.74483pt.
-<figuras_sem_reg/conv_temp_exp1.png, id=486, 620.7993pt x 396.0396pt>
+<figuras_sem_reg/conv_temp_exp1.png, id=487, 620.7993pt x 396.0396pt>
 File: figuras_sem_reg/conv_temp_exp1.png Graphic file (type png)
 <use figuras_sem_reg/conv_temp_exp1.png>
 Package pdftex.def Info: figuras_sem_reg/conv_temp_exp1.png  used on input line 891.
 (pdftex.def)             Requested size: 389.00757pt x 248.17075pt.
  [33 <./comp_wav_tv.png> <./figuras_sem_reg/conv_iter_exp1.png>]
-<figuras_sem_reg/psnr_melhor_img_exp1.png, id=493, 1347.1128pt x 1293.633pt>
+<figuras_sem_reg/psnr_melhor_img_exp1.png, id=494, 1347.1128pt x 1293.633pt>
 File: figuras_sem_reg/psnr_melhor_img_exp1.png Graphic file (type png)
 <use figuras_sem_reg/psnr_melhor_img_exp1.png>
 Package pdftex.def Info: figuras_sem_reg/psnr_melhor_img_exp1.png  used on input line 898.
 (pdftex.def)             Requested size: 486.25761pt x 466.9511pt.
  [34 <./figuras_sem_reg/conv_temp_exp1.png>]
-<figuras_sem_reg/conv_iter_exp2.png, id=499, 619.3539pt x 396.0396pt>
+<figuras_sem_reg/conv_iter_exp2.png, id=500, 619.3539pt x 396.0396pt>
 File: figuras_sem_reg/conv_iter_exp2.png Graphic file (type png)
 <use figuras_sem_reg/conv_iter_exp2.png>
 Package pdftex.def Info: figuras_sem_reg/conv_iter_exp2.png  used on input line 905.
 (pdftex.def)             Requested size: 437.62888pt x 279.83643pt.
  [35 <./figuras_sem_reg/psnr_melhor_img_exp1.png>]
-<figuras_sem_reg/conv_temp_exp2.png, id=505, 619.3539pt x 396.0396pt>
+<figuras_sem_reg/conv_temp_exp2.png, id=506, 619.3539pt x 396.0396pt>
 File: figuras_sem_reg/conv_temp_exp2.png Graphic file (type png)
 <use figuras_sem_reg/conv_temp_exp2.png>
 Package pdftex.def Info: figuras_sem_reg/conv_temp_exp2.png  used on input line 912.
 (pdftex.def)             Requested size: 437.62888pt x 279.83643pt.
-<figuras_sem_reg/melhor_psnr_exp2.png, id=506, 1347.1128pt x 1293.633pt>
+<figuras_sem_reg/melhor_psnr_exp2.png, id=507, 1347.1128pt x 1293.633pt>
 File: figuras_sem_reg/melhor_psnr_exp2.png Graphic file (type png)
 <use figuras_sem_reg/melhor_psnr_exp2.png>
 Package pdftex.def Info: figuras_sem_reg/melhor_psnr_exp2.png  used on input line 919.
 (pdftex.def)             Requested size: 486.25761pt x 466.9511pt.
  [36 <./figuras_sem_reg/conv_iter_exp2.png> <./figuras_sem_reg/conv_temp_exp2.png>]
-<figuras_sem_reg/imgs_psnr_buscaexata_conjugado1.png, id=513, 1356.5079pt x 859.2903pt>
+<figuras_sem_reg/imgs_psnr_buscaexata_conjugado1.png, id=514, 1356.5079pt x 859.2903pt>
 File: figuras_sem_reg/imgs_psnr_buscaexata_conjugado1.png Graphic file (type png)
 <use figuras_sem_reg/imgs_psnr_buscaexata_conjugado1.png>
 Package pdftex.def Info: figuras_sem_reg/imgs_psnr_buscaexata_conjugado1.png  used on input line 926.
 (pdftex.def)             Requested size: 486.25761pt x 308.01999pt.
  [37 <./figuras_sem_reg/melhor_psnr_exp2.png>]
-<figuras_sem_reg/imgs_psnr_buscaexata_conjugado_exp2.png, id=520, 1356.5079pt x 859.2903pt>
+<figuras_sem_reg/imgs_psnr_buscaexata_conjugado_exp2.png, id=521, 1356.5079pt x 859.2903pt>
 File: figuras_sem_reg/imgs_psnr_buscaexata_conjugado_exp2.png Graphic file (type png)
 <use figuras_sem_reg/imgs_psnr_buscaexata_conjugado_exp2.png>
 Package pdftex.def Info: figuras_sem_reg/imgs_psnr_buscaexata_conjugado_exp2.png  used on input line 933.
 (pdftex.def)             Requested size: 486.25761pt x 308.01999pt.
  [38 <./figuras_sem_reg/imgs_psnr_buscaexata_conjugado1.png>]
-<figuras_wav/grid_gamma.png, id=526, 711.1368pt x 426.393pt>
+<figuras_wav/grid_gamma.png, id=527, 711.1368pt x 426.393pt>
 File: figuras_wav/grid_gamma.png Graphic file (type png)
 <use figuras_wav/grid_gamma.png>
 Package pdftex.def Info: figuras_wav/grid_gamma.png  used on input line 942.
 (pdftex.def)             Requested size: 437.62888pt x 262.40254pt.
  [39 <./figuras_sem_reg/imgs_psnr_buscaexata_conjugado_exp2.png>]
-<figuras_wav/diff_iterados.png, id=532, 509.5035pt x 352.6776pt>
+<figuras_wav/diff_iterados.png, id=533, 509.5035pt x 352.6776pt>
 File: figuras_wav/diff_iterados.png Graphic file (type png)
 <use figuras_wav/diff_iterados.png>
 Package pdftex.def Info: figuras_wav/diff_iterados.png  used on input line 949.
 (pdftex.def)             Requested size: 389.00757pt x 269.2701pt.
-<figuras_wav/diff_valor_funcao_otimo_temp_e_iter.png, id=533, 1004.553pt x 354.123pt>
+<figuras_wav/diff_valor_funcao_otimo_temp_e_iter.png, id=534, 1004.553pt x 354.123pt>
 File: figuras_wav/diff_valor_funcao_otimo_temp_e_iter.png Graphic file (type png)
 <use figuras_wav/diff_valor_funcao_otimo_temp_e_iter.png>
 Package pdftex.def Info: figuras_wav/diff_valor_funcao_otimo_temp_e_iter.png  used on input line 956.
 (pdftex.def)             Requested size: 486.25761pt x 171.41441pt.
  [40 <./figuras_wav/grid_gamma.png> <./figuras_wav/diff_iterados.png>]
-<figuras_wav/evolucao_psnr_e_tempo_psnr_max.png, id=540, 1004.553pt x 426.393pt>
+<figuras_wav/evolucao_psnr_e_tempo_psnr_max.png, id=541, 1004.553pt x 426.393pt>
 File: figuras_wav/evolucao_psnr_e_tempo_psnr_max.png Graphic file (type png)
 <use figuras_wav/evolucao_psnr_e_tempo_psnr_max.png>
 Package pdftex.def Info: figuras_wav/evolucao_psnr_e_tempo_psnr_max.png  used on input line 963.
 (pdftex.def)             Requested size: 486.25761pt x 206.39696pt.
-<figuras_wav/melhores_reconstrucoes.png, id=541, 2137.0239pt x 1083.3273pt>
+<figuras_wav/melhores_reconstrucoes.png, id=542, 2137.0239pt x 1083.3273pt>
 File: figuras_wav/melhores_reconstrucoes.png Graphic file (type png)
 <use figuras_wav/melhores_reconstrucoes.png>
 Package pdftex.def Info: figuras_wav/melhores_reconstrucoes.png  used on input line 970.
 (pdftex.def)             Requested size: 486.25761pt x 246.49867pt.
  [41 <./figuras_wav/diff_valor_funcao_otimo_temp_e_iter.png> <./figuras_wav/evolucao_psnr_e_tempo_psnr_max.png>]
-<figuras_tv/grid_search.png, id=548, 711.1368pt x 426.393pt>
+<figuras_tv/grid_search.png, id=549, 711.1368pt x 426.393pt>
 File: figuras_tv/grid_search.png Graphic file (type png)
 <use figuras_tv/grid_search.png>
 Package pdftex.def Info: figuras_tv/grid_search.png  used on input line 977.
 (pdftex.def)             Requested size: 437.62888pt x 262.40254pt.
-<figuras_tv/diff_iters_estabilidade.png, id=549, 505.89pt x 354.123pt>
+<figuras_tv/diff_iters_estabilidade.png, id=550, 505.89pt x 354.123pt>
 File: figuras_tv/diff_iters_estabilidade.png Graphic file (type png)
 <use figuras_tv/diff_iters_estabilidade.png>
 Package pdftex.def Info: figuras_tv/diff_iters_estabilidade.png  used on input line 984.
 (pdftex.def)             Requested size: 389.00757pt x 272.3081pt.
  [42 <./figuras_wav/melhores_reconstrucoes.png> <./figuras_tv/grid_search.png>]
-<figuras_tv/fxk_fstar_tempo_e_iter.png, id=556, 1004.553pt x 354.123pt>
+<figuras_tv/fxk_fstar_tempo_e_iter.png, id=557, 1004.553pt x 354.123pt>
 File: figuras_tv/fxk_fstar_tempo_e_iter.png Graphic file (type png)
 <use figuras_tv/fxk_fstar_tempo_e_iter.png>
 Package pdftex.def Info: figuras_tv/fxk_fstar_tempo_e_iter.png  used on input line 991.
 (pdftex.def)             Requested size: 486.25761pt x 171.41441pt.
-<figuras_tv/evolucao_psnr.png, id=557, 1004.553pt x 426.393pt>
+<figuras_tv/evolucao_psnr.png, id=558, 1004.553pt x 426.393pt>
 File: figuras_tv/evolucao_psnr.png Graphic file (type png)
 <use figuras_tv/evolucao_psnr.png>
 Package pdftex.def Info: figuras_tv/evolucao_psnr.png  used on input line 998.
 (pdftex.def)             Requested size: 486.25761pt x 206.39696pt.
  [43 <./figuras_tv/diff_iters_estabilidade.png> <./figuras_tv/fxk_fstar_tempo_e_iter.png>]
-<figuras_tv/melhores_reconstrucoes_minimizando_func.png, id=565, 2137.0239pt x 1083.3273pt>
+<figuras_tv/melhores_reconstrucoes_minimizando_func.png, id=566, 2137.0239pt x 1083.3273pt>
 File: figuras_tv/melhores_reconstrucoes_minimizando_func.png Graphic file (type png)
 <use figuras_tv/melhores_reconstrucoes_minimizando_func.png>
 Package pdftex.def Info: figuras_tv/melhores_reconstrucoes_minimizando_func.png  used on input line 1005.
@@ -1065,10 +1065,10 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  63i,13n,67p,1284b,1762s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on relatorio.pdf (44 pages, 15730440 bytes).
+Output written on relatorio.pdf (44 pages, 15730514 bytes).
 PDF statistics:
- 708 PDF objects out of 1000 (max. 8388607)
- 538 compressed objects within 6 object streams
+ 709 PDF objects out of 1000 (max. 8388607)
+ 539 compressed objects within 6 object streams
  165 named destinations out of 1000 (max. 500000)
  79717 words of extra memory for PDF output out of 89155 (max. 10000000)
 

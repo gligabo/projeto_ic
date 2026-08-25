@@ -164,7 +164,7 @@ Neste trabalho, focamos em duas opções para a regularização $g(\mathbf{x})$:
 
 \section{Metodologia}
 
-Os métodos foram implementados em Python, utilizando as bibliotecas SciPy, NumPy, Matplotlib, PyTorch, PyWavelets, Scikit-Image e SigPy, rodando em um processador Intel Core i5-13420H com 8 GB de RAM e uma GPU RTX 3050 (6 GB de VRAM). Para computar a Transformada de Radon e seus operadores adjuntos de maneira eficiente em experimentos de tomografia, adotou-se a biblioteca desenvolvida pelo Prof. Elias Salomão Helou Neto, disponível em \url{https://github.com/elias-helou/ray_tracing}. Todo o código-fonte, implementações, experimentos mencionados ao longo das próximas seções, além de alguns outros encontram-se disponíveis em nosso repositório no GitHub: \url{https://github.com/gligabo/projeto_ic}.
+Os métodos foram implementados em Python, utilizando as bibliotecas SciPy, NumPy, Matplotlib, PyTorch, PyWavelets, Scikit-Image e SigPy, rodando em um processador Intel Core i5-13420H com 8 GB de RAM e uma GPU RTX 3050 (6 GB de VRAM). Para computar a Transformada de Radon e seus operadores adjuntos de maneira eficiente em experimentos de tomografia, adotou-se a biblioteca desenvolvida pelo Prof. Elias Salomão Helou Neto, disponível em \url{https://github.com/elias-helou/ray_tracing}. Todo o código-fonte, as implementações e os experimentos mencionados ao longo das próximas seções, além de alguns outros, encontram-se disponíveis em nosso repositório no GitHub: \url{https://github.com/gligabo/projeto_ic}.
 
 Cabe ressaltar que as simulações envolvendo tomografia computadorizada (TC) foram executadas na GPU, o que reduziu significativamente o tempo de processamento e viabilizou a repetição de cada experimento 5 vezes (sendo os tempos reportados em média e desvio padrão). Em contrapartida, os experimentos de restauração de imagens foram executados inteiramente em CPU. Devido ao elevado custo computacional e ao tempo de execução restritivo nestes cenários, optou-se por realizar uma única execução para as métricas reportadas. 
 
@@ -236,7 +236,7 @@ Inicialmente, com limite de 1000 iterações e tolerância de $10^{-2}$ para o v
     \end{tabular}
 \end{table}
 
-A análise empírica inicial do tamanho de passo fixo (Figura \ref{fig:tamanho_passo_sreg} no Apêndice) fez com que a escolha fosse de $\lambda = 1$. Alem disso essa escolha foi corroborada através da estimação da constante de Lipschitz ($L_f = 0.9997$). Observando as curvas de decaimento do erro pelas iterações (Figura \ref{fig:conv_iter_sreg}) e ao longo do tempo de execução (Figura \ref{fig:conv_tempo_sreg}), observa-se que a busca linear exata em métodos acelerados de Nesterov converge em menos iterações e em menor tempo que utilizando \textit{backtracking}.
+A análise empírica inicial do tamanho de passo fixo (Figura \ref{fig:tamanho_passo_sreg} no Apêndice) fez com que a escolha fosse de $\lambda = 1$. Além disso, essa escolha foi corroborada através da estimação da constante de Lipschitz ($L_f = 0.9997$). Observando as curvas de decaimento do erro pelas iterações (Figura \ref{fig:conv_iter_sreg}) e ao longo do tempo de execução (Figura \ref{fig:conv_tempo_sreg}), observa-se que a busca linear exata em métodos acelerados de Nesterov converge em menos iterações e em menor tempo que utilizando \textit{backtracking}.
 
 Para aprofundar essa comparação entre as duas estratégias adaptativas de passo no método de Nesterov (busca exata \textit{vs.} \textit{backtracking}), realizou-se um experimento fixando 200 iterações. Nesse contexto, o Nesterov com busca exata atingiu o limite de iterações em $13.35$ segundos, enquanto o Nesterov com \textit{backtracking} levou $13.63$ segundos. A superioridade da busca exata deve-se à eliminação da rotina iterativa de verificação da desigualdade do critério de descida suficiente. Enquanto o \textit{backtracking} necessita avaliar repetidamente a função objetivo $f(\mathbf{x}_k)$ a cada tentativa de redução do passo $\lambda$, o passo exato calcula analiticamente o tamanho de passo ótimo em apenas uma avaliação em forma fechada na direção de descida. Conforme ilustrado no comparativo visual de reconstrução na Figura \ref{fig:qual_reconst_nesterov}, a busca exata proporciona um maior valor de PSNR e estabilidade numérica idêntica ou superior ao \textit{backtracking}.
 
@@ -298,7 +298,7 @@ Na reconstrução tomográfica sem regularização do fantoma Shepp-Logan ($512 
     \end{tabular}
 \end{table}
 
-Restringindo o custo a exatamente 200 iterações (Tabela \ref{tab:tc_sem_reg_200it}), o gradiente conjugado produziu a melhor reconstrução (PSNR $37.42$ dB), seguido pelo de Nesterov com busca exata ($34.83$ dB). No entanto, o ganho de velocidade da busca exata comparado ao \textit{backtracking} é relevante no método de Nesterov. Os gráficos de decaimento do erro por iteração, tempo e os as reconstruções com seus respectivos valores de PSNR podem ser observados nas Figuras \ref{fig:tc_sreg_conv_iter2}, \ref{fig:tc_sreg_conv_temp2} e \ref{fig:tc_sreg_melhor2}.
+Restringindo o custo a exatamente 200 iterações (Tabela \ref{tab:tc_sem_reg_200it}), o gradiente conjugado produziu a melhor reconstrução (PSNR $37.42$ dB), seguido pelo de Nesterov com busca exata ($34.83$ dB). No entanto, o ganho de velocidade da busca exata comparado ao \textit{backtracking} é relevante no método de Nesterov. Os gráficos de decaimento do erro por iteração, tempo e as reconstruções com seus respectivos valores de PSNR podem ser observados nas Figuras \ref{fig:tc_sreg_conv_iter2}, \ref{fig:tc_sreg_conv_temp2} e \ref{fig:tc_sreg_melhor2}.
 
 \begin{table}[H]
     \centering
@@ -318,7 +318,7 @@ Restringindo o custo a exatamente 200 iterações (Tabela \ref{tab:tc_sem_reg_20
     \end{tabular}
 \end{table}
 
-A Tabela \ref{tab:tc_sem_reg_nest_vs_gc} ilustra a comparação em regimes de tolerância de precisão elevada ($10^{-4}$ e $10^{-5}$), confirmando que os gradientes conjugados são a melhor escolha no cenário de problemas quadráticos. As reconstruções com seus valores de PSNR podem ser observadas na Figura \ref{fig:tc_sreg_nest_gc1} e \ref{fig:tc_sreg_nest_gc2} para cada um desses dois experimentos.
+A Tabela \ref{tab:tc_sem_reg_nest_vs_gc} ilustra a comparação em regimes de tolerância de precisão elevada ($10^{-4}$ e $10^{-5}$), confirmando que os gradientes conjugados são a melhor escolha no cenário de problemas quadráticos. As reconstruções com seus valores de PSNR podem ser observadas nas Figuras \ref{fig:tc_sreg_nest_gc1} e \ref{fig:tc_sreg_nest_gc2} para cada um desses dois experimentos.
 
 \begin{table}[H]
     \centering
@@ -536,7 +536,7 @@ A análise com TV corrobora os achados para as \textit{wavelets}, como pode ser 
 \paragraph{Tomografia Computadorizada}
 Para o cenário de tomografia computadorizada regularizada por variação total (TV), realizou-se inicialmente um \textit{grid-search} para encontrar o valor do parâmetro de regularização, sendo $\gamma = 0.005$ identificado como o que minimiza o erro em relação ao fantoma original (Figura \ref{fig:grid_search_tv}). 
 
-O primeiro teste comparou o desempenho dos métodos com uma tolerância de $10^{-3}$ e um limite de $1000$ iterações. O tamanho de passo utilizado para os algoritmos de passo fixo e \textit{backtracking} foi $\lambda = 0.2$ e o chute inicial $\mathbf{x_0} = \mathbf{0}$. Os resultados desse experimentos, calculados a partir de 5 execuções independentes, podem ser vistos na Tabela \ref{tab:tc_tv_conv_principal}.
+O primeiro teste comparou o desempenho dos métodos com uma tolerância de $10^{-3}$ e um limite de $1000$ iterações. O tamanho de passo utilizado para os algoritmos de passo fixo e \textit{backtracking} foi $\lambda = 0.2$ e o chute inicial $\mathbf{x_0} = \mathbf{0}$. Os resultados desse experimento, calculados a partir de 5 execuções independentes, podem ser vistos na Tabela \ref{tab:tc_tv_conv_principal}.
 \begin{table}[H]
     \centering
     \caption{Convergência Temporal em Tomografia com Variação Total ($\gamma=0.005$, $\text{tol}=10^{-3}$)}
