@@ -1,14 +1,14 @@
 # Fdb version 4
-["biber relatorio"] 1787602627.36245 "relatorio.bcf" "relatorio.bbl" "relatorio" 1787607294.01432 0
+["biber relatorio"] 1787602627.36245 "relatorio.bcf" "relatorio.bbl" "relatorio" 1787618978.84477 0
   "referencias.bib" 1771432881.49919 6192 008e3ae0fd87ee2af28da84ee0310b0b ""
-  "relatorio.bcf" 1787607293.87397 108799 6fa64d075f3d98ca04f767376365470c "pdflatex"
+  "relatorio.bcf" 1787618978.71804 108799 6fa64d075f3d98ca04f767376365470c "pdflatex"
   (generated)
   "relatorio.bbl"
   "relatorio.blg"
   (rewritten before read)
-["pdflatex"] 1787607278.11272 "/home/gabriel/Documentos/ESTUDOS/IC Elias/relatorio_final/relatorio.tex" "relatorio.pdf" "relatorio" 1787607294.01474 0
+["pdflatex"] 1787618967.31909 "/home/gabriel/Documentos/ESTUDOS/IC Elias/relatorio_final/relatorio.tex" "relatorio.pdf" "relatorio" 1787618978.84523 0
   "/etc/texmf/web2c/texmf.cnf" 1786897224.69568 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/gabriel/Documentos/ESTUDOS/IC Elias/relatorio_final/relatorio.tex" 1787607277.74462 62125 6c2d2baf40649c3228ebe5df9bbf4b0c ""
+  "/home/gabriel/Documentos/ESTUDOS/IC Elias/relatorio_final/relatorio.tex" 1787618967.03326 62539 643701b5a072d46a4777b15b486ba580 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/courier/pcrr8r.tfm" 1136768653 1292 bd42be2f344128bff6d35d98474adfe3 ""
@@ -17,6 +17,7 @@
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmb8t.tfm" 1136768653 6880 f19b8995b61c334d78fc734065f6b4d4 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmbi8r.tfm" 1136768653 4480 10409ed8bab5aea9ec9a78028b763919 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmbi8t.tfm" 1136768653 6784 37b32cc10800b5afa030d935c393695a ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmr8c.tfm" 1136768653 1352 fa28a7e6d323c65ce7d13d5342ff6be2 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmr8r.tfm" 1136768653 4408 25b74d011a4c66b7f212c0cc3c90061b ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmr8t.tfm" 1136768653 6672 e3ab9e37e925f3045c9005e6d1473d56 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmrc8t.tfm" 1136768653 16648 7e91c60ebf91b9c60e16ef52b3070f9c ""
@@ -85,6 +86,7 @@
   "/usr/share/texlive/texmf-dist/fonts/vf/adobe/courier/pcrr8t.vf" 1136768653 2184 8475af1b9cfa983db5f46f5ed4b8f9f7 ""
   "/usr/share/texlive/texmf-dist/fonts/vf/adobe/times/ptmb8t.vf" 1136768653 2340 df9c920cc5688ebbf16a93f45ce7bdd3 ""
   "/usr/share/texlive/texmf-dist/fonts/vf/adobe/times/ptmbi8t.vf" 1136768653 2324 51908dae6e03953a90119973962f0e4d ""
+  "/usr/share/texlive/texmf-dist/fonts/vf/adobe/times/ptmr8c.vf" 1136768653 3556 8a9a6dcbcd146ef985683f677f4758a6 ""
   "/usr/share/texlive/texmf-dist/fonts/vf/adobe/times/ptmr8t.vf" 1136768653 2348 91706c542228501c410c266421fbe30c ""
   "/usr/share/texlive/texmf-dist/fonts/vf/adobe/times/ptmrc8t.vf" 1136768653 3608 78e4c999d9e69f03f448158d01821741 ""
   "/usr/share/texlive/texmf-dist/fonts/vf/adobe/times/ptmri8t.vf" 1136768653 2328 6cd7df782b09b29cfc4d93e55b6b9a59 ""
@@ -177,6 +179,7 @@
   "/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd" 1137110629 798 d5895e9edc628f2be019beb2c0ec66df ""
   "/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ptm.fd" 1137110629 774 61d7da1e9f9e74989b196d147e623736 ""
   "/usr/share/texlive/texmf-dist/tex/latex/psnfss/times.sty" 1586716065 856 8e0e5c8cca7b18e0400f97f5a2b90a99 ""
+  "/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd" 1137110629 619 96f56dc5d1ef1fe1121f1cfeec70ee0c ""
   "/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty" 1576624809 9878 9e94e8fa600d95f9c7731bb21dfb67a4 ""
   "/usr/share/texlive/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty" 1750533675 9684 a33a14b82ce60d6e77cb9be689d79ee6 ""
   "/usr/share/texlive/texmf-dist/tex/latex/setspace/setspace.sty" 1670275497 22490 8cac309b79a4c53a4ffce4b1b07aead0 ""
@@ -219,12 +222,12 @@
   "reconstrucao_200_iter.png" 1770225677.54658 1999458 9080983d26f66964ffdad853b9df5184 ""
   "reconstrucao_nest_gc.png" 1770225732.66769 1100949 dc58108650a77994ab2857e19986fff3 ""
   "reconstrucao_nesterov.png" 1770225711.55165 1053623 0c973da2e9f5f3416e8904f4f1afbdfe ""
-  "relatorio.aux" 1787607293.86912 25930 3b4a1011b0e7312155ca3f9403c53904 "pdflatex"
+  "relatorio.aux" 1787618978.71204 25930 3b4a1011b0e7312155ca3f9403c53904 "pdflatex"
   "relatorio.bbl" 1787602628.56767 31572 926c76bf87de4b8a305714825dd6440e "biber relatorio"
-  "relatorio.out" 1787607293.87197 5051 8e0fdfcb27034a4b7a53b7b66d0fc8ca "pdflatex"
-  "relatorio.run.xml" 1787607293.87608 2373 a80dfc757bea5911af21cb31b1f7c049 "pdflatex"
-  "relatorio.tex" 1787607277.74462 62125 6c2d2baf40649c3228ebe5df9bbf4b0c ""
-  "relatorio.toc" 1787607293.87608 2637 003f7f5a8bc99b72c51d691e4005f0ab "pdflatex"
+  "relatorio.out" 1787618978.71604 5051 8e0fdfcb27034a4b7a53b7b66d0fc8ca "pdflatex"
+  "relatorio.run.xml" 1787618978.72059 2373 a80dfc757bea5911af21cb31b1f7c049 "pdflatex"
+  "relatorio.tex" 1787618967.03326 62539 643701b5a072d46a4777b15b486ba580 ""
+  "relatorio.toc" 1787618978.72059 2637 003f7f5a8bc99b72c51d691e4005f0ab "pdflatex"
   "tamanho_passo_creg.png" 1771346005.18414 445664 67122e3ce5153d415e9ac6f6b65e6917 ""
   "tamanho_passo_semreg.png" 1765835193.91082 77045 f51462f7b14bafac84936d7829531716 ""
   "testes1_creg.png" 1771351854.32831 346689 132dbc1198762e3c9d87823f4bd21491 ""
